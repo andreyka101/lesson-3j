@@ -35,3 +35,6 @@ npm install -D sass
 ``` bash
 import './style.scss'
 ```
+
+# сделать глобольную ссылку github для vite
+
