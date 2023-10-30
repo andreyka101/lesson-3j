@@ -1,14 +1,37 @@
 # установить scss для vite
-# Ввести в терминал
+# в фаиле package.json
 
-Создать пустой проект
+заменить это :
+
+"devDependencies": {
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
+  }
+
+  на это :
 
 ``` bash
-npm create vite@latest
+"devDependencies": {
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "sass": "^1.63.5",
+    "scss": "^0.2.4"
+  }
 ```
 
-и вписать в vs code
+# в консоле
+
+вписать
 
 ``` bash
-npm i
+npm install -D sass
+```
+# в фаиле ts
+
+вписать вверху
+
+``` bash
+import './style.scss'
 ```
