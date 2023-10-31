@@ -75,6 +75,6 @@ import './style.scss'
 
 ``` bash
 export default {
-  base: '/lesson-2j/'
+  base: '/название проекта/'
 }
 ```
