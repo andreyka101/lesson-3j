@@ -1,5 +1,5 @@
 # установить scss для vite
-# в фаиле package.json
+в фаиле package.json
 
 заменить это :
 
@@ -38,3 +38,8 @@ import './style.scss'
 
 # сделать глобольную ссылку github для vite
 
+
+вписать вверху
+
+``` bash
+import './style.scss'
