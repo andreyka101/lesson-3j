@@ -39,7 +39,38 @@ import './style.scss'
 # сделать глобольную ссылку github для vite
 
 
-вписать вверху
+создать фаил tsconfig.json и вписать
 
 ``` bash
-import './style.scss'
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"]
+}
+```
+
+создать фаил vite.config.ts и вписать
+
+``` bash
+export default {
+  base: '/lesson-2j/'
+}
+```
