@@ -40,7 +40,8 @@ import './style.scss'
 
 
 создать фаил tsconfig.json
- и вписать
+
+и вписать
 
 ``` bash
 {
@@ -69,6 +70,7 @@ import './style.scss'
 ```
 
 создать фаил vite.config.ts
+
 и вписать
 
 ``` bash
