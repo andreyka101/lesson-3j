@@ -39,7 +39,8 @@ import './style.scss'
 # сделать глобольную ссылку github для vite
 
 
-создать фаил tsconfig.json и вписать
+создать фаил tsconfig.json
+ и вписать
 
 ``` bash
 {
@@ -67,7 +68,8 @@ import './style.scss'
 }
 ```
 
-создать фаил vite.config.ts и вписать
+создать фаил vite.config.ts
+и вписать
 
 ``` bash
 export default {
