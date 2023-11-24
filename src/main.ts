@@ -19,6 +19,6 @@ import './style.scss'
     ctx.fillRect(70,80,50,50)
     ctx.fillStyle = '#FFFF00'
     ctx.fillRect(-100,-80,10,10)
-    ctx.rotate(20 * Math.PI / 360);
-  },200)
+    ctx.rotate(10 * Math.PI / 360);
+  },100)
 }
