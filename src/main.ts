@@ -7,7 +7,7 @@ import './style.scss'
   setInterval(() =>{
     ctx.beginPath()
     ctx.fillStyle = '#363636'
-    ctx.fillRect(-canvas.width, -canvas.height, canvas.width*canvas.width, canvas.height*canvas.height)
+    ctx.fillRect(0, 0, canvas.width*canvas.width, canvas.height*canvas.height)
 
     ctx.moveTo(0, 0);
     ctx.lineTo(50,100)
