@@ -1,26 +1,19 @@
 body{
-  background-color: blueviolet;
+  background-color: #292929;
   margin: 0;
 }
-// #body{
-//   position: fixed;
-//   z-index: -9;
-//   width: 100%;
-//   height: 100%;
-//   backdrop-filter: blur(40px);
-//   // background-color: rgb(54, 54, 54, 0.08);
-// }
-canvas{
-  position: fixed;
-  z-index: -10;
-  width: 100%;
-  height: 100%;
-  background-color: #363636;
-  // background-color: rgb(32, 32, 32);
-  // color:#363636
+.dd{
+  width: 100px;
+  height: 100px;
+  filter: blur(10px);
 }
 
-
-
-
-// filter: drop-shadow(30px 10px 4px #4444dd);
+#body{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0;
+  z-index: 1;
+  color: #ffffff;
+}
