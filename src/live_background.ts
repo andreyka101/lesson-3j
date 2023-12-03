@@ -22,8 +22,7 @@ export default class LiveBackgroundMod {
   fill : #51EB00;
   width: ${Math.round(Math.random() * (400 - 30) + 30)}px;
   height: ${Math.round(Math.random() * (400 - 30) + 30)}px;
-  top: ${(Math.random() * (92 - -10) + -10).toFixed(2)}%;
-  left: ${(Math.random() * (92 - -10) + -10).toFixed(2)}%;
+  transform: translate(${(Math.random() * ((document.documentElement.clientWidth-300) - -100) + 1).toFixed(1)}px, ${(Math.random() * ((document.documentElement.clientHeight-300) - -100) + 1).toFixed(1)}px);
   filter: blur(2px);
   position: fixed;
   transition: 0.5s;
@@ -141,8 +140,7 @@ export default class LiveBackgroundMod {
     fill : #${this.#color};
     width: ${Math.round(Math.random() * (400 - 30) + 30)}px;
     height: ${Math.round(Math.random() * (400 - 30) + 30)}px;
-    top: ${(Math.random() * (document.documentElement.clientHeight - 0) + 0).toFixed(2)}px;
-    left: ${(Math.random() * (document.documentElement.clientWidth - 0) + 0).toFixed(2)}px;
+    transform: translate(${(Math.random() * ((document.documentElement.clientWidth-300) - -100) + 1).toFixed(1)}px, ${(Math.random() * ((document.documentElement.clientHeight-300) - -100) + 1).toFixed(1)}px);
     `
         }
         setTimeout(() => {
