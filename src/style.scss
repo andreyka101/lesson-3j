@@ -8,6 +8,7 @@ body{
   height: 100px;
   filter: blur(10px);
   fill:red;
+  transition: 2s;
 }
 
 #body{
@@ -18,4 +19,22 @@ body{
   left: 0;
   z-index: 1;
   color: #ffffff;
+}
+@keyframes start {
+  0% {
+    filter: opacity(1);
+  }
+  
+  100% {
+    filter: blur(100px) opacity(0);
+  }
+}
+@keyframes end {
+  0% {
+    filter: blur(100px) opacity(0);
+  }
+  
+  100% {
+    filter: opacity(1);
+  }
 }
