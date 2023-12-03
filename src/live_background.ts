@@ -8,7 +8,7 @@ export default class LiveBackgroundMod {
     this.#body = document.querySelector('body') as HTMLBodyElement
   }
   start() {
-    
+
     this.#body.innerHTML += `<svg id="backgroundSVG_${this.#nameId[0]}" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.481 19.481" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 19.481 19.481"><g><path d="m10.201,.758l2.478,5.865 6.344,.545c0.44,0.038 0.619,0.587 0.285,0.876l-4.812,4.169 1.442,6.202c0.1,0.431-0.367,0.77-0.745,0.541l-5.452-3.288-5.452,3.288c-0.379,0.228-0.845-0.111-0.745-0.541l1.442-6.202-4.813-4.17c-0.334-0.289-0.156-0.838 0.285-0.876l6.344-.545 2.478-5.864c0.172-0.408 0.749-0.408 0.921,0z"/></g></svg>`
     this.#body.innerHTML += `<svg version="1.1" id="backgroundSVG_${this.#nameId[1]}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve"><polygon points="245,456.701 490,33.299 0,33.299 "/></svg>`
     this.#body.innerHTML += `<svg version="1.1" id="backgroundSVG_${this.#nameId[2]}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve"><path d="M287.582,136.751h11.012V29.563H191.406v107.187h11.011L77.136,353.249H0v107.188h107.187v-43.35h275.625v43.35H490V353.249 h-77.136L287.582,136.751z M107.187,386.461v-23.983l130.613-225.728h14.398l130.613,225.728v23.983H107.187z"/></svg>`
@@ -141,7 +141,7 @@ export default class LiveBackgroundMod {
     fill : #${this.#color};
     width: ${Math.round(Math.random() * (400 - 30) + 30)}px;
     height: ${Math.round(Math.random() * (400 - 30) + 30)}px;
-    transform: translate(${(Math.random() * ((document.documentElement.clientWidth-300) - -100) + 1).toFixed(1)}px, ${(Math.random() * ((document.documentElement.clientHeight-300) - -100) + 1).toFixed(1)}px);
+    transform: translate(${(Math.random() * ((document.documentElement.clientWidth-300) - -100) + 1).toFixed(1)}px, ${(Math.random() * ((document.documentElement.clientHeight-300) - -100) + 1).toFixed(1)}px) rotate(${Math.round(Math.random() * (360 - 0) + 0)}deg);
     `
         }
         setTimeout(() => {
