@@ -33,7 +33,7 @@ export default class LiveBackgroundMod {
 setInterval(()=>{
   for (let i of this.#nameId){
   let element = document.querySelector(`#backgroundSVG_${i}`) as HTMLElement
-  element.style.filter = `blur(50px)`
+  // element.style.filter = `blur(50px)`
   }
 
 
