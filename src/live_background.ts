@@ -78,15 +78,25 @@ export default class LiveBackgroundMod {
         element.style.cssText += `
     background-color : #${this.#color[Math.round(Math.random() * (30 - 0) + 0)]};
     width: 100%;
-    height: 50px;
+    height: ${Math.round(Math.random() * (100 - 20) + 20)}px;
     top: 0;
-    transform: translateY(${(Math.random() * ((document.documentElement.clientHeight - 200) - -100) + -100).toFixed(1)}px);
+    transform: translateY(${(Math.random() * ((document.documentElement.clientHeight + 100) - -100) + -100).toFixed(1)}px);
     position: fixed;
     transition: 0.5s;
     filter: blur(${Math.round(Math.random() * (30 - 10) + 10)}px);
     `
       }
-
+      setInterval(()=>{
+        for (let i of this.#nameIdDiv) {
+          let element = document.querySelector(`#backgroundDIV_${i}`) as HTMLElement
+          element.style.cssText += `
+      background-color : #${this.#color[Math.round(Math.random() * (30 - 0) + 0)]};
+      height: ${Math.round(Math.random() * (100 - 20) + 20)}px;
+      transform: translateY(${(Math.random() * ((document.documentElement.clientHeight + 100) - -100) + -100).toFixed(1)}px);
+      filter: blur(${Math.round(Math.random() * (30 - 10) + 10)}px);
+      `
+        }
+      },5000)
     }
   }
 }
