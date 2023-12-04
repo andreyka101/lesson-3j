@@ -40,7 +40,7 @@ setTimeout(() => {
     opacity: 1;
     `
       }
-    },400)
+    },500)
 
     setInterval(() => {
       for (let i of this.#nameId) {
