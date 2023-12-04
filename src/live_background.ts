@@ -82,7 +82,7 @@ export default class LiveBackgroundMod {
     top: 0;
     transform: translateY(${(Math.random() * ((document.documentElement.clientHeight + 100) - -100) + -100).toFixed(1)}px);
     position: fixed;
-    transition: 0.5s;
+    transition: 0.7s;
     `
   }
   setTimeout(() => {
