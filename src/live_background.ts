@@ -70,9 +70,9 @@ export default class LiveBackgroundMod {
       }, 15000)
     }
     else{
-      this.#body.innerHTML += `<div id="backgroundDIV_${this.#nameIdDiv[0]}"></div>`
-      this.#body.innerHTML += `<div id="backgroundDIV_${this.#nameIdDiv[1]}"></div>`
-      this.#body.innerHTML += `<div id="backgroundDIV_${this.#nameIdDiv[2]}"></div>`
+      this.#body.innerHTML += `<div id="backgroundDIV_${this.#nameIdDiv[0]}" style="opacity: 0; filter: blur(50px);"></div>`
+      this.#body.innerHTML += `<div id="backgroundDIV_${this.#nameIdDiv[1]}" style="opacity: 0; filter: blur(50px);"></div>`
+      this.#body.innerHTML += `<div id="backgroundDIV_${this.#nameIdDiv[2]}" style="opacity: 0; filter: blur(50px);"></div>`
       for (let i of this.#nameIdDiv) {
         let element = document.querySelector(`#backgroundDIV_${i}`) as HTMLElement
         element.style.cssText += `
@@ -83,9 +83,18 @@ export default class LiveBackgroundMod {
     transform: translateY(${(Math.random() * ((document.documentElement.clientHeight + 100) - -100) + -100).toFixed(1)}px);
     position: fixed;
     transition: 0.5s;
-    filter: blur(${Math.round(Math.random() * (30 - 10) + 10)}px);
     `
-      }
+  }
+  setTimeout(() => {
+    for (let i of this.#nameIdDiv) {
+      let element = document.querySelector(`#backgroundDIV_${i}`) as HTMLElement
+      element.style.cssText += `
+      filter: blur(${Math.round(Math.random() * (30 - 10) + 10)}px);
+    opacity: 1;
+    `
+        }
+      }, 500)
+
       setInterval(()=>{
         for (let i of this.#nameIdDiv) {
           let element = document.querySelector(`#backgroundDIV_${i}`) as HTMLElement
