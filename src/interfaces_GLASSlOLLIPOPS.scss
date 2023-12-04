@@ -1,0 +1,15 @@
+//  сайт в HTML документе нужно писать в #body
+body{
+  background-color: #292929;
+  margin: 0;
+  color: #ffffff;
+}
+#body{
+  width: 96%;
+  height: 93%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 1;
+  padding: 2%;
+}
