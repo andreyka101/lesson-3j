@@ -1,6 +1,14 @@
 @font-face{
-  font-family: junegull;
+  font-family: junegull1;
   src: url(junegull/junegull-regular.ttf);
+}
+@font-face{
+  font-family: junegull2;
+  src: url(junegull/junegull-regular.woff);
+}
+@font-face{
+  font-family: junegull3;
+  src: url(junegull/junegull-regular.woff2);
 }
 body{
   background-color: #292929;
@@ -8,7 +16,7 @@ body{
   color: #ffffff;
 }
 #body{
-  font-family: junegull;
+  font-family: "junegull1";
   font-size: 17px;
   width: 100%;
   height: 100%;
