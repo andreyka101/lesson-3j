@@ -43,9 +43,11 @@ setTimeout(() => {
     },500)
 
     setInterval(() => {
-      for (let i of this.#nameId) {
-        let element = document.querySelector(`#backgroundSVG_${i}`) as HTMLElement
-        element.style.filter = `blur(70px)`
+      if (document.documentElement.clientWidth >= 850){
+        for (let i of this.#nameId) {
+          let element = document.querySelector(`#backgroundSVG_${i}`) as HTMLElement
+          element.style.filter = `blur(70px)`
+        }
       }
 
 
