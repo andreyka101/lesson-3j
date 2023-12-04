@@ -83,9 +83,10 @@ export default class LiveBackgroundMod {
     transform: translateY(${(Math.random() * ((document.documentElement.clientHeight - 200) - -100) + -100).toFixed(1)}px);
     position: fixed;
     transition: 0.5s;
-    filter: blur(${Math.round(Math.random() * (35 - 10) + 10)}px);
+    filter: blur(${Math.round(Math.random() * (30 - 10) + 10)}px);
     `
       }
+
     }
   }
 }
