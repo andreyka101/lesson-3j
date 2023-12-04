@@ -1,15 +1,28 @@
-//  сайт в HTML документе нужно писать в #body
+@font-face{
+  font-family: junegull;
+  src: url(junegull/junegull-regular.ttf);
+}
 body{
   background-color: #292929;
   margin: 0;
   color: #ffffff;
 }
 #body{
-  width: 96%;
-  height: 93%;
+  font-family: junegull;
+  font-size: 17px;
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0%;
   left: 0%;
   z-index: 1;
-  padding: 2%;
+
+  .GLASSlOLLIPOPS_div{
+    width: 85%;
+    height: 150px;
+    background-color: #a8e4a06b;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 0 auto;
+  }
 }
