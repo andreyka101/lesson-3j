@@ -1,6 +1,8 @@
 @font-face{
   font-family: junegull;
   src: url(junegull/junegull-regular.ttf);
+  src: url(junegull/junegull-regular.wott);
+  src: url(junegull/junegull-regular.wott2);
 }
 body{
   background-color: #292929;
@@ -19,10 +21,22 @@ body{
 
   .GLASSlOLLIPOPS_div{
     width: 85%;
-    height: 150px;
-    background-color: #a8e4a06b;
+    background-color: #a8e4a052;
     border-radius: 15px;
     padding: 25px;
     margin: 0 auto;
+    .GLASSlOLLIPOPS_div{
+      border: #ffffff 2.5px solid;
+    }
+  }
+  .GLASSlOLLIPOPS_span{
+    display: inline-block;
+    background-color: #292929;
+    border-radius: 8px;
+    padding: 5px 8px;
+    margin: 2px;
+    .GLASSlOLLIPOPS_span{
+      border: #ffffff 2px solid;
+    }
   }
 }
