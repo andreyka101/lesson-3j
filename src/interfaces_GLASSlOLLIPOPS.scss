@@ -47,6 +47,15 @@ body{
     border: #ffffff 2.5px solid;
   }
 }
+.GLASSlOLLIPOPS_button{
+  background-color: #18ffc46e;
+  color: #292929;
+  border-radius: 8px;
+  padding: 5px 8px;
+  margin: 2px;
+  border: #292929 2.5px solid;
+  transition: 0.3s;
+}
 .GLASSlOLLIPOPS_span{
   display: inline-block;
   background-color: #292929;
@@ -55,6 +64,9 @@ body{
   margin: 2px;
   .GLASSlOLLIPOPS_span{
     border: #ffffff 2px solid;
+  }
+  .GLASSlOLLIPOPS_button{
+    border: #ffffff 2.5px solid;
   }
 }
 .GLASSlOLLIPOPS_header{
@@ -71,12 +83,12 @@ body{
   margin-top: 0;
   margin-bottom: 40px;
 }
-.GLASSlOLLIPOPS_button{
-  background-color: #18ffc46e;
-  display: inline-block;
-  color: #292929;
-  border-radius: 8px;
-  padding: 5px 8px;
-  margin: 2px;
-  border: #292929 2.5px solid;
+
+
+// hover
+.GLASSlOLLIPOPS_button:hover{
+  background-color: #18ffc4;
+  color: #000000;
+  transition: 0.3s;
+  
 }
