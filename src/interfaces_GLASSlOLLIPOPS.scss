@@ -27,7 +27,9 @@ body{
 
   .GLASSlOLLIPOPS_div{
     width: 85%;
+    height: 200px;
     background-color: #a8e4a052;
+    backdrop-filter: blur(40px);
     border-radius: 15px;
     padding: 25px;
     margin: 10px auto;
@@ -44,5 +46,18 @@ body{
     .GLASSlOLLIPOPS_span{
       border: #ffffff 2px solid;
     }
+  }
+  .GLASSlOLLIPOPS_header{
+    border: #ffffff 3.5px solid;
+    border-top: 0;
+    width: 76%;
+    background-color: #ff4e756e;
+    backdrop-filter: blur(40px);
+    border-radius: 0 0 81px 81px;
+    padding: 20px 40px 30px;
+    // padding-bottom: 40px;
+    margin: 10px auto;
+    margin-top: 0;
+
   }
 }
