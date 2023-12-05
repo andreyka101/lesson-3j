@@ -26,6 +26,7 @@ export default class LiveBackgroundMod {
   transform: translate(${(Math.random() * ((document.documentElement.clientWidth - 200) - -100) + -100).toFixed(1)}px, ${(Math.random() * ((document.documentElement.clientHeight - 200) - -100) + -100).toFixed(1)}px) rotate(${Math.round(Math.random() * (360 - 0) + 0)}deg);
   position: fixed;
   transition: 0.5s;
+  z-index: -2;
   `
       }
       
@@ -80,6 +81,7 @@ export default class LiveBackgroundMod {
     transform: translateY(${(Math.random() * ((document.documentElement.clientHeight + 100) - -100) + -100).toFixed(1)}px);
     position: fixed;
     transition: 0.7s;
+    z-index: -2;
     `
   }
   setTimeout(() => {
