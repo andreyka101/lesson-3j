@@ -24,8 +24,8 @@ body{
   top: 0%;
   left: 0%;
   z-index: 1;
-
-
+  
+  
 }
 
 .GLASSlOLLIPOPS_div{
@@ -48,13 +48,27 @@ body{
   }
 }
 .GLASSlOLLIPOPS_button{
+  font-size: 16px;
+  font-family: "junegull1", "junegull2", "junegull3";
   background-color: #18ffc46e;
-  color: #292929;
+  color: #000000;
   border-radius: 8px;
   padding: 5px 8px;
   margin: 2px;
   border: #292929 2.5px solid;
   transition: 0.3s;
+}
+.GLASSlOLLIPOPS_a{
+  font-size: 16px;
+  font-family: "junegull1", "junegull2", "junegull3";
+  background-color: #18ffc46e;
+  color: #000000;
+  border-radius: 8px;
+  padding: 5px 8px;
+  margin: 2px;
+  border: #292929 2.5px solid;
+  transition: 0.3s;
+  text-decoration: none;
 }
 .GLASSlOLLIPOPS_span{
   display: inline-block;
@@ -88,7 +102,6 @@ body{
 // hover
 .GLASSlOLLIPOPS_button:hover{
   background-color: #18ffc4;
-  color: #000000;
   transition: 0.3s;
-  cursor: cell;
+  cursor: pointer;
 }

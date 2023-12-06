@@ -5,7 +5,11 @@ export default class LiveBackgroundMod {
   #color = ["ffffff", "e8b5b5", "fa8282", "e62c2c", "f244a7", "ff75c3", "c430db", "b868c4", "740ff7", "a581d4", "c5a2f2", "525df7", "878bc9", "429eff", "91c6ff", "1afbff", "8afdff", "1ef7af", "9be8cf", "98e88b", "bbf7b2", "c2e084", "e1ffa6", "f5ff3d", "f1f5ab", "f2da3f", "ffaa00", "f7b52f", "fcca65", "f7d58f", "e0d1b1"]
   #nameIdSvg = [0, 1, 2, 3, 4, 5, 6]
   #nameIdDiv = [0, 1, 2]
-  startAnimationClassic() {
+  /** 
+   *  type: method
+   *  do something1
+  */
+ startAnimationClassic() {
     if (document.documentElement.clientWidth >= 850) {
       this.#body.innerHTML += `<svg style="opacity: 0; filter: blur(120px);" id="backgroundSVG_${this.#nameIdSvg[0]}" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.481 19.481" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 19.481 19.481"><g><path d="m10.201,.758l2.478,5.865 6.344,.545c0.44,0.038 0.619,0.587 0.285,0.876l-4.812,4.169 1.442,6.202c0.1,0.431-0.367,0.77-0.745,0.541l-5.452-3.288-5.452,3.288c-0.379,0.228-0.845-0.111-0.745-0.541l1.442-6.202-4.813-4.17c-0.334-0.289-0.156-0.838 0.285-0.876l6.344-.545 2.478-5.864c0.172-0.408 0.749-0.408 0.921,0z"/></g></svg>`
       this.#body.innerHTML += `<svg style="opacity: 0; filter: blur(120px);" version="1.1" id="backgroundSVG_${this.#nameIdSvg[1]}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve"><polygon points="245,456.701 490,33.299 0,33.299 "/></svg>`
@@ -19,8 +23,8 @@ export default class LiveBackgroundMod {
         let element = document.querySelector(`#backgroundSVG_${i}`) as HTMLElement
         element.style.cssText += `
   fill : #${this.#color[Math.round(Math.random() * (30 - 0) + 0)]};
-  width: ${Math.round(Math.random() * (400 - 30) + 30)}px;
-  height: ${Math.round(Math.random() * (400 - 30) + 30)}px;
+  width: ${Math.round(Math.random() * ((document.documentElement.clientWidth/3.7) - 30) + 30)}px;
+  height: ${Math.round(Math.random() * ((document.documentElement.clientWidth/3.7) - 30) + 30)}px;
   top: 0;
   left: 0;
   transform: translate(${(Math.random() * ((document.documentElement.clientWidth - 200) - -100) + -100).toFixed(1)}px, ${(Math.random() * ((document.documentElement.clientHeight - 200) - -100) + -100).toFixed(1)}px) rotate(${Math.round(Math.random() * (360 - 0) + 0)}deg);
@@ -53,8 +57,8 @@ export default class LiveBackgroundMod {
             let element = document.querySelector(`#backgroundSVG_${i}`) as HTMLElement
             element.style.cssText += `
     fill : #${this.#color[Math.round(Math.random() * (30 - 0) + 0)]};
-    width: ${Math.round(Math.random() * (400 - 30) + 30)}px;
-    height: ${Math.round(Math.random() * (400 - 30) + 30)}px;
+    width: ${Math.round(Math.random() * ((document.documentElement.clientWidth/3.7) - 30) + 30)}px;
+    height: ${Math.round(Math.random() * ((document.documentElement.clientWidth/3.7) - 30) + 30)}px;
     transform: translate(${(Math.random() * ((document.documentElement.clientWidth - 200) - -100) + -100).toFixed(1)}px, ${(Math.random() * ((document.documentElement.clientHeight - 200) - -100) + -100).toFixed(1)}px) rotate(${Math.round(Math.random() * (360 - 0) + 0)}deg);
     `
           }
@@ -106,5 +110,13 @@ export default class LiveBackgroundMod {
         }
       },15000)
     }
+  }
+  /**
+   * type: method
+   * xlol
+   */
+  lil(){
+    console.log("rgrgrgrgrg");
+    
   }
 }
