@@ -118,16 +118,39 @@ body{
   margin-bottom: 40px;
 }
 .GLASSlOLLIPOPS_checkbox{
-  border: #ffffff 0px solid;
-  width: 16px;
-  height: 16px;
-  background-color: #ff0000;
-  color: #ff0000;
-  // background-color: #ffffff6e;
+  display: none;
+}
+.GLASSlOLLIPOPS_checkbox+label{
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  background-color: #ffffff6e;
+  transition: 0.3s;
+  margin: auto 10px;
+}
+.GLASSlOLLIPOPS_checkbox:checked+label{
+  background: url("/svg/check_ailr35g5hnkk.svg") center / cover;
+  background-color: #ffffff6e;
+  transition: 0.3s;
+}
+.GLASSlOLLIPOPS_color{
+  display: inline-block;
+  // width: 18px;
+  // height: 18px;
+  border-radius: 3px;
+  background-color: #0000006e;
+  border: none;
+  transition: 0.3s;
+  margin: auto 10px;
 }
 
 
+
 // hover
+
+
+
 .GLASSlOLLIPOPS_button:hover{
   // background-color: #18ffc4; // 1 background-button
   // background-color: #ff1818; // 2 background-button
@@ -153,4 +176,13 @@ body{
   border: #ffffff 2.5px solid;
   transition: 0.3s;
   cursor: pointer;
+}
+.GLASSlOLLIPOPS_checkbox+label:hover{
+  background-color: #ffffff;
+  transition: 0.3s;
+}
+.GLASSlOLLIPOPS_checkbox:checked+label:hover{
+  background: url("/svg/check_ailr35g5hnkkHover.svg") center / cover;
+  background-color: #ffffff;
+  transition: 0.3s;
 }
