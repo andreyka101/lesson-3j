@@ -76,16 +76,16 @@ body{
   // background-color: #2965a16e; // 6 background-a
   // background-color: #7e08306e; // 7 background-a
   // background-color: #0f12936e; // 8 background-a
-  color: #9fafff; // 1 color_border-a
+  // color: #9fafff; // 1 color_border-a
   // color: #c09fff; // 2 color_border-a
-  // color: #e9cd8f; // 3 color_border-a
+  color: #e9cd8f; // 3 color_border-a
   // color: #8fe9a2; // 4 color_border-a
   border-radius: 8px;
   padding: 5px 8px;
   margin: 2px;
-  border: #9fafff 2.5px solid; // 1 color_border-a
+  // border: #9fafff 2.5px solid; // 1 color_border-a
   // border: #c09fff 2.5px solid; // 2 color_border-a
-  // border: #e9cd8f 2.5px solid; // 3 color_border-a
+  border: #e9cd8f 2.5px solid; // 3 color_border-a
   // border: #8fe9a2 2.5px solid; // 4 color_border-a
   transition: 0.3s;
   text-decoration: none;
@@ -117,6 +117,11 @@ body{
   margin-top: 0;
   margin-bottom: 40px;
 }
+.GLASSlOLLIPOPS_checkbox{
+  border: #ffffff 0px solid;
+  width: 16px;
+  height: 16px;
+}
 
 
 // hover
@@ -141,6 +146,8 @@ body{
   // background-color: #2965a1; // 6 background-a
   // background-color: #7e0830; // 7 background-a
   // background-color: #0f1293; // 8 background-a
+  color: #ffffff;
+  border: #ffffff 2.5px solid;
   transition: 0.3s;
   cursor: pointer;
 }
