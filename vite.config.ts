@@ -6,7 +6,7 @@ export default {
         // @ts-ignore
         main: resolve(__dirname, 'index.html'),
         // @ts-ignore
-        movie_search: resolve(__dirname, './src/movie_search/movie.html'),
+        movie_search: resolve(__dirname, 'movie.html'),
       }
     }
   }
