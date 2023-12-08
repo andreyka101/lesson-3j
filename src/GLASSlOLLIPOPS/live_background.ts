@@ -1,4 +1,4 @@
-import './interfaces_GLASSlOLLIPOPS.scss'
+
 
 export default class LiveBackgroundMod {
   #body = document.querySelector('body') as HTMLBodyElement
