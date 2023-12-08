@@ -8,7 +8,7 @@ export default {
         // @ts-ignore
         main: resolve(__dirname, 'index.html'),
         // @ts-ignore
-        movieTS: resolve(__dirname, 'movie.html'),
+        movieTS: resolve(__dirname, '/src/movie_search/movie.html'),
       }
     }
   }
