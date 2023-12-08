@@ -12,9 +12,10 @@
   "devDependencies": {
     "sass": "^1.69.5",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "path": "^0.12.7",
+    "scss": "^0.2.4"
   },
   "dependencies": {
-    "scss": "^0.2.4"
   }
 }
