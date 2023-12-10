@@ -4,7 +4,8 @@ import LiveBackgroundMod from './GLASSlOLLIPOPS/live_background.ts'
 
 
 let liveBackground = new LiveBackgroundMod()
-liveBackground.startAnimationClassic()
+liveBackground.backgroundPC.Classic.start()
+liveBackground.backgroundPhone.Classic.start()
 
 
 
