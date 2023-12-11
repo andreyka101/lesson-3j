@@ -19,7 +19,7 @@ liveBackground.backgroundPhone.Classic.start()
 
 
 const butt = document.querySelector("div button") as HTMLButtonElement
-const input = document.querySelector("div input") as HTMLImageElement
+const input = document.querySelector("div input") as HTMLInputElement
 butt?.addEventListener("click",()=>{
-    console.log(input)
+    console.log(input.value)
 })
