@@ -20,12 +20,15 @@ liveBackground.backgroundPhone.Classic.start()
 
 const butt = document.querySelector("div button") as HTMLButtonElement
 const input = document.querySelector("div input") as HTMLInputElement
+
+async function name() {
+let url = 'https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits';
+let response = await fetch(url);
+let commits = await response.json(); // читаем ответ в формате JSON
+alert(commits[0].author.login);
+}
+
 butt?.addEventListener("click",()=>{
     // console.log(input.value)
-    let url = 'https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits';
-let response = await fetch(url);
-
-let commits = await response.json(); // читаем ответ в формате JSON
-
-alert(commits[0].author.login);
+name()
 })
