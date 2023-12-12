@@ -22,10 +22,14 @@ const butt = document.querySelector("div button") as HTMLButtonElement
 const input = document.querySelector("div input") as HTMLInputElement
 
 async function name() {
-let url = 'https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits';
-let response = await fetch(url);
-let commits = await response.json(); // читаем ответ в формате JSON
-alert(commits[0].author.login);
+    try{
+        let response = await fetch("http://www.omdbapi.com/?928973f2=minions&s&")
+        let commits = await response.json()
+        console.log(commits)
+    }
+    catch{
+        alert("ошибка")
+    }
 }
 
 butt?.addEventListener("click",()=>{
