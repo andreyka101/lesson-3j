@@ -23,8 +23,16 @@ const input = document.querySelector("div input") as HTMLInputElement
 
 async function name() {
     try{
-        let response = await fetch("http://www.omdbapi.com/?928973f2=minions&s&")
+        let response = await fetch("http://www.omdbapi.com/?&apikey=928973f2&s=max")
         let commits = await response.json()
+        
+        let ttt =commits.Search[0].imdbID
+        response = await fetch(`http://www.omdbapi.com/?&apikey=928973f2&i=${ttt}`)
+        commits = await response.json()
+        console.log(commits.Plot)
+
+        response = await fetch("http://www.omdbapi.com/?&apikey=928973f2&s=max&page=2")
+        commits = await response.json()
         console.log(commits)
     }
     catch{
