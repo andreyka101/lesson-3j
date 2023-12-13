@@ -27,7 +27,7 @@ async function name() {
         let commits = await response.json()
         
         let ttt =commits.Search[0].imdbID
-        response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${ttt}`)
+        response = await fetch(`http://www.omdbapi.com/?&apikey=928973f2&i=${ttt}`)
         commits = await response.json()
         console.log(commits.Plot)
         let ltl = commits.Plot
