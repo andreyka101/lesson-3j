@@ -35,7 +35,7 @@ async function name() {
         commits = await response.json()
         console.log(commits.responseData.translatedText)
 
-        response = await fetch("http://www.omdbapi.com/?&apikey=928973f2&s=max&page=2")
+        response = await fetch("https://www.omdbapi.com/?&apikey=928973f2&s=max&page=2")
         commits = await response.json()
         console.log(commits)
     }
