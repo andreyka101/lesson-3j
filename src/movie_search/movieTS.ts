@@ -30,6 +30,10 @@ async function name() {
         response = await fetch(`http://www.omdbapi.com/?&apikey=928973f2&i=${ttt}`)
         commits = await response.json()
         console.log(commits.Plot)
+        let ltl = commits.Plot
+        response = await fetch(`https://api.mymemory.translated.net/get?q=${ltl}&langpair=en|ru`)
+        commits = await response.json()
+        console.log(commits.responseData.translatedText)
 
         response = await fetch("http://www.omdbapi.com/?&apikey=928973f2&s=max&page=2")
         commits = await response.json()
