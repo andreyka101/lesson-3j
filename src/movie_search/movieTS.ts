@@ -23,7 +23,7 @@ const input = document.querySelector("div input") as HTMLInputElement
 
 async function name() {
     try{
-        let response = await fetch("http://www.omdbapi.com/?&apikey=928973f2&s=max")
+        let response = await fetch("https://www.omdbapi.com/?&apikey=928973f2&s=max")
         let commits = await response.json()
         
         let ttt =commits.Search[0].imdbID
