@@ -20,6 +20,7 @@ liveBackground.backgroundPhone.Classic.start()
 
 const butt = document.querySelector("div button") as HTMLButtonElement
 const input = document.querySelector("#search input") as HTMLInputElement
+const select = document.querySelector("select") as HTMLSelectElement
 
 async function name() {
     try{
@@ -27,7 +28,7 @@ async function name() {
         let commitsTranslation = await responseTranslation.json()
         console.log(commitsTranslation.responseData.translatedText)
         
-        let response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${commitsTranslation.responseData.translatedText}&page=1`)
+        let response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${commitsTranslation.responseData.translatedText}&page=1&type=${select.value}`)
         let commits = await response.json()
         console.log(commits)
 

@@ -13,3 +13,30 @@
     background: url("/svg/united_states_8ryw89cqyxg0.svg") center/cover;
     transition: 0.15s;
 }
+.movieBlockFlex{
+    width: 364px;
+    margin: 20px;
+    .movieBlock{
+        display: flex;
+        align-items: center; 
+        img{
+            height: 223px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            span{
+                margin: 5px;
+            }
+        }
+    }
+    .buttonBlock{
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-evenly;
+        
+    }
+}

@@ -26,7 +26,57 @@
         <div class="GLASSlOLLIPOPS_div" id="search" style="display: flex;flex-direction: column;align-items: center;">
                 поиск фильмов
             <input id="inp" type="text" placeholder="название фильма " class="GLASSlOLLIPOPS_input" style="margin-top: 20px; margin-bottom: 30px;">
+            <select name="select">
+                <!--Supplement an id here instead of using 'name'-->
+                <option value="movie" selected>фильм</option>
+                <option value="series">сериал</option>
+                <option value="episode">эпизод</option>
+              </select>
             <button class="GLASSlOLLIPOPS_button">поиск</button>
+        </div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap;
+    justify-content: center;">
+        <div class="GLASSlOLLIPOPS_div movieBlockFlex" style="width: 818px;">
+            <div class="movieBlock">
+
+                <img src="https://m.media-amazon.com/images/M/MV5BNzNlZTZjMDctZjYwNi00NzljLWIwN2QtZWZmYmJiYzQ0MTk2XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg" alt="" style="height: 280px;">
+                <div>
+                    <span>
+                        название фильма
+                    </span>
+                    <span>
+                        1999
+                    </span>
+                    <span>
+                        Note: animation-range-start is included in the animation shorthand as a reset-only value. This means that including animation resets a previously-declared animation-range-start Note: animation-range-start is included in the animation shorthand as a reset-only value. This means that including animation resets a previously-declared animation-range-start value to normal, but a specific value cannot be set via animation. When creating CSS scroll-driven animations, you need to declare animation-range-start after declaring any animation shorthand for it to take effect.Note: animation-range-start is included in the animation shorthand as a reset-only value. This means that including animation resets a previously-declared animation-range-start value to normal, but a specific value cannot be set via animation. When creating CSS scroll-driven animations, you need to declare animation-range-start after declaring any animation shorthand for it to take effect.
+                    </span>
+                </div>
+            </div>
+            <div class="buttonBlock">
+                <a href="" class="GLASSlOLLIPOPS_a">поиск на РУС.</a>
+                <a href="" class="GLASSlOLLIPOPS_a">поиск на ENG.</a>
+            </div>
+        </div>
+        <div class="GLASSlOLLIPOPS_div movieBlockFlex" style="">
+            <div class="movieBlock">
+            <img src="https://m.media-amazon.com/images/M/MV5BNzNlZTZjMDctZjYwNi00NzljLWIwN2QtZWZmYmJiYzQ0MTk2XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg" alt="">
+            <div>
+                <span>
+                    название фильма
+                </span>
+                <span>
+                    1999
+                </span>
+                <span>
+                    Note: animation-range-start is included in the animation shorthand as a reset-only value. This means that including animation resets a previously-declared animation-range-start ...
+                </span>
+            </div>
+            </div>
+            <div class="buttonBlock" style="display: none;">
+                <a href="" class="GLASSlOLLIPOPS_a">поиск на РУС.</a>
+                <a href="" class="GLASSlOLLIPOPS_a">поиск на ENG.</a>
+            </div>
         </div>
     </div>
     <script type="module" src="/src/movie_search/movieTS.ts"></script>
