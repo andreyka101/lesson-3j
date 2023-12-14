@@ -2,3 +2,14 @@
     display: inline-block;
     width: auto;
 }
+#checkbox + label{
+    background: url("/svg/russia_am7b40toekzm.svg") center/cover;
+    height: 34px;
+    width: 34px;
+    margin: 30px;
+    transition: 0.15s;
+}
+#checkbox:checked + label{
+    background: url("/svg/united_states_8ryw89cqyxg0.svg") center/cover;
+    transition: 0.15s;
+}

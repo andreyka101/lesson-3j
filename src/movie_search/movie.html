@@ -14,11 +14,16 @@
 <!--  class="GLASSlOLLIPOPS_input" -->
 <!--  class="GLASSlOLLIPOPS_color" -->
 <body>
-    <div style="display: flex;">
-        <a href="/index.html" class="GLASSlOLLIPOPS_a" style="margin: 20px;">exit</a>
+    <div style="display: flex; justify-content: space-between;">
+        <a href="/index.html" class="GLASSlOLLIPOPS_a" style="margin: 30px;">exit</a>
+        <div style="display: flex; align-items: center;">
+            <span id="checkboxSpan">русский</span>
+            <input id="checkbox" type="checkbox" class="GLASSlOLLIPOPS_input">
+            <label for="checkbox"></label>
+        </div>
     </div>
     <div style="display: flex;">
-        <div class="GLASSlOLLIPOPS_div" style="display: flex;flex-direction: column;align-items: center;">
+        <div class="GLASSlOLLIPOPS_div" id="search" style="display: flex;flex-direction: column;align-items: center;">
                 поиск фильмов
             <input id="inp" type="text" placeholder="название фильма " class="GLASSlOLLIPOPS_input" style="margin-top: 20px; margin-bottom: 30px;">
             <button class="GLASSlOLLIPOPS_button">поиск</button>
