@@ -23,11 +23,11 @@ const input = document.querySelector("#search input") as HTMLInputElement
 const select = document.querySelector("select") as HTMLSelectElement
 
 async function name() {
-    try{
+    try {
         let responseTranslation = await fetch(`https://api.mymemory.translated.net/get?q=${input.value}&langpair=ru|en`)
         let commitsTranslation = await responseTranslation.json()
         console.log(commitsTranslation.responseData.translatedText)
-        
+
         let response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${commitsTranslation.responseData.translatedText}&page=1&type=${select.value}`)
         let commits = await response.json()
         console.log(commits.Search[0].Title)
@@ -36,7 +36,7 @@ async function name() {
 
         // let response = await fetch("https://www.omdbapi.com/?&apikey=928973f2&s=max")
         // let commits = await response.json()
-        
+
         // let ttt =commits.Search[0].imdbID
         // response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${ttt}`)
         // commits = await response.json()
@@ -50,14 +50,14 @@ async function name() {
         // commits = await response.json()
         // console.log(commits)
     }
-    catch{
+    catch {
         alert("ошибка")
     }
 }
 
-butt?.addEventListener("click",()=>{
+butt?.addEventListener("click", () => {
     // console.log(input.value)
-name()
+    name()
 })
 
 
@@ -65,45 +65,136 @@ name()
 
 const movieALL = document.querySelectorAll(".movieBlockFlex") as any
 
-for (let i of movieALL){
-    
-    i?.addEventListener("click",(e:any)=>{
+for (let i of movieALL) {
+
+    i?.addEventListener("click", (e: any) => {
         let target = e.target as HTMLElement
-        
-        if (target.className != 'GLASSlOLLIPOPS_button expand') return
+
+        if (target.className != 'GLASSlOLLIPOPS_button expand' && target.className != 'GLASSlOLLIPOPS_button collapse') return
+        const A2buttonBlock = document.querySelector(`#${i.id} .A2buttonBlock`) as HTMLSpanElement
+        const buttonBlock = document.querySelector(`#${i.id} .buttonBlock`) as HTMLSpanElement
+        const longText = document.querySelector(`#${i.id} .longText`) as HTMLSpanElement
+        const shortText = document.querySelector(`#${i.id} .shortText`) as HTMLSpanElement
+        const img = document.querySelector(`#${i.id} img`) as HTMLElement
+        const movieBlock = document.querySelector(`#${i.id} .movieBlock`) as HTMLDivElement
 
 
-        if(+(i.id[1])%2==1){
-            const eighbour = document.querySelector(`#m${+(i.id[1])+1}`) as HTMLDivElement
-            // eighbour.style.position = "relative"
-            // eighbour.style.zIndex = "-2"
-            i.style.transition = "0s"
-            eighbour.style.opacity = "0"
-            // eighbour.style.width = "0px"
-            setTimeout(()=>{
-                // i.style. = "818px"
-                // i.style.width = "818px"
-                eighbour.style.display = "none" 
+        if (target.className == 'GLASSlOLLIPOPS_button expand') {
+            if (+(i.id[1]) % 2 == 1) {
+                const eighbour = document.querySelector(`#m${+(i.id[1]) + 1}`) as HTMLDivElement
+
+                if (window.innerWidth <= 907) {
+                    if (window.innerWidth <= 770) movieBlock.style.flexDirection = "column"
+                    i.style.transition = "0s"
+                    setTimeout(() => {
+                        i.style.transition = "0.3s"
+                        i.style.width = "100%"
+                        i.style.marginRight = "20px"
+                        setTimeout(() => {
+                            A2buttonBlock.style.display = "flex"
+                            buttonBlock.style.display = "none"
+                            setTimeout(() => {
+                                img.style.height = "280px"
+                                shortText.style.display = "none"
+                                longText.style.display = "inline-block"
+                            }, 310)
+                        }, 100)
+                    }, 40)
+                }
+                else {
+                    i.style.transition = "0s"
+                    eighbour.style.opacity = "0"
+                    setTimeout(() => {
+                        eighbour.style.display = "none"
+                        i.style.marginRight = "478px"
+                        setTimeout(() => {
+                            i.style.transition = "0.3s"
+                            i.style.width = "818px"
+                            i.style.marginRight = "20px"
+                            setTimeout(() => {
+                                A2buttonBlock.style.display = "flex"
+                                buttonBlock.style.display = "none"
+                                setTimeout(() => {
+                                    img.style.height = "280px"
+                                    shortText.style.display = "none"
+                                    longText.style.display = "inline-block"
+                                }, 310)
+                            }, 100)
+                        }, 40)
+                    }, 300)
+                }
+            }
+            else {
+                const eighbour = document.querySelector(`#m${+(i.id[1]) - 1}`) as HTMLDivElement
+                i.style.transition = "0s"
+                eighbour.style.opacity = "0"
+                setTimeout(() => {
+                    eighbour.style.display = "none"
+                    i.style.marginLeft = "478px"
+                }, 300)
+                setTimeout(() => {
+                    i.style.transition = "0.3s"
+                    if (window.innerWidth <= 915) i.style.width = "100%"
+                    else i.style.width = "818px"
+                    i.style.marginLeft = "20px"
+                }, 340)
+                setTimeout(() => {
+                    A2buttonBlock.style.display = "flex"
+                    buttonBlock.style.display = "none"
+                }, 440)
+                setTimeout(() => {
+                    img.style.height = "280px"
+                    longText.style.display = "inline-block"
+                    shortText.style.display = "none"
+                }, 750)
+
+            }
+        }
+        if (target.className == 'GLASSlOLLIPOPS_button collapse') {
+            if (+(i.id[1]) % 2 == 1) {
+                const eighbour = document.querySelector(`#m${+(i.id[1]) + 1}`) as HTMLDivElement
+                img.style.height = "223px"
+                longText.style.display = "none"
+                shortText.style.display = "inline-block"
+                i.style.width = "364px"
                 i.style.marginRight = "478px"
-                // setTimeout(()=>{
-                // },110)
-            },300)
-                // eighbour.style.backgroundColor = "red"
-
-
-                // i.style.width = "818px"
-                // setTimeout(()=>{
-                //     eighbour.style.display = "none" 
-                // },23)
+                setTimeout(() => {
+                    A2buttonBlock.style.display = "none"
+                    buttonBlock.style.display = "flex"
+                }, 100)
+                setTimeout(() => {
+                    i.style.transition = "0s"
+                    i.style.marginRight = "20px"
+                    eighbour.style.display = "inline-block"
+                }, 310)
+                setTimeout(() => {
+                    eighbour.style.opacity = "1"
+                }, 320)
+            }
+            else {
+                const eighbour = document.querySelector(`#m${+(i.id[1]) - 1}`) as HTMLDivElement
+                img.style.height = "223px"
+                longText.style.display = "none"
+                shortText.style.display = "inline-block"
+                i.style.width = "364px"
+                i.style.marginLeft = "478px"
+                setTimeout(() => {
+                    A2buttonBlock.style.display = "none"
+                    buttonBlock.style.display = "flex"
+                }, 100)
+                setTimeout(() => {
+                    i.style.transition = "0s"
+                    i.style.marginLeft = "20px"
+                    eighbour.style.display = "inline-block"
+                }, 310)
+                setTimeout(() => {
+                    eighbour.style.opacity = "1"
+                }, 320)
+            }
         }
-        else{
-            const eighbour = document.querySelector(`#m${+(i.id[1])-1}`) as HTMLDivElement
-            // eighbour.style.backgroundColor = "red"
 
-        }
-        
     })
 }
-    
+
 
 console.log(movieALL[1].id)

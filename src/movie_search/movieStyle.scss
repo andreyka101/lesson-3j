@@ -21,6 +21,7 @@
         display: flex;
         align-items: center; 
         img{
+            // transition: 0.3s;
             height: 223px;
             margin: 10px;
             border-radius: 10px;
@@ -46,4 +47,15 @@
         justify-content: space-evenly;
         
     }
+}
+
+
+@media screen and (max-width: 490px){
+    .movieBlockFlex{
+        width: 100%;
+        .movieBlock{
+            flex-direction: column;
+        }
+    }
+
 }
