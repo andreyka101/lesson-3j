@@ -30,7 +30,7 @@ async function name() {
         
         let response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${commitsTranslation.responseData.translatedText}&page=1&type=${select.value}`)
         let commits = await response.json()
-        console.log(commits)
+        console.log(commits.Search[0].Title)
 
 
 
@@ -74,12 +74,31 @@ for (let i of movieALL){
 
 
         if(+(i.id[1])%2==1){
-            const eighbour = document.querySelector(`#m${+(i.id[1])+1}`) as any
-            eighbour.style.backgroundColor = "red"
+            const eighbour = document.querySelector(`#m${+(i.id[1])+1}`) as HTMLDivElement
+            // eighbour.style.position = "relative"
+            // eighbour.style.zIndex = "-2"
+            i.style.transition = "0s"
+            eighbour.style.opacity = "0"
+            // eighbour.style.width = "0px"
+            setTimeout(()=>{
+                // i.style. = "818px"
+                // i.style.width = "818px"
+                eighbour.style.display = "none" 
+                i.style.marginRight = "478px"
+                // setTimeout(()=>{
+                // },110)
+            },300)
+                // eighbour.style.backgroundColor = "red"
+
+
+                // i.style.width = "818px"
+                // setTimeout(()=>{
+                //     eighbour.style.display = "none" 
+                // },23)
         }
         else{
-            const eighbour = document.querySelector(`#m${+(i.id[1])-1}`) as any
-            eighbour.style.backgroundColor = "red"
+            const eighbour = document.querySelector(`#m${+(i.id[1])-1}`) as HTMLDivElement
+            // eighbour.style.backgroundColor = "red"
 
         }
         

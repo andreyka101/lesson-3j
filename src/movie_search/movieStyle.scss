@@ -14,6 +14,7 @@
     transition: 0.15s;
 }
 .movieBlockFlex{
+    transition: 0.3s;
     width: 364px;
     margin: 20px;
     .movieBlock{
@@ -34,13 +35,13 @@
         }
     }
     .buttonBlock{
-        margin-top: 30px;
+        margin-top: 20px;
         display: flex;
         justify-content: space-evenly;
         
     }
     .A2buttonBlock{
-        margin-top: 30px;
+        margin-top: 20px;
         display: flex;
         justify-content: space-evenly;
         
