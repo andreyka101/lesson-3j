@@ -126,75 +126,118 @@ for (let i of movieALL) {
             }
             else {
                 const eighbour = document.querySelector(`#m${+(i.id[1]) - 1}`) as HTMLDivElement
-                i.style.transition = "0s"
-                eighbour.style.opacity = "0"
-                setTimeout(() => {
-                    eighbour.style.display = "none"
-                    i.style.marginLeft = "478px"
-                }, 300)
-                setTimeout(() => {
-                    i.style.transition = "0.3s"
-                    if (window.innerWidth <= 915) i.style.width = "100%"
-                    else i.style.width = "818px"
-                    i.style.marginLeft = "20px"
-                }, 340)
-                setTimeout(() => {
-                    A2buttonBlock.style.display = "flex"
-                    buttonBlock.style.display = "none"
-                }, 440)
-                setTimeout(() => {
-                    img.style.height = "280px"
-                    longText.style.display = "inline-block"
-                    shortText.style.display = "none"
-                }, 750)
-
+                if (window.innerWidth <= 907) {
+                    if (window.innerWidth <= 770) movieBlock.style.flexDirection = "column"
+                    i.style.transition = "0s"
+                    setTimeout(() => {
+                        i.style.transition = "0.3s"
+                        i.style.width = "100%"
+                        i.style.marginRight = "20px"
+                        setTimeout(() => {
+                            A2buttonBlock.style.display = "flex"
+                            buttonBlock.style.display = "none"
+                            setTimeout(() => {
+                                img.style.height = "280px"
+                                shortText.style.display = "none"
+                                longText.style.display = "inline-block"
+                            }, 310)
+                        }, 100)
+                    }, 40)
+                }
+                else {
+                    i.style.transition = "0s"
+                    eighbour.style.opacity = "0"
+                    setTimeout(() => {
+                        eighbour.style.display = "none"
+                        i.style.marginLeft = "478px"
+                        setTimeout(() => {
+                            i.style.transition = "0.3s"
+                            i.style.width = "818px"
+                            i.style.marginLeft = "20px"
+                            setTimeout(() => {
+                                A2buttonBlock.style.display = "flex"
+                                buttonBlock.style.display = "none"
+                                setTimeout(() => {
+                                    img.style.height = "280px"
+                                    shortText.style.display = "none"
+                                    longText.style.display = "inline-block"
+                                }, 310)
+                            }, 100)
+                        }, 40)
+                    }, 300)
+                }
             }
         }
         if (target.className == 'GLASSlOLLIPOPS_button collapse') {
             if (+(i.id[1]) % 2 == 1) {
                 const eighbour = document.querySelector(`#m${+(i.id[1]) + 1}`) as HTMLDivElement
-                img.style.height = "223px"
-                longText.style.display = "none"
-                shortText.style.display = "inline-block"
-                i.style.width = "364px"
-                i.style.marginRight = "478px"
-                setTimeout(() => {
-                    A2buttonBlock.style.display = "none"
-                    buttonBlock.style.display = "flex"
-                }, 100)
-                setTimeout(() => {
-                    i.style.transition = "0s"
-                    i.style.marginRight = "20px"
-                    eighbour.style.display = "inline-block"
-                }, 310)
-                setTimeout(() => {
-                    eighbour.style.opacity = "1"
-                }, 320)
+                if (window.innerWidth <= 907) {
+                    img.style.height = "223px"
+                    longText.style.display = "none"
+                    shortText.style.display = "inline-block"
+                    if(window.innerWidth <= 460) i.style.width = "100%"
+                    else i.style.width = "364px"
+                    setTimeout(() => {
+                        A2buttonBlock.style.display = "none"
+                        buttonBlock.style.display = "flex"
+                        if (window.innerWidth >= 460 && window.innerWidth <= 770) movieBlock.style.flexDirection = "row"
+                    }, 100)
+                }
+                else {
+                    img.style.height = "223px"
+                    longText.style.display = "none"
+                    shortText.style.display = "inline-block"
+                    i.style.width = "364px"
+                    i.style.marginRight = "478px"
+                    setTimeout(() => {
+                        A2buttonBlock.style.display = "none"
+                        buttonBlock.style.display = "flex"
+                    }, 100)
+                    setTimeout(() => {
+                        i.style.transition = "0s"
+                        i.style.marginRight = "20px"
+                        eighbour.style.display = "inline-block"
+                    }, 310)
+                    setTimeout(() => {
+                        eighbour.style.opacity = "1"
+                    }, 320)
+                }
             }
             else {
                 const eighbour = document.querySelector(`#m${+(i.id[1]) - 1}`) as HTMLDivElement
-                img.style.height = "223px"
-                longText.style.display = "none"
-                shortText.style.display = "inline-block"
-                i.style.width = "364px"
-                i.style.marginLeft = "478px"
-                setTimeout(() => {
-                    A2buttonBlock.style.display = "none"
-                    buttonBlock.style.display = "flex"
-                }, 100)
-                setTimeout(() => {
-                    i.style.transition = "0s"
-                    i.style.marginLeft = "20px"
-                    eighbour.style.display = "inline-block"
-                }, 310)
-                setTimeout(() => {
-                    eighbour.style.opacity = "1"
-                }, 320)
+                if (window.innerWidth <= 907) {
+                    img.style.height = "223px"
+                    longText.style.display = "none"
+                    shortText.style.display = "inline-block"
+                    if(window.innerWidth <= 460) i.style.width = "100%"
+                    else i.style.width = "364px"
+                    setTimeout(() => {
+                        A2buttonBlock.style.display = "none"
+                        buttonBlock.style.display = "flex"
+                        if (window.innerWidth >= 460 && window.innerWidth <= 770) movieBlock.style.flexDirection = "row"
+                    }, 100)
+                }
+                else {
+                    img.style.height = "223px"
+                    longText.style.display = "none"
+                    shortText.style.display = "inline-block"
+                    i.style.width = "364px"
+                    i.style.marginLeft = "478px"
+                    setTimeout(() => {
+                        A2buttonBlock.style.display = "none"
+                        buttonBlock.style.display = "flex"
+                    }, 100)
+                    setTimeout(() => {
+                        i.style.transition = "0s"
+                        i.style.marginLeft = "20px"
+                        eighbour.style.display = "inline-block"
+                    }, 310)
+                    setTimeout(() => {
+                        eighbour.style.opacity = "1"
+                    }, 320)
+                }
             }
         }
 
     })
 }
-
-
-console.log(movieALL[1].id)
