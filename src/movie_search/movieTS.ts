@@ -59,3 +59,32 @@ butt?.addEventListener("click",()=>{
     // console.log(input.value)
 name()
 })
+
+
+
+
+const movieALL = document.querySelectorAll(".movieBlockFlex") as any
+
+for (let i of movieALL){
+    
+    i?.addEventListener("click",(e:any)=>{
+        let target = e.target as HTMLElement
+        
+        if (target.className != 'GLASSlOLLIPOPS_button expand') return
+
+
+        if(+(i.id[1])%2==1){
+            const eighbour = document.querySelector(`#m${+(i.id[1])+1}`) as any
+            eighbour.style.backgroundColor = "red"
+        }
+        else{
+            const eighbour = document.querySelector(`#m${+(i.id[1])-1}`) as any
+            eighbour.style.backgroundColor = "red"
+
+        }
+        
+    })
+}
+    
+
+console.log(movieALL[1].id)
