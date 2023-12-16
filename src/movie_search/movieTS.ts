@@ -23,52 +23,46 @@ const input = document.querySelector("#search input") as HTMLInputElement
 const select = document.querySelector("select") as HTMLSelectElement
 const add = document.querySelector("#add") as HTMLDivElement
 let m_num = 2
-let arrPlotShort = [] as any
-let arrPlotFull = [] as any
 let movieALL = "" as any
 
 async function name() {
     try {
-        let responseTranslation = await fetch(`https://api.mymemory.translated.net/get?q=${input.value}&langpair=ru|en`)
-        let commitsTranslation = await responseTranslation.json()
-        console.log(commitsTranslation.responseData.translatedText)
+        // let responseTranslation = await fetch(`https://api.mymemory.translated.net/get?q=${input.value}&langpair=ru|en`)
+        // let commitsTranslation = await responseTranslation.json()
+        // console.log(commitsTranslation.responseData.translatedText)
 
-        let response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${commitsTranslation.responseData.translatedText}&page=1&type=${select.value}`)
+        // let response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${commitsTranslation.responseData.translatedText}&page=1&type=${select.value}`)
+        // let commits = await response.json()
+        // console.log(commits.Search)
+
+
+        let response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${input.value}&page=1&type=${select.value}`)
         let commits = await response.json()
         console.log(commits.Search)
         let search = commits.Search
 
 
 
-        for (let i = 0; i != 10; i++) {
-            let idFilm = search[i].imdbID
-            response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${idFilm}`)
-            commits = await response.json()
-            arrPlotShort[i] = commits.Plot
-            // console.log(arrPlotShort[i]);
-        }
-        for (let i = 0; i != 10; i++) {
+
+        // for (let i = 0; i != 10; i++) {
+        //     let idFilm = commits.Search[i].imdbID
+        //     response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${idFilm}&plot=full`)
+        //     commits = await response.json()
+        //     arrPlotFull[i] = commits.Plot.substring(0, 500)
+        //     console.log(arrPlotFull[i]);
+        // }
+
+
+
+        for (let i = 0; i != 10; i += 2) {
             let idFilm = search[i].imdbID
             response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${idFilm}&plot=full`)
             commits = await response.json()
-            arrPlotFull[i] = commits.Plot.substring(0, 500)
-            console.log(arrPlotFull[i]);
-        }
-
-
-
-        for (let i = 0; i != 5; i += 1) {
-            let responseTranslation = await fetch(`https://api.mymemory.translated.net/get?q=${search[i].Title}&langpair=en|ru`)
-            let Title = await responseTranslation.json()
-            // console.log(Title);
-
-
-            response = await fetch(`https://api.mymemory.translated.net/get?q=${arrPlotShort[i]}&langpair=en|ru`)
-            let plotShort = await response.json()
-            console.log(plotShort)
-            response = await fetch(`https://api.mymemory.translated.net/get?q=${arrPlotFull[i]}&langpair=en|ru`)
-            let plotFull = await response.json()
-            console.log(plotFull)
+            let PlotFull = commits.Plot
+            idFilm = search[i + 1].imdbID
+            response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${idFilm}&plot=full`)
+            commits = await response.json()
+            let PlotFull2 = commits.Plot
 
 
             add.innerHTML += `<div style="display: flex; justify-content: center; flex-wrap: wrap;">
@@ -78,23 +72,23 @@ async function name() {
                         alt="">
                     <div>
                         <span>
-                            ${Title.responseData.translatedText}
+                            ${search[i].Title}
                         </span>
                         <span>
-                            1999
+                            ${search[i].Year}
                         </span>
                         <span class="longText" style="display: none;">
-                            ${plotFull.responseData.translatedText}
+                            ${PlotFull}
                             </span>
                             <span class="shortText">
-                            ${plotShort.responseData.translatedText}
+                            ${PlotFull.substring(0, 150) + "..."}
                         </span>
                     </div>
                 </div>
                 <div class="A2buttonBlock" style="display: none;">
-                    <a href="" class="GLASSlOLLIPOPS_a">поиск на РУС.</a>
-                    <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
-                    <a href="" class="GLASSlOLLIPOPS_a">поиск на ENG.</a>
+                <a href="https://yandex.ru/search/?text=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&lr=239&clid=2411726" class="GLASSlOLLIPOPS_a" target="_blank">поиск на яндекс.</a>
+                <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
+                <a href="https://www.google.com/search?q=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&sca_esv=591540615&sxsrf=AM9HkKnSsl41ffnnpJUkglW8H5wAPZEcPA%3A1702755291217&ei=2_t9Zf3rDKqEwPAPxq6YUA&ved=0ahUKEwi9xZbi2ZSDAxUqAhAIHUYXBgoQ4dUDCBA&oq=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&gs_lp=Egxnd3Mtd2l6LXNlcnAiMtGB0LzQvtGC0YDQtdGC0Ywg0YTQuNC70YzQvCA1NTUg0LHQtdGB0L_Qu9Cw0YLQvdC-SOweUIkGWOsKcAF4AZABAZgB9QOgAY4HqgEHMC4zLjUtMbgBDMgBAPgBAcICChAAGEcY1gQYsAPCAgYQABgIGB7iAwQYACBBiAYBkAYH&sclient=gws-wiz-serp" target="_blank" class="GLASSlOLLIPOPS_a">поиск на google.</a>
                 </div>
                 <div class="buttonBlock" style="">
                     <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
@@ -102,38 +96,27 @@ async function name() {
             </div>
             <div class="GLASSlOLLIPOPS_div movieBlockFlex" id="m${m_num}" style="">
                 <div class="movieBlock">
-                    <img src="https://m.media-amazon.com/images/M/MV5BNzNlZTZjMDctZjYwNi00NzljLWIwN2QtZWZmYmJiYzQ0MTk2XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
-                        alt="">
-                    <div>
-                        <span>
-                            название фильма
-                        </span>
-                        <span>
-                            1999
-                        </span>
-                        <span class="longText" style="display: none;">
-                            Note: animation-range-start is included in the animation shorthand as a reset-only value.
-                            This means that including animation resets a previously-declared animation-range-start Note:
-                            animation-range-start is included in the animation shorthand as a reset-only value. This
-                            means that including animation resets a previously-declared animation-range-start value to
-                            normal, but a specific value cannot be set via animation. When creating CSS scroll-driven
-                            animations, you need to declare animation-range-start after declaring any animation
-                            shorthand for it to take effect.Note: animation-range-start is included in the animation
-                            shorthand as a reset-only value. This means that including animation resets a
-                            previously-declared animation-range-start value to normal, but a specific value cannot be
-                            set via animation. When creating CSS scroll-driven animations, you need to declare
-                            animation-range-start after declaring any animation shorthand for it to take effect.
-                        </span>
-                        <span class="shortText">
-                            Note: animation-range-start is included in the animation shorthand as a reset-only value.
-                            This means that including animation resets a previously-declared animation-range-start ...
-                        </span>
+                <img src="${search[i+1].Poster}"
+                alt="">
+            <div>
+                <span>
+                    ${search[i+1].Title}
+                </span>
+                <span>
+                ${search[i+1].Year}
+                </span>
+                <span class="longText" style="display: none;">
+                    ${PlotFull2}
+                    </span>
+                    <span class="shortText">
+                    ${PlotFull2.substring(0, 150) + "..."}
+                </span>
                     </div>
                 </div>
                 <div class="A2buttonBlock" style="display: none;">
-                    <a href="" class="GLASSlOLLIPOPS_a">поиск на РУС.</a>
-                    <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
-                    <a href="" class="GLASSlOLLIPOPS_a">поиск на ENG.</a>
+                <a href="https://yandex.ru/search/?text=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i+1].Title}+${search[i+1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&lr=239&clid=2411726" class="GLASSlOLLIPOPS_a" target="_blank">поиск на яндекс.</a>
+                <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
+                <a href="https://www.google.com/search?q=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i+1].Title}+${search[i+1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&sca_esv=591540615&sxsrf=AM9HkKnSsl41ffnnpJUkglW8H5wAPZEcPA%3A1702755291217&ei=2_t9Zf3rDKqEwPAPxq6YUA&ved=0ahUKEwi9xZbi2ZSDAxUqAhAIHUYXBgoQ4dUDCBA&oq=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i+1].Title}+${search[i+1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&gs_lp=Egxnd3Mtd2l6LXNlcnAiMtGB0LzQvtGC0YDQtdGC0Ywg0YTQuNC70YzQvCA1NTUg0LHQtdGB0L_Qu9Cw0YLQvdC-SOweUIkGWOsKcAF4AZABAZgB9QOgAY4HqgEHMC4zLjUtMbgBDMgBAPgBAcICChAAGEcY1gQYsAPCAgYQABgIGB7iAwQYACBBiAYBkAYH&sclient=gws-wiz-serp" target="_blank" class="GLASSlOLLIPOPS_a">поиск на google.</a>
                 </div>
                 <div class="buttonBlock" style="">
                     <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
@@ -148,6 +131,7 @@ async function name() {
 
 
 
+        
         // let response = await fetch("https://www.omdbapi.com/?&apikey=928973f2&s=max")
         // let commits = await response.json()
 
