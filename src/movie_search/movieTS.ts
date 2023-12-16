@@ -21,6 +21,11 @@ liveBackground.backgroundPhone.Classic.start()
 const butt = document.querySelector("div button") as HTMLButtonElement
 const input = document.querySelector("#search input") as HTMLInputElement
 const select = document.querySelector("select") as HTMLSelectElement
+const add = document.querySelector("#add") as HTMLDivElement
+let m_num = 2
+let arrPlotShort = [] as any
+let arrPlotFull = [] as any
+let movieALL = "" as any
 
 async function name() {
     try {
@@ -30,7 +35,116 @@ async function name() {
 
         let response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${commitsTranslation.responseData.translatedText}&page=1&type=${select.value}`)
         let commits = await response.json()
-        console.log(commits.Search[0].Title)
+        console.log(commits.Search)
+        let search = commits.Search
+
+
+
+        for(let i=0;i!=10;i++){
+            let idFilm = search[i].imdbID
+            response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${idFilm}`)
+            commits = await response.json()
+            arrPlotShort[i] = commits.Plot
+            // console.log(arrPlotShort[i]);
+        }
+        for(let i=0;i!=10;i++){
+            let idFilm = search[i].imdbID
+            response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${idFilm}&plot=full`)
+            commits = await response.json()
+            arrPlotFull[i] = commits.Plot.substring(0, 500)
+            console.log(arrPlotFull[i]);
+        }
+
+
+
+        for (let i = 0; i != 5; i += 1) {
+            let responseTranslation = await fetch(`https://api.mymemory.translated.net/get?q=${search[i].Title}&langpair=en|ru`)
+            let Title = await responseTranslation.json()
+            // console.log(Title);
+
+
+            response = await fetch(`https://api.mymemory.translated.net/get?q=${arrPlotShort[i]}&langpair=en|ru`)
+            let plotShort = await response.json()
+            console.log(plotShort)
+            response = await fetch(`https://api.mymemory.translated.net/get?q=${arrPlotFull[i]}&langpair=en|ru`)
+            let plotFull = await response.json()
+            console.log(plotFull)
+
+
+            add.innerHTML += `<div style="display: flex; justify-content: center; flex-wrap: wrap;">
+            <div class="GLASSlOLLIPOPS_div movieBlockFlex" id="m${m_num-1}" style="">
+                <div class="movieBlock">
+                    <img src="${search[i].Poster}"
+                        alt="">
+                    <div>
+                        <span>
+                            ${Title.responseData.translatedText}
+                        </span>
+                        <span>
+                            1999
+                        </span>
+                        <span class="longText" style="display: none;">
+                            ${plotFull.responseData.translatedText}
+                            </span>
+                            <span class="shortText">
+                            ${plotShort.responseData.translatedText}
+                        </span>
+                    </div>
+                </div>
+                <div class="A2buttonBlock" style="display: none;">
+                    <a href="" class="GLASSlOLLIPOPS_a">поиск на РУС.</a>
+                    <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
+                    <a href="" class="GLASSlOLLIPOPS_a">поиск на ENG.</a>
+                </div>
+                <div class="buttonBlock" style="">
+                    <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
+                </div>
+            </div>
+            <div class="GLASSlOLLIPOPS_div movieBlockFlex" id="m${m_num}" style="">
+                <div class="movieBlock">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNzNlZTZjMDctZjYwNi00NzljLWIwN2QtZWZmYmJiYzQ0MTk2XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
+                        alt="">
+                    <div>
+                        <span>
+                            название фильма
+                        </span>
+                        <span>
+                            1999
+                        </span>
+                        <span class="longText" style="display: none;">
+                            Note: animation-range-start is included in the animation shorthand as a reset-only value.
+                            This means that including animation resets a previously-declared animation-range-start Note:
+                            animation-range-start is included in the animation shorthand as a reset-only value. This
+                            means that including animation resets a previously-declared animation-range-start value to
+                            normal, but a specific value cannot be set via animation. When creating CSS scroll-driven
+                            animations, you need to declare animation-range-start after declaring any animation
+                            shorthand for it to take effect.Note: animation-range-start is included in the animation
+                            shorthand as a reset-only value. This means that including animation resets a
+                            previously-declared animation-range-start value to normal, but a specific value cannot be
+                            set via animation. When creating CSS scroll-driven animations, you need to declare
+                            animation-range-start after declaring any animation shorthand for it to take effect.
+                        </span>
+                        <span class="shortText">
+                            Note: animation-range-start is included in the animation shorthand as a reset-only value.
+                            This means that including animation resets a previously-declared animation-range-start ...
+                        </span>
+                    </div>
+                </div>
+                <div class="A2buttonBlock" style="display: none;">
+                    <a href="" class="GLASSlOLLIPOPS_a">поиск на РУС.</a>
+                    <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
+                    <a href="" class="GLASSlOLLIPOPS_a">поиск на ENG.</a>
+                </div>
+                <div class="buttonBlock" style="">
+                    <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
+                </div>
+            </div>
+        </div>`
+        m_num+=2
+            console.log(i);
+        }
+        movieALL = document.querySelectorAll(".movieBlockFlex") as any
+        buttonMovie()
 
 
 
@@ -63,11 +177,13 @@ butt?.addEventListener("click", () => {
 
 
 
-const movieALL = document.querySelectorAll(".movieBlockFlex") as any
-
+// const movieALL = document.querySelectorAll(".movieBlockFlex") as any
+function buttonMovie(){
 for (let i of movieALL) {
 
     i?.addEventListener("click", (e: any) => {
+        console.log("clic");
+        
         let target = e.target as HTMLElement
 
         if (target.className != 'GLASSlOLLIPOPS_button expand' && target.className != 'GLASSlOLLIPOPS_button collapse') return
@@ -175,7 +291,7 @@ for (let i of movieALL) {
                     img.style.height = "223px"
                     longText.style.display = "none"
                     shortText.style.display = "inline-block"
-                    if(window.innerWidth <= 460) i.style.width = "100%"
+                    if (window.innerWidth <= 460) i.style.width = "100%"
                     else i.style.width = "364px"
                     setTimeout(() => {
                         A2buttonBlock.style.display = "none"
@@ -209,7 +325,7 @@ for (let i of movieALL) {
                     img.style.height = "223px"
                     longText.style.display = "none"
                     shortText.style.display = "inline-block"
-                    if(window.innerWidth <= 460) i.style.width = "100%"
+                    if (window.innerWidth <= 460) i.style.width = "100%"
                     else i.style.width = "364px"
                     setTimeout(() => {
                         A2buttonBlock.style.display = "none"
@@ -240,4 +356,5 @@ for (let i of movieALL) {
         }
 
     })
+}
 }
