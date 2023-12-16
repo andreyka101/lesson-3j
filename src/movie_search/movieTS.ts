@@ -40,14 +40,14 @@ async function name() {
 
 
 
-        for(let i=0;i!=10;i++){
+        for (let i = 0; i != 10; i++) {
             let idFilm = search[i].imdbID
             response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${idFilm}`)
             commits = await response.json()
             arrPlotShort[i] = commits.Plot
             // console.log(arrPlotShort[i]);
         }
-        for(let i=0;i!=10;i++){
+        for (let i = 0; i != 10; i++) {
             let idFilm = search[i].imdbID
             response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${idFilm}&plot=full`)
             commits = await response.json()
@@ -72,7 +72,7 @@ async function name() {
 
 
             add.innerHTML += `<div style="display: flex; justify-content: center; flex-wrap: wrap;">
-            <div class="GLASSlOLLIPOPS_div movieBlockFlex" id="m${m_num-1}" style="">
+            <div class="GLASSlOLLIPOPS_div movieBlockFlex" id="m${m_num - 1}" style="">
                 <div class="movieBlock">
                     <img src="${search[i].Poster}"
                         alt="">
@@ -140,7 +140,7 @@ async function name() {
                 </div>
             </div>
         </div>`
-        m_num+=2
+            m_num += 2
             console.log(i);
         }
         movieALL = document.querySelectorAll(".movieBlockFlex") as any
@@ -178,54 +178,33 @@ butt?.addEventListener("click", () => {
 
 
 // const movieALL = document.querySelectorAll(".movieBlockFlex") as any
-function buttonMovie(){
-for (let i of movieALL) {
+function buttonMovie() {
+    for (let i of movieALL) {
 
-    i?.addEventListener("click", (e: any) => {
-        console.log("clic");
-        
-        let target = e.target as HTMLElement
+        i?.addEventListener("click", (e: any) => {
+            console.log("clic");
 
-        if (target.className != 'GLASSlOLLIPOPS_button expand' && target.className != 'GLASSlOLLIPOPS_button collapse') return
-        const A2buttonBlock = document.querySelector(`#${i.id} .A2buttonBlock`) as HTMLSpanElement
-        const buttonBlock = document.querySelector(`#${i.id} .buttonBlock`) as HTMLSpanElement
-        const longText = document.querySelector(`#${i.id} .longText`) as HTMLSpanElement
-        const shortText = document.querySelector(`#${i.id} .shortText`) as HTMLSpanElement
-        const img = document.querySelector(`#${i.id} img`) as HTMLElement
-        const movieBlock = document.querySelector(`#${i.id} .movieBlock`) as HTMLDivElement
+            let target = e.target as HTMLElement
+
+            if (target.className != 'GLASSlOLLIPOPS_button expand' && target.className != 'GLASSlOLLIPOPS_button collapse') return
+            const A2buttonBlock = document.querySelector(`#${i.id} .A2buttonBlock`) as HTMLSpanElement
+            const buttonBlock = document.querySelector(`#${i.id} .buttonBlock`) as HTMLSpanElement
+            const longText = document.querySelector(`#${i.id} .longText`) as HTMLSpanElement
+            const shortText = document.querySelector(`#${i.id} .shortText`) as HTMLSpanElement
+            const img = document.querySelector(`#${i.id} img`) as HTMLElement
+            const movieBlock = document.querySelector(`#${i.id} .movieBlock`) as HTMLDivElement
 
 
-        if (target.className == 'GLASSlOLLIPOPS_button expand') {
-            if (+(i.id[1]) % 2 == 1) {
-                const eighbour = document.querySelector(`#m${+(i.id[1]) + 1}`) as HTMLDivElement
+            if (target.className == 'GLASSlOLLIPOPS_button expand') {
+                if (+(i.id[1]) % 2 == 1) {
+                    const eighbour = document.querySelector(`#m${+(i.id[1]) + 1}`) as HTMLDivElement
 
-                if (window.innerWidth <= 907) {
-                    if (window.innerWidth <= 770) movieBlock.style.flexDirection = "column"
-                    i.style.transition = "0s"
-                    setTimeout(() => {
-                        i.style.transition = "0.3s"
-                        i.style.width = "100%"
-                        i.style.marginRight = "20px"
-                        setTimeout(() => {
-                            A2buttonBlock.style.display = "flex"
-                            buttonBlock.style.display = "none"
-                            setTimeout(() => {
-                                img.style.height = "280px"
-                                shortText.style.display = "none"
-                                longText.style.display = "inline-block"
-                            }, 310)
-                        }, 100)
-                    }, 40)
-                }
-                else {
-                    i.style.transition = "0s"
-                    eighbour.style.opacity = "0"
-                    setTimeout(() => {
-                        eighbour.style.display = "none"
-                        i.style.marginRight = "478px"
+                    if (window.innerWidth <= 907) {
+                        if (window.innerWidth <= 770) movieBlock.style.flexDirection = "column"
+                        i.style.transition = "0s"
                         setTimeout(() => {
                             i.style.transition = "0.3s"
-                            i.style.width = "818px"
+                            i.style.width = "100%"
                             i.style.marginRight = "20px"
                             setTimeout(() => {
                                 A2buttonBlock.style.display = "flex"
@@ -237,39 +216,39 @@ for (let i of movieALL) {
                                 }, 310)
                             }, 100)
                         }, 40)
-                    }, 300)
-                }
-            }
-            else {
-                const eighbour = document.querySelector(`#m${+(i.id[1]) - 1}`) as HTMLDivElement
-                if (window.innerWidth <= 907) {
-                    if (window.innerWidth <= 770) movieBlock.style.flexDirection = "column"
-                    i.style.transition = "0s"
-                    setTimeout(() => {
-                        i.style.transition = "0.3s"
-                        i.style.width = "100%"
-                        i.style.marginRight = "20px"
+                    }
+                    else {
+                        i.style.transition = "0s"
+                        eighbour.style.opacity = "0"
                         setTimeout(() => {
-                            A2buttonBlock.style.display = "flex"
-                            buttonBlock.style.display = "none"
+                            eighbour.style.display = "none"
+                            i.style.marginRight = "478px"
                             setTimeout(() => {
-                                img.style.height = "280px"
-                                shortText.style.display = "none"
-                                longText.style.display = "inline-block"
-                            }, 310)
-                        }, 100)
-                    }, 40)
+                                i.style.transition = "0.3s"
+                                i.style.width = "818px"
+                                i.style.marginRight = "20px"
+                                setTimeout(() => {
+                                    A2buttonBlock.style.display = "flex"
+                                    buttonBlock.style.display = "none"
+                                    setTimeout(() => {
+                                        img.style.height = "280px"
+                                        shortText.style.display = "none"
+                                        longText.style.display = "inline-block"
+                                    }, 310)
+                                }, 100)
+                            }, 40)
+                        }, 300)
+                    }
                 }
                 else {
-                    i.style.transition = "0s"
-                    eighbour.style.opacity = "0"
-                    setTimeout(() => {
-                        eighbour.style.display = "none"
-                        i.style.marginLeft = "478px"
+                    const eighbour = document.querySelector(`#m${+(i.id[1]) - 1}`) as HTMLDivElement
+                    if (window.innerWidth <= 907) {
+                        if (window.innerWidth <= 770) movieBlock.style.flexDirection = "column"
+                        i.style.transition = "0s"
                         setTimeout(() => {
                             i.style.transition = "0.3s"
-                            i.style.width = "818px"
-                            i.style.marginLeft = "20px"
+                            i.style.width = "100%"
+                            i.style.marginRight = "20px"
                             setTimeout(() => {
                                 A2buttonBlock.style.display = "flex"
                                 buttonBlock.style.display = "none"
@@ -280,81 +259,102 @@ for (let i of movieALL) {
                                 }, 310)
                             }, 100)
                         }, 40)
-                    }, 300)
+                    }
+                    else {
+                        i.style.transition = "0s"
+                        eighbour.style.opacity = "0"
+                        setTimeout(() => {
+                            eighbour.style.display = "none"
+                            i.style.marginLeft = "478px"
+                            setTimeout(() => {
+                                i.style.transition = "0.3s"
+                                i.style.width = "818px"
+                                i.style.marginLeft = "20px"
+                                setTimeout(() => {
+                                    A2buttonBlock.style.display = "flex"
+                                    buttonBlock.style.display = "none"
+                                    setTimeout(() => {
+                                        img.style.height = "280px"
+                                        shortText.style.display = "none"
+                                        longText.style.display = "inline-block"
+                                    }, 310)
+                                }, 100)
+                            }, 40)
+                        }, 300)
+                    }
                 }
             }
-        }
-        if (target.className == 'GLASSlOLLIPOPS_button collapse') {
-            if (+(i.id[1]) % 2 == 1) {
-                const eighbour = document.querySelector(`#m${+(i.id[1]) + 1}`) as HTMLDivElement
-                if (window.innerWidth <= 907) {
-                    img.style.height = "223px"
-                    longText.style.display = "none"
-                    shortText.style.display = "inline-block"
-                    if (window.innerWidth <= 460) i.style.width = "100%"
-                    else i.style.width = "364px"
-                    setTimeout(() => {
-                        A2buttonBlock.style.display = "none"
-                        buttonBlock.style.display = "flex"
-                        if (window.innerWidth >= 460 && window.innerWidth <= 770) movieBlock.style.flexDirection = "row"
-                    }, 100)
+            if (target.className == 'GLASSlOLLIPOPS_button collapse') {
+                if (+(i.id[1]) % 2 == 1) {
+                    const eighbour = document.querySelector(`#m${+(i.id[1]) + 1}`) as HTMLDivElement
+                    if (window.innerWidth <= 907) {
+                        img.style.height = "223px"
+                        longText.style.display = "none"
+                        shortText.style.display = "inline-block"
+                        if (window.innerWidth <= 460) i.style.width = "100%"
+                        else i.style.width = "364px"
+                        setTimeout(() => {
+                            A2buttonBlock.style.display = "none"
+                            buttonBlock.style.display = "flex"
+                            if (window.innerWidth >= 460 && window.innerWidth <= 770) movieBlock.style.flexDirection = "row"
+                        }, 100)
+                    }
+                    else {
+                        img.style.height = "223px"
+                        longText.style.display = "none"
+                        shortText.style.display = "inline-block"
+                        i.style.width = "364px"
+                        i.style.marginRight = "478px"
+                        setTimeout(() => {
+                            A2buttonBlock.style.display = "none"
+                            buttonBlock.style.display = "flex"
+                        }, 100)
+                        setTimeout(() => {
+                            i.style.transition = "0s"
+                            i.style.marginRight = "20px"
+                            eighbour.style.display = "inline-block"
+                        }, 310)
+                        setTimeout(() => {
+                            eighbour.style.opacity = "1"
+                        }, 320)
+                    }
                 }
                 else {
-                    img.style.height = "223px"
-                    longText.style.display = "none"
-                    shortText.style.display = "inline-block"
-                    i.style.width = "364px"
-                    i.style.marginRight = "478px"
-                    setTimeout(() => {
-                        A2buttonBlock.style.display = "none"
-                        buttonBlock.style.display = "flex"
-                    }, 100)
-                    setTimeout(() => {
-                        i.style.transition = "0s"
-                        i.style.marginRight = "20px"
-                        eighbour.style.display = "inline-block"
-                    }, 310)
-                    setTimeout(() => {
-                        eighbour.style.opacity = "1"
-                    }, 320)
+                    const eighbour = document.querySelector(`#m${+(i.id[1]) - 1}`) as HTMLDivElement
+                    if (window.innerWidth <= 907) {
+                        img.style.height = "223px"
+                        longText.style.display = "none"
+                        shortText.style.display = "inline-block"
+                        if (window.innerWidth <= 460) i.style.width = "100%"
+                        else i.style.width = "364px"
+                        setTimeout(() => {
+                            A2buttonBlock.style.display = "none"
+                            buttonBlock.style.display = "flex"
+                            if (window.innerWidth >= 460 && window.innerWidth <= 770) movieBlock.style.flexDirection = "row"
+                        }, 100)
+                    }
+                    else {
+                        img.style.height = "223px"
+                        longText.style.display = "none"
+                        shortText.style.display = "inline-block"
+                        i.style.width = "364px"
+                        i.style.marginLeft = "478px"
+                        setTimeout(() => {
+                            A2buttonBlock.style.display = "none"
+                            buttonBlock.style.display = "flex"
+                        }, 100)
+                        setTimeout(() => {
+                            i.style.transition = "0s"
+                            i.style.marginLeft = "20px"
+                            eighbour.style.display = "inline-block"
+                        }, 310)
+                        setTimeout(() => {
+                            eighbour.style.opacity = "1"
+                        }, 320)
+                    }
                 }
             }
-            else {
-                const eighbour = document.querySelector(`#m${+(i.id[1]) - 1}`) as HTMLDivElement
-                if (window.innerWidth <= 907) {
-                    img.style.height = "223px"
-                    longText.style.display = "none"
-                    shortText.style.display = "inline-block"
-                    if (window.innerWidth <= 460) i.style.width = "100%"
-                    else i.style.width = "364px"
-                    setTimeout(() => {
-                        A2buttonBlock.style.display = "none"
-                        buttonBlock.style.display = "flex"
-                        if (window.innerWidth >= 460 && window.innerWidth <= 770) movieBlock.style.flexDirection = "row"
-                    }, 100)
-                }
-                else {
-                    img.style.height = "223px"
-                    longText.style.display = "none"
-                    shortText.style.display = "inline-block"
-                    i.style.width = "364px"
-                    i.style.marginLeft = "478px"
-                    setTimeout(() => {
-                        A2buttonBlock.style.display = "none"
-                        buttonBlock.style.display = "flex"
-                    }, 100)
-                    setTimeout(() => {
-                        i.style.transition = "0s"
-                        i.style.marginLeft = "20px"
-                        eighbour.style.display = "inline-block"
-                    }, 310)
-                    setTimeout(() => {
-                        eighbour.style.opacity = "1"
-                    }, 320)
-                }
-            }
-        }
 
-    })
-}
+        })
+    }
 }

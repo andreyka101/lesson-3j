@@ -1,59 +1,69 @@
-.GLASSlOLLIPOPS_div{
+.GLASSlOLLIPOPS_div {
     display: inline-block;
     width: auto;
 }
-#checkbox + label{
+
+#checkbox+label {
     background: url("/svg/russia_am7b40toekzm.svg") center/cover;
     height: 34px;
     width: 34px;
     margin: 30px;
     transition: 0.15s;
 }
-#checkbox:checked + label{
+
+#checkbox:checked+label {
     background: url("/svg/united_states_8ryw89cqyxg0.svg") center/cover;
     transition: 0.15s;
 }
-.movieBlockFlex{
+
+.movieBlockFlex {
     transition: 0.3s;
     width: 364px;
     margin: 20px;
-    .movieBlock{
+
+    .movieBlock {
         display: flex;
-        align-items: center; 
-        img{
+        align-items: center;
+
+        img {
             // transition: 0.3s;
             height: 223px;
             margin: 10px;
             border-radius: 10px;
         }
-        div{
+
+        div {
             display: flex;
             flex-direction: column;
             align-items: center;
-            span{
+
+            span {
                 margin: 5px;
             }
         }
     }
-    .buttonBlock{
+
+    .buttonBlock {
         margin-top: 20px;
         display: flex;
         justify-content: space-evenly;
-        
+
     }
-    .A2buttonBlock{
+
+    .A2buttonBlock {
         margin-top: 20px;
         display: flex;
         justify-content: space-evenly;
-        
+
     }
 }
 
 
-@media screen and (max-width: 460px){
-    .movieBlockFlex{
+@media screen and (max-width: 460px) {
+    .movieBlockFlex {
         width: 100%;
-        .movieBlock{
+
+        .movieBlock {
             flex-direction: column;
         }
     }
