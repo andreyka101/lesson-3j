@@ -2,7 +2,7 @@ import '../GLASSlOLLIPOPS/interfaces_GLASSlOLLIPOPS.scss'
 import './movieStyle.scss'
 import LiveBackgroundMod from '../GLASSlOLLIPOPS/live_background.ts'
 
-console.log("m13".slice(1));
+console.log("m3".slice(1));
 
 let liveBackground = new LiveBackgroundMod()
 liveBackground.backgroundPC.Classic.changeSVG([
@@ -212,114 +212,114 @@ async function name() {
 
 
 
-        let target = document.querySelector('#m' + m_numControl) as any
+        // let target = document.querySelector('#m' + m_numControl) as any
 
-        const body = document.querySelector('body')
-        const callback = (entries: any, observer: any) => {
-            entries.forEach(async (entry: any) => {
-                if (entry.isIntersecting) {
-
-
-                    response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${input.value}&page=${page}&type=${select.value}`)
-                    commits = await response.json()
-                    console.log(commits.Search)
-                    search = commits.Search
+        // const body = document.querySelector('body')
+        // const callback = (entries: any, observer: any) => {
+        //     entries.forEach(async (entry: any) => {
+        //         if (entry.isIntersecting) {
 
 
-
-                    for (let i = 0; i != 10; i += 2) {
-                        let idFilm = search[i].imdbID
-                        response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${idFilm}&plot=full`)
-                        commits = await response.json()
-                        let PlotFull = commits.Plot
-                        idFilm = search[i + 1].imdbID
-                        response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${idFilm}&plot=full`)
-                        commits = await response.json()
-                        let PlotFull2 = commits.Plot
+        //             response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${input.value}&page=${page}&type=${select.value}`)
+        //             commits = await response.json()
+        //             console.log(commits.Search)
+        //             search = commits.Search
 
 
-                        add.innerHTML += `<div style="display: flex; justify-content: center; flex-wrap: wrap;">
-        <div class="GLASSlOLLIPOPS_div movieBlockFlex" id="m${m_num - 1}" style="">
-            <div class="movieBlock">
-            <img src="${search[i].Poster}"
-            alt="">
-            <div>
-            <span>
-            ${search[i].Title}
-            </span>
-            <span>
-            ${search[i].Year}
-            </span>
-            <span class="longText" style="display: none;">
-            ${PlotFull}
-            </span>
-            <span class="shortText">
-            ${PlotFull.substring(0, 150) + "..."}
-            </span>
-            </div>
-            </div>
-            <div class="A2buttonBlock" style="display: none;">
-            <a href="https://yandex.ru/search/?text=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&lr=239&clid=2411726" class="GLASSlOLLIPOPS_a" target="_blank">поиск на яндекс.</a>
-            <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
-            <a href="https://www.google.com/search?q=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&sca_esv=591540615&sxsrf=AM9HkKnSsl41ffnnpJUkglW8H5wAPZEcPA%3A1702755291217&ei=2_t9Zf3rDKqEwPAPxq6YUA&ved=0ahUKEwi9xZbi2ZSDAxUqAhAIHUYXBgoQ4dUDCBA&oq=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&gs_lp=Egxnd3Mtd2l6LXNlcnAiMtGB0LzQvtGC0YDQtdGC0Ywg0YTQuNC70YzQvCA1NTUg0LHQtdGB0L_Qu9Cw0YLQvdC-SOweUIkGWOsKcAF4AZABAZgB9QOgAY4HqgEHMC4zLjUtMbgBDMgBAPgBAcICChAAGEcY1gQYsAPCAgYQABgIGB7iAwQYACBBiAYBkAYH&sclient=gws-wiz-serp" target="_blank" class="GLASSlOLLIPOPS_a">поиск на google.</a>
-            </div>
-            <div class="buttonBlock" style="">
-                <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
-                </div>
-                </div>
-                <div class="GLASSlOLLIPOPS_div movieBlockFlex" id="m${m_num}" style="">
-            <div class="movieBlock">
-            <img src="${search[i + 1].Poster}"
-            alt="">
-            <div>
-            <span>
-                ${search[i + 1].Title}
-                </span>
-            <span>
-            ${search[i + 1].Year}
-            </span>
-            <span class="longText" style="display: none;">
-            ${PlotFull2}
-            </span>
-            <span class="shortText">
-            ${PlotFull2.substring(0, 150) + "..."}
-            </span>
-            </div>
-            </div>
-            <div class="A2buttonBlock" style="display: none;">
-            <a href="https://yandex.ru/search/?text=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&lr=239&clid=2411726" class="GLASSlOLLIPOPS_a" target="_blank">поиск на яндекс.</a>
-            <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
-            <a href="https://www.google.com/search?q=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&sca_esv=591540615&sxsrf=AM9HkKnSsl41ffnnpJUkglW8H5wAPZEcPA%3A1702755291217&ei=2_t9Zf3rDKqEwPAPxq6YUA&ved=0ahUKEwi9xZbi2ZSDAxUqAhAIHUYXBgoQ4dUDCBA&oq=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&gs_lp=Egxnd3Mtd2l6LXNlcnAiMtGB0LzQvtGC0YDQtdGC0Ywg0YTQuNC70YzQvCA1NTUg0LHQtdGB0L_Qu9Cw0YLQvdC-SOweUIkGWOsKcAF4AZABAZgB9QOgAY4HqgEHMC4zLjUtMbgBDMgBAPgBAcICChAAGEcY1gQYsAPCAgYQABgIGB7iAwQYACBBiAYBkAYH&sclient=gws-wiz-serp" target="_blank" class="GLASSlOLLIPOPS_a">поиск на google.</a>
-            </div>
-            <div class="buttonBlock" style="">
-                <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
-                </div>
-                </div>
-                </div>`
-                        m_num += 2
-                        console.log(i);
-                    }
+
+        //             for (let i = 0; i != 10; i += 2) {
+        //                 let idFilm = search[i].imdbID
+        //                 response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${idFilm}&plot=full`)
+        //                 commits = await response.json()
+        //                 let PlotFull = commits.Plot
+        //                 idFilm = search[i + 1].imdbID
+        //                 response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${idFilm}&plot=full`)
+        //                 commits = await response.json()
+        //                 let PlotFull2 = commits.Plot
 
 
-                    page++
-                    m_numControl += 10
-                    target = document.querySelector('#m' + m_numControl) as any
-                    if (target) observer.observe(target)
-                    console.log('Элемент пересёк границу области и всё ещё соприкасается с ней!')
-                    console.log(target)
+        //                 add.innerHTML += `<div style="display: flex; justify-content: center; flex-wrap: wrap;">
+        // <div class="GLASSlOLLIPOPS_div movieBlockFlex" id="m${m_num - 1}" style="">
+        //     <div class="movieBlock">
+        //     <img src="${search[i].Poster}"
+        //     alt="">
+        //     <div>
+        //     <span>
+        //     ${search[i].Title}
+        //     </span>
+        //     <span>
+        //     ${search[i].Year}
+        //     </span>
+        //     <span class="longText" style="display: none;">
+        //     ${PlotFull}
+        //     </span>
+        //     <span class="shortText">
+        //     ${PlotFull.substring(0, 150) + "..."}
+        //     </span>
+        //     </div>
+        //     </div>
+        //     <div class="A2buttonBlock" style="display: none;">
+        //     <a href="https://yandex.ru/search/?text=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&lr=239&clid=2411726" class="GLASSlOLLIPOPS_a" target="_blank">поиск на яндекс.</a>
+        //     <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
+        //     <a href="https://www.google.com/search?q=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&sca_esv=591540615&sxsrf=AM9HkKnSsl41ffnnpJUkglW8H5wAPZEcPA%3A1702755291217&ei=2_t9Zf3rDKqEwPAPxq6YUA&ved=0ahUKEwi9xZbi2ZSDAxUqAhAIHUYXBgoQ4dUDCBA&oq=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&gs_lp=Egxnd3Mtd2l6LXNlcnAiMtGB0LzQvtGC0YDQtdGC0Ywg0YTQuNC70YzQvCA1NTUg0LHQtdGB0L_Qu9Cw0YLQvdC-SOweUIkGWOsKcAF4AZABAZgB9QOgAY4HqgEHMC4zLjUtMbgBDMgBAPgBAcICChAAGEcY1gQYsAPCAgYQABgIGB7iAwQYACBBiAYBkAYH&sclient=gws-wiz-serp" target="_blank" class="GLASSlOLLIPOPS_a">поиск на google.</a>
+        //     </div>
+        //     <div class="buttonBlock" style="">
+        //         <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
+        //         </div>
+        //         </div>
+        //         <div class="GLASSlOLLIPOPS_div movieBlockFlex" id="m${m_num}" style="">
+        //     <div class="movieBlock">
+        //     <img src="${search[i + 1].Poster}"
+        //     alt="">
+        //     <div>
+        //     <span>
+        //         ${search[i + 1].Title}
+        //         </span>
+        //     <span>
+        //     ${search[i + 1].Year}
+        //     </span>
+        //     <span class="longText" style="display: none;">
+        //     ${PlotFull2}
+        //     </span>
+        //     <span class="shortText">
+        //     ${PlotFull2.substring(0, 150) + "..."}
+        //     </span>
+        //     </div>
+        //     </div>
+        //     <div class="A2buttonBlock" style="display: none;">
+        //     <a href="https://yandex.ru/search/?text=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&lr=239&clid=2411726" class="GLASSlOLLIPOPS_a" target="_blank">поиск на яндекс.</a>
+        //     <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
+        //     <a href="https://www.google.com/search?q=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&sca_esv=591540615&sxsrf=AM9HkKnSsl41ffnnpJUkglW8H5wAPZEcPA%3A1702755291217&ei=2_t9Zf3rDKqEwPAPxq6YUA&ved=0ahUKEwi9xZbi2ZSDAxUqAhAIHUYXBgoQ4dUDCBA&oq=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&gs_lp=Egxnd3Mtd2l6LXNlcnAiMtGB0LzQvtGC0YDQtdGC0Ywg0YTQuNC70YzQvCA1NTUg0LHQtdGB0L_Qu9Cw0YLQvdC-SOweUIkGWOsKcAF4AZABAZgB9QOgAY4HqgEHMC4zLjUtMbgBDMgBAPgBAcICChAAGEcY1gQYsAPCAgYQABgIGB7iAwQYACBBiAYBkAYH&sclient=gws-wiz-serp" target="_blank" class="GLASSlOLLIPOPS_a">поиск на google.</a>
+        //     </div>
+        //     <div class="buttonBlock" style="">
+        //         <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
+        //         </div>
+        //         </div>
+        //         </div>`
+        //                 m_num += 2
+        //                 console.log(i);
+        //             }
 
-                }
-            })
-        }
-        const options = {
-            // root: по умолчанию window, но можно задать любой элемент-контейнер
-            rootMargin: '0px',
-            threshold: 0,
-        }
-        let observer = new IntersectionObserver(callback, options)
 
-        if (target) observer.observe(target)
-        console.log(target)
+        //             page++
+        //             m_numControl += 10
+        //             target = document.querySelector('#m' + m_numControl) as any
+        //             if (target) observer.observe(target)
+        //             console.log('Элемент пересёк границу области и всё ещё соприкасается с ней!')
+        //             console.log(target)
+
+        //         }
+        //     })
+        // }
+        // const options = {
+        //     // root: по умолчанию window, но можно задать любой элемент-контейнер
+        //     rootMargin: '0px',
+        //     threshold: 0,
+        // }
+        // let observer = new IntersectionObserver(callback, options)
+
+        // if (target) observer.observe(target)
+        // console.log(target)
 
 
 
@@ -378,6 +378,7 @@ function buttonMovie() {
 
 
             if (target.className == 'GLASSlOLLIPOPS_button expand') {
+                // parseInt
                 if (+(i.id[1]) % 2 == 1) {
                     const eighbour = document.querySelector(`#m${+(i.id[1]) + 1}`) as HTMLDivElement
 
