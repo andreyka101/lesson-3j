@@ -2,7 +2,7 @@ import '../GLASSlOLLIPOPS/interfaces_GLASSlOLLIPOPS.scss'
 import './movieStyle.scss'
 import LiveBackgroundMod from '../GLASSlOLLIPOPS/live_background.ts'
 
-console.log("m3".length);
+console.log("m13".slice(1));
 
 let liveBackground = new LiveBackgroundMod()
 liveBackground.backgroundPC.Classic.changeSVG([
