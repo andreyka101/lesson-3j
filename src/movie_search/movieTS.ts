@@ -2,7 +2,8 @@ import '../GLASSlOLLIPOPS/interfaces_GLASSlOLLIPOPS.scss'
 import './movieStyle.scss'
 import LiveBackgroundMod from '../GLASSlOLLIPOPS/live_background.ts'
 
-console.log("m3".slice(1));
+// console.log("m3".slice(1));
+console.log(parseInt("m33".slice(1)) % 2);
 
 let liveBackground = new LiveBackgroundMod()
 liveBackground.backgroundPC.Classic.changeSVG([
@@ -379,8 +380,8 @@ function buttonMovie() {
 
             if (target.className == 'GLASSlOLLIPOPS_button expand') {
                 // parseInt
-                if (+(i.id[1]) % 2 == 1) {
-                    const eighbour = document.querySelector(`#m${+(i.id[1]) + 1}`) as HTMLDivElement
+                if (parseInt(i.slice(1)) % 2 == 1) {
+                    const eighbour = document.querySelector(`#m${parseInt(i.slice(1)) + 1}`) as HTMLDivElement
 
                     if (window.innerWidth <= 907) {
                         if (window.innerWidth <= 770) movieBlock.style.flexDirection = "column"
@@ -424,7 +425,7 @@ function buttonMovie() {
                     }
                 }
                 else {
-                    const eighbour = document.querySelector(`#m${+(i.id[1]) - 1}`) as HTMLDivElement
+                    const eighbour = document.querySelector(`#m${parseInt(i.slice(1)) - 1}`) as HTMLDivElement
                     if (window.innerWidth <= 907) {
                         if (window.innerWidth <= 770) movieBlock.style.flexDirection = "column"
                         i.style.transition = "0s"
@@ -468,8 +469,8 @@ function buttonMovie() {
                 }
             }
             if (target.className == 'GLASSlOLLIPOPS_button collapse') {
-                if (+(i.id[1]) % 2 == 1) {
-                    const eighbour = document.querySelector(`#m${+(i.id[1]) + 1}`) as HTMLDivElement
+                if (parseInt(i.slice(1)) % 2 == 1) {
+                    const eighbour = document.querySelector(`#m${parseInt(i.slice(1)) + 1}`) as HTMLDivElement
                     if (window.innerWidth <= 907) {
                         img.style.height = "223px"
                         longText.style.display = "none"
@@ -503,7 +504,7 @@ function buttonMovie() {
                     }
                 }
                 else {
-                    const eighbour = document.querySelector(`#m${+(i.id[1]) - 1}`) as HTMLDivElement
+                    const eighbour = document.querySelector(`#m${parseInt(i.slice(1)) - 1}`) as HTMLDivElement
                     if (window.innerWidth <= 907) {
                         img.style.height = "223px"
                         longText.style.display = "none"
