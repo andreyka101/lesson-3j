@@ -328,14 +328,7 @@ async function name() {
         // console.log(target)
 
 
-
-
-        movieALL = document.querySelectorAll(".movieBlockFlex") as NodeListOf<HTMLDivElement>
-        buttonMovie()
-
-
-
-
+ 
         // let response = await fetch("https://www.omdbapi.com/?&apikey=928973f2&s=max")
         // let commits = await response.json()
 
