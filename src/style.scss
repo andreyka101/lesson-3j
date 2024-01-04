@@ -2,3 +2,11 @@
 // 6 background-button
 // 5 background-a
 // 3 color_border-a
+h1 a{
+    color:#ffffff;
+}
+@media screen and (min-width: 800px) {
+    h1 a:hover{
+        color:#e6e6e6;
+    }
+}
