@@ -19,7 +19,18 @@ liveBackground.backgroundPhone.Classic.start()
 
 
 
+async function name() {
+    try{
+        let a = await fetch('http://localhost:3500/A9')
+        let b = await a
+        console.log(b);
+        
+    }
+    catch{
+        alert("ошибка")
+    }
+}
 
-
-
+const butt = document.querySelector("#br") as HTMLButtonElement
+butt?.addEventListener("click",name)
 
