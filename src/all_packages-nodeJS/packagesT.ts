@@ -21,9 +21,19 @@ liveBackground.backgroundPhone.Classic.start()
 
 async function name() {
     try{
-        let a = await fetch('http://localhost:3500/A9')
-        let b = await a
+        // let a = await fetch('http://localhost:3500/A9')
+        // let b = await a
+        // console.log(b);
+        
+        
+        
+        let a = await fetch('http://localhost:3500/data',{
+            method:"POST",
+            body:JSON.stringify({ok:"сообщение от сайта"})
+        })
+        let b = await a.json()
         console.log(b);
+        
         
     }
     catch{
