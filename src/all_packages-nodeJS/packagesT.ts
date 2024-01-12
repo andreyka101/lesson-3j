@@ -29,6 +29,9 @@ async function name() {
         
         let a = await fetch('http://localhost:3500/data',{
             method:"POST",
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
             body:JSON.stringify({ok:"сообщение от сайта"})
         })
         let b = await a.json()
