@@ -1,0 +1,15 @@
+.GLASSlOLLIPOPS_div{
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .GLASSlOLLIPOPS_span{
+        display: flex;
+        align-items: center;
+    }
+}
+.GLASSlOLLIPOPS_span{
+    .marg{
+        margin: 8px;
+    }
+}
