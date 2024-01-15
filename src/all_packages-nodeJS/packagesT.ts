@@ -19,14 +19,26 @@ liveBackground.backgroundPhone.Classic.start()
 
 
 
-async function name() {
+
+
+
+
+const butt1 = document.querySelector("#br1") as HTMLButtonElement
+butt1?.addEventListener("click",async ()=> {
     try{
-        // let a = await fetch('http://localhost:3500/A9')
-        // let b = await a
-        // console.log(b);
-        
-        
-        
+        let a = await fetch('http://localhost:3500/A9', {
+            method: 'GET',
+        })
+        let b = await a.json()
+        console.log(b);
+    }
+    catch{
+        alert("ошибка")
+    }
+})
+const butt2 = document.querySelector("#br2") as HTMLButtonElement
+butt2?.addEventListener("click",async ()=> {
+    try{
         let a = await fetch('http://localhost:3500/data',{
             method:"POST",
             headers: {
@@ -37,13 +49,9 @@ async function name() {
         let b = await a.json()
         console.log(b);
         
-        
     }
     catch{
         alert("ошибка")
     }
-}
-
-const butt = document.querySelector("#br") as HTMLButtonElement
-butt?.addEventListener("click",name)
+})
 
