@@ -22,7 +22,7 @@ liveBackground.backgroundPhone.Classic.start()
 
 
 
-
+const span1 = document.querySelector("#sp1") as HTMLSpanElement
 const butt1 = document.querySelector("#br1") as HTMLButtonElement
 butt1?.addEventListener("click",async ()=> {
     try{
@@ -30,9 +30,10 @@ butt1?.addEventListener("click",async ()=> {
             method: 'GET',
         })
         let b = await a.json()
-        console.log(b);
+        span1.innerHTML = "ответ от сервера: " + b.simpleAnswer
     }
     catch{
+        span1.innerHTML = "ответа от сервера нет"
         alert("ошибка")
     }
 })
@@ -47,10 +48,11 @@ butt2?.addEventListener("click",async ()=> {
             body:JSON.stringify({ok:"сообщение от сайта"})
         })
         let b = await a.json()
-        console.log(b);
+        span1.innerHTML = "ответ от сервера: " + b.simpleAnswer
         
     }
     catch{
+        span1.innerHTML = "ответа от сервера нет"
         alert("ошибка")
     }
 })
