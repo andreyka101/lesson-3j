@@ -57,3 +57,19 @@ butt2?.addEventListener("click",async ()=> {
     }
 })
 
+
+
+const span2 = document.querySelector("#sp2") as HTMLDivElement
+    try{
+        let a = await fetch('http://localhost:3500/img/110435-iskusstvo-graficeskij_dizajn-svet-krasnyj_cvet-art-1920x1080.jpg', {
+            method: 'GET',
+        })
+        span2.innerHTML = `<img style="width: 100%;" src="http://localhost:3500/img/110435-iskusstvo-graficeskij_dizajn-svet-krasnyj_cvet-art-1920x1080.jpg" alt="">`
+    }
+    catch{
+        span2.innerHTML = `<img style="width: 100%;" src="https://dinahosting.com/blog/cont/uploads/2020/07/eror-404.jpg" alt="">`
+    }
+
+
+
+
