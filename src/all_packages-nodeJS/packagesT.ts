@@ -29,11 +29,11 @@ butt1?.addEventListener("click",async ()=> {
         let a = await fetch('http://localhost:3500/A9', {
             method: 'GET',
         })
-        let b = await a.json()
-        span1.innerHTML = "ответ от сервера: " + b.simpleAnswer
+        let b = await a.text()
+        span1.innerHTML = "ответ от сервера: " + b
     }
     catch{
-        span1.innerHTML = "ответа от сервера нет"
+        span1.innerHTML = "ответа от сервера нет :("
         alert("ошибка")
     }
 })
@@ -52,7 +52,7 @@ butt2?.addEventListener("click",async ()=> {
         
     }
     catch{
-        span1.innerHTML = "ответа от сервера нет"
+        span1.innerHTML = "ответа от сервера нет :("
         alert("ошибка")
     }
 })
@@ -60,14 +60,28 @@ butt2?.addEventListener("click",async ()=> {
 
 
 const span2 = document.querySelector("#sp2") as HTMLDivElement
+try{
+    let a = await fetch('http://localhost:3500/img/110435-iskusstvo-graficeskij_dizajn-svet-krasnyj_cvet-art-1920x1080.jpg', {
+        method: 'GET',
+    })
+    span2.innerHTML = `<img style="width: 100%; display: block;" src="http://localhost:3500/img/110435-iskusstvo-graficeskij_dizajn-svet-krasnyj_cvet-art-1920x1080.jpg" alt="">`
+}
+catch{
+    span2.innerHTML = `<img style="width: 100%; display: block;" src="https://dinahosting.com/blog/cont/uploads/2020/07/eror-404.jpg" alt="">`
+}
+
+
+
+const span3 = document.querySelector("#sp3") as HTMLDivElement
     try{
-        let a = await fetch('http://localhost:3500/img/110435-iskusstvo-graficeskij_dizajn-svet-krasnyj_cvet-art-1920x1080.jpg', {
+        let a = await fetch('http://localhost:3500/file/text.txt', {
             method: 'GET',
         })
-        span2.innerHTML = `<img style="width: 100%;" src="http://localhost:3500/img/110435-iskusstvo-graficeskij_dizajn-svet-krasnyj_cvet-art-1920x1080.jpg" alt="">`
+        let b = await a.text()
+        span3.innerHTML = b
     }
     catch{
-        span2.innerHTML = `<img style="width: 100%;" src="https://dinahosting.com/blog/cont/uploads/2020/07/eror-404.jpg" alt="">`
+        span3.innerHTML = `сервер не отвечает`
     }
 
 
