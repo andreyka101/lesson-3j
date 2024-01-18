@@ -21,7 +21,8 @@ liveBackground.backgroundPhone.Classic.start()
 
 
 
-
+//FIXME - простые запросы
+//REVIEW - get запрос text
 const span1 = document.querySelector("#sp1") as HTMLSpanElement
 const butt1 = document.querySelector("#br1") as HTMLButtonElement
 butt1?.addEventListener("click",async ()=> {
@@ -37,6 +38,8 @@ butt1?.addEventListener("click",async ()=> {
         alert("ошибка")
     }
 })
+
+//REVIEW - post запрос json
 const butt2 = document.querySelector("#br2") as HTMLButtonElement
 butt2?.addEventListener("click",async ()=> {
     try{
@@ -59,6 +62,8 @@ butt2?.addEventListener("click",async ()=> {
 
 
 
+//FIXME - статические файлы
+//REVIEW - запрос картинки
 const span2 = document.querySelector("#sp2") as HTMLDivElement
 try{
     let a = await fetch('http://localhost:3500/img/110435-iskusstvo-graficeskij_dizajn-svet-krasnyj_cvet-art-1920x1080.jpg', {
@@ -70,8 +75,7 @@ catch{
     span2.innerHTML = `<img style="width: 100%; display: block;" src="https://dinahosting.com/blog/cont/uploads/2020/07/eror-404.jpg" alt="">`
 }
 
-
-
+//REVIEW - запрос txt файла
 const span3 = document.querySelector("#sp3") as HTMLDivElement
     try{
         let a = await fetch('http://localhost:3500/file/text.txt', {
