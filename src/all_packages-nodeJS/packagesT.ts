@@ -65,7 +65,7 @@ butt2?.addEventListener("click",async ()=> {
 const span2 = document.querySelector("#sp2") as HTMLDivElement
 async function name1(){
     try{
-        let a = await fetch('http://localhost:3500/img/110435-iskusstvo-graficeskij_dizajn-svet-krasnyj_cvet-art-1920x1080.jpg', {
+        await fetch('http://localhost:3500/img/110435-iskusstvo-graficeskij_dizajn-svet-krasnyj_cvet-art-1920x1080.jpg', {
             method: 'GET',
         })
         span2.innerHTML = `<img style="width: 100%; display: block;" src="http://localhost:3500/img/110435-iskusstvo-graficeskij_dizajn-svet-krasnyj_cvet-art-1920x1080.jpg" alt="">`
@@ -91,7 +91,31 @@ async function name2(){
     }
 }
 name2()
-    
-    
+
+
+
+//FIXME - статические файлы
+//REVIEW - запрос картинки
+const butt3 = document.querySelector("#br3") as HTMLButtonElement
+butt3?.addEventListener("click",async ()=> {
+    try{
+        let a = await fetch('http://localhost:3500/data',{
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body:JSON.stringify({ok:"сообщение от сайта"})
+        })
+        let b = await a.json()
+        span1.innerHTML = "ответ от сервера: " + b.simpleAnswer
+        
+    }
+    catch{
+        span1.innerHTML = "ответа от сервера нет :("
+        alert("ошибка")
+    }
+})
+
+
 
 
