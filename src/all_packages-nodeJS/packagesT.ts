@@ -65,18 +65,22 @@ butt2?.addEventListener("click",async ()=> {
 //FIXME - статические файлы
 //REVIEW - запрос картинки
 const span2 = document.querySelector("#sp2") as HTMLDivElement
-try{
-    let a = await fetch('http://localhost:3500/img/110435-iskusstvo-graficeskij_dizajn-svet-krasnyj_cvet-art-1920x1080.jpg', {
-        method: 'GET',
-    })
-    span2.innerHTML = `<img style="width: 100%; display: block;" src="http://localhost:3500/img/110435-iskusstvo-graficeskij_dizajn-svet-krasnyj_cvet-art-1920x1080.jpg" alt="">`
+async function name1(){
+    try{
+        let a = await fetch('http://localhost:3500/img/110435-iskusstvo-graficeskij_dizajn-svet-krasnyj_cvet-art-1920x1080.jpg', {
+            method: 'GET',
+        })
+        span2.innerHTML = `<img style="width: 100%; display: block;" src="http://localhost:3500/img/110435-iskusstvo-graficeskij_dizajn-svet-krasnyj_cvet-art-1920x1080.jpg" alt="">`
+    }
+    catch{
+        span2.innerHTML = `<img style="width: 100%; display: block;" src="https://dinahosting.com/blog/cont/uploads/2020/07/eror-404.jpg" alt="">`
+    }
 }
-catch{
-    span2.innerHTML = `<img style="width: 100%; display: block;" src="https://dinahosting.com/blog/cont/uploads/2020/07/eror-404.jpg" alt="">`
-}
+name1()
 
 //REVIEW - запрос txt файла
 const span3 = document.querySelector("#sp3") as HTMLDivElement
+async function name2(){
     try{
         let a = await fetch('http://localhost:3500/file/text.txt', {
             method: 'GET',
@@ -87,7 +91,9 @@ const span3 = document.querySelector("#sp3") as HTMLDivElement
     catch{
         span3.innerHTML = `сервер не отвечает`
     }
-
-
+}
+name2()
+    
+    
 
 
