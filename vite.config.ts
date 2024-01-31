@@ -8,9 +8,9 @@ export default {
         // @ts-ignore
         main: resolve(__dirname, 'index.html'),
         // @ts-ignore
-        movieTS: resolve(__dirname, '/src/movie_search/movie.html'),
+        movie: resolve(__dirname, '/src/movie_search/movie.html'),
         // @ts-ignore
-        movieTS: resolve(__dirname, '/src/all_packages-nodeJS/packagesH.html'),
+        ALLpackages: resolve(__dirname, '/src/all_packages-nodeJS/packagesH.html'),
       }
     }
   }
