@@ -11,6 +11,8 @@ export default {
         movie: resolve(__dirname, '/src/movie_search/movie.html'),
         // @ts-ignore
         ALLpackages: resolve(__dirname, '/src/all_packages-nodeJS/packagesH.html'),
+        // @ts-ignore
+        passing_json: resolve(__dirname, '/src/passing_json/passing_json_INDEX.html'),
       }
     }
   }
