@@ -1,3 +1,18 @@
-body{
-    // background-color: aqua;
+.GLASSlOLLIPOPS_div{
+    // max-width: 600px;
+    p{
+        text-align: center;
+        margin: 0px;
+        margin-bottom: 20px;
+    }
+    .divSpan{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        #conclusionJSON{
+            div{
+                text-align: center;
+            }
+        }
+    }
 }

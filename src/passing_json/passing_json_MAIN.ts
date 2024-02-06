@@ -16,5 +16,59 @@ liveBackground.backgroundPC.Classic.start()
 liveBackground.backgroundPhone.Classic.start()
 
 
+//REVIEW - пример с видео
+{
+    const div = document.querySelector("#conclusionJSON") as HTMLDivElement
+
+    //SECTION - получить json
+    document.querySelector(".b1")?.addEventListener("click", async function () {
+        try {
+            let data = await fetch("http://localhost:3000/mydata/")
+            data = await data.json()
+            // @ts-ignore
+            // console.log(Object.values(data.dataJ));
+
+            // @ts-ignore
+            const values = Object.values(data.dataJ)
+            // @ts-ignore
+            const keys = Object.keys(data.dataJ)
+            let str = ""
+
+            for (let i in keys) {
+                str += `<div>${keys[i]} = ${values[i]}<div/>`
+            }
+            div.innerHTML = str
+
+
+        } catch (e) {
+            console.log(e);
+        }
+    })
+
+    //SECTION - отправить json 
+    document.querySelector(".b2")?.addEventListener("click", async function () {
+        try {
+            const k = document.querySelector(".inp1") as HTMLInputElement
+            const v = document.querySelector(".inp2") as HTMLInputElement
+            let obj = new Object
+            // @ts-ignore
+            obj[k.value] = v.value
+            let data = await fetch("http://localhost:3000/mydata", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify(obj)
+            })
+            data = await data.json()
+            console.log(data);
+
+        } catch (e) {
+            console.log(e);
+        }
+    })
+}
+
+
 
 
