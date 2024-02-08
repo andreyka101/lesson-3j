@@ -13,6 +13,8 @@ export default {
         ALLpackages: resolve(__dirname, '/src/all_packages-nodeJS/packagesH.html'),
         // @ts-ignore
         passing_json: resolve(__dirname, '/src/passing_json/passing_json_INDEX.html'),
+        // @ts-ignore
+        example_database: resolve(__dirname, '/src/example_database/e_database_i.html'),
       }
     }
   }
