@@ -49,18 +49,21 @@ async function websiteLaunch () {
         console.log(answer);
     if (answer == "ok"){
         clearInterval(run)
-        point.style.transition = "1s"
-        ring.style.transition = "1s"
-        point.style.backgroundColor = "#3aff33"
-        // point.style.width = "100%"
         ring.style.borderColor = "#ffffff"
+
+    anime({
+        // элементы
+        targets: '.point',
+        translateX: 0,
+        width: ['25%','100%'],
+        // время анимации
+        duration: 1500,
+        easing: 'easeInOutSine',
+        backgroundColor:"#3aff33"
+        });
     }
 }catch{
     clearInterval(run)
-    // point.style.transition = "1s"
-    // ring.style.transition = "1s"
-    // point.style.backgroundColor = "#b81414"
-    // point.style.width = "100%"
     ring.style.borderColor = "#ffffff"
 
     anime({
