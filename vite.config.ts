@@ -15,6 +15,8 @@ export default {
         passing_json: resolve(__dirname, '/src/passing_json/passing_json_INDEX.html'),
         // @ts-ignore
         example_database: resolve(__dirname, '/src/example_database/e_database_i.html'),
+        // @ts-ignore
+        vegetables_and_fruits: resolve(__dirname, "/src/vegetables_and_fruits/v-a-fruits.html"),
       }
     }
   }
