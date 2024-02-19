@@ -57,12 +57,22 @@ async function websiteLaunch () {
     }
 }catch{
     clearInterval(run)
-    point.style.transition = "1s"
-    ring.style.transition = "1s"
-    point.style.backgroundColor = "#b81414"
+    // point.style.transition = "1s"
+    // ring.style.transition = "1s"
+    // point.style.backgroundColor = "#b81414"
     // point.style.width = "100%"
     ring.style.borderColor = "#ffffff"
-    
+
+    anime({
+        // элементы
+        targets: '.point',
+        translateX: 0,
+        width: ['25%','100%'],
+        // время анимации
+        duration: 1500,
+        easing: 'easeInOutSine',
+        backgroundColor:"#b81414"
+        });
 }
 
 
