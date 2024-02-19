@@ -21,7 +21,7 @@ liveBackground.backgroundPC.Classic.changeSVG([
 liveBackground.backgroundPC.Classic.start()
 liveBackground.backgroundPhone.Classic.start()
 
-let num = 75
+let num = 0
 anime({
     // элементы
     targets: '.point',
