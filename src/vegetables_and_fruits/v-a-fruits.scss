@@ -1,0 +1,14 @@
+.ring{
+    margin-right: 30px;
+    width: 100px;
+    height: 25px;
+    padding: 4px;
+    border: #fff133 3px solid;
+    border-radius: 50px;
+    .point{
+        width: 25%;
+        height: 100%;
+        border-radius: 50px;
+        background-color: #fff133;
+    }
+}
