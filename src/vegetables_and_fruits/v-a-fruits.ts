@@ -32,16 +32,16 @@ anime({
     const point = document.querySelector(".point") as HTMLDivElement
     const ring = document.querySelector(".ring") as HTMLDivElement
     let run = setInterval(()=>{
-        // anime({
-        //     // элементы
-        //     targets: '.point',
-        //     translateX: 75,
-        //     // время анимации
-        //     // duration: 1000,
-        //     });
+        anime({
+            // элементы
+            targets: '.point',
+            translateX: num,
+            // время анимации
+            // duration: 1000,
+            });
         if(num == 0) num = 75
         else num = 0
-},100)
+},500)
 async function websiteLaunch () {
     try{
         const data = await fetch("http://localhost:1010/answer")
