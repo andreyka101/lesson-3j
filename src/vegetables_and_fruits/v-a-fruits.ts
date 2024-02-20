@@ -48,34 +48,40 @@ async function websiteLaunch () {
         const answer = await data.text()
         console.log(answer);
     if (answer == "ok"){
-        clearInterval(run)
-        ring.style.borderColor = "#ffffff"
+        setTimeout(()=>{
 
-    anime({
-        // элементы
-        targets: '.point',
-        translateX: 0,
-        width: ['25%','100%'],
-        // время анимации
-        duration: 1500,
-        easing: 'easeInOutSine',
-        backgroundColor:"#3aff33"
-        });
+            clearInterval(run)
+            ring.style.borderColor = "#ffffff"
+            
+            anime({
+                // элементы
+                targets: '.point',
+                translateX: 0,
+                width: ['25%','100%'],
+                // время анимации
+                duration: 1500,
+                easing: 'easeInOutSine',
+                backgroundColor:"#3aff33"
+            });
+        },1500)
     }
 }catch{
-    clearInterval(run)
-    ring.style.borderColor = "#ffffff"
-
-    anime({
-        // элементы
-        targets: '.point',
-        translateX: 0,
-        width: ['25%','100%'],
-        // время анимации
-        duration: 1500,
-        easing: 'easeInOutSine',
-        backgroundColor:"#b81414"
+    setTimeout(()=>{
+            
+        clearInterval(run)
+        ring.style.borderColor = "#ffffff"
+        
+        anime({
+            // элементы
+            targets: '.point',
+            translateX: 0,
+            width: ['25%','100%'],
+            // время анимации
+            duration: 1500,
+            easing: 'easeInOutSine',
+            backgroundColor:"#b81414"
         });
+    },1500)
 }
 
 
