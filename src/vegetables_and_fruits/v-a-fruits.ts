@@ -81,7 +81,7 @@ async function websiteLaunch () {
             easing: 'easeInOutSine',
             backgroundColor:"#b81414"
         });
-    },500)
+    },1000)
 }
 
 
