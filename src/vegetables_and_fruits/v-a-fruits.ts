@@ -48,7 +48,7 @@ async function websiteLaunch () {
         const answer = await data.text()
         console.log(answer);
     if (answer == "ok"){
-        setTimeout(()=>{
+        // setTimeout(()=>{
 
             clearInterval(run)
             ring.style.borderColor = "#ffffff"
@@ -63,10 +63,10 @@ async function websiteLaunch () {
                 easing: 'easeInOutSine',
                 backgroundColor:"#3aff33"
             });
-        },1500)
+        // },1500)
     }
 }catch{
-    setTimeout(()=>{
+    // setTimeout(()=>{
             
         clearInterval(run)
         ring.style.borderColor = "#ffffff"
@@ -81,7 +81,7 @@ async function websiteLaunch () {
             easing: 'easeInOutSine',
             backgroundColor:"#b81414"
         });
-    },1500)
+    // },1500)
 }
 
 
