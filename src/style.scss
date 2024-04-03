@@ -14,8 +14,15 @@ h1 a{
 @media screen and (max-width: 430px) {
     .GLASSlOLLIPOPS_span {
         // background-color: #e9cd8f;
-          display: flex;
+          display: inline-flex;
           flex-direction: column;
           align-items: center;
       }
+      .GLASSlOLLIPOPS_div {
+          width: auto;
+          display: block;
+          margin: 10px 6px;
+        }
     }
+// @media screen and (max-width: 360px) {
+//     }
