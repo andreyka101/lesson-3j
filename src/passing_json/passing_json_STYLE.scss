@@ -1,18 +1,18 @@
-.GLASSlOLLIPOPS_div{
-    // max-width: 600px;
-    p{
-        text-align: center;
-        margin: 0px;
-        margin-bottom: 20px;
+.GLASSlOLLIPOPS_div {
+    #conclusionJSON {
+        max-height: 92px;
+        overflow-y: auto;
     }
-    .divSpan{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        #conclusionJSON{
-            div{
-                text-align: center;
-            }
-        }
-    }
+}
+#conclusionJSON::-webkit-scrollbar {
+    width: 10px;
+    background-color: #ffffff00;
+    border: solid #ffffff00 3px;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 25px;
+}
+#conclusionJSON::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+    border-radius: 25px;
 }

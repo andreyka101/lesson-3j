@@ -35,7 +35,7 @@ liveBackground.backgroundPhone.Classic.start()
             let str = ""
 
             for (let i in keys) {
-                str += `<div>${keys[i]} = ${values[i]}<div/>`
+                str += `<div>${keys[i]} = ${values[i]}</div>`
             }
             div.innerHTML = str
 
@@ -48,20 +48,48 @@ liveBackground.backgroundPhone.Classic.start()
     //SECTION - отправить json 
     document.querySelector(".b2")?.addEventListener("click", async function () {
         try {
+            const keyColor = document.querySelector("#key") as HTMLSpanElement
+            const valueColor = document.querySelector("#value") as HTMLSpanElement
+
             const k = document.querySelector(".inp1") as HTMLInputElement
             const v = document.querySelector(".inp2") as HTMLInputElement
             let obj = new Object
-            // @ts-ignore
-            obj[k.value] = v.value
-            let data = await fetch("http://localhost:3000/mydata", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
-                body: JSON.stringify(obj)
-            })
-            data = await data.json()
-            console.log(data);
+            if (k.value.length != 0 && v.value.length != 0) {
+                valueColor.style.color = "white"
+                v.style.backgroundColor = "#abfff252"
+                keyColor.style.color = "white"
+                k.style.backgroundColor = "#abfff252"
+
+                // @ts-ignore
+                obj[k.value] = v.value
+                let data = await fetch("http://localhost:3000/mydata", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8'
+                    },
+                    body: JSON.stringify(obj)
+                })
+                data = await data.json()
+                console.log(data);
+            }
+            else {
+                if(k.value.length == 0){
+                    keyColor.style.color = "red"
+                    k.style.backgroundColor = "#df0808"
+                }
+                else{
+                    keyColor.style.color = "white"
+                    k.style.backgroundColor = "#abfff252" 
+                }
+                if(v.value.length == 0){
+                    valueColor.style.color = "red"
+                    v.style.backgroundColor = "#df0808"
+                }
+                else{
+                    valueColor.style.color = "white"
+                    v.style.backgroundColor = "#abfff252" 
+                }
+            }
 
         } catch (e) {
             console.log(e);
