@@ -141,8 +141,8 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 
 
 //             add.innerHTML += `<div style="display: flex; justify-content: center; flex-wrap: wrap;">
-//             <div class="GLASSlOLLIPOPS_div movieBlockFlex" id="m${m_num - 1}" style="">
-//                 <div class="movieBlock">
+//             <div class="GLASSlOLLIPOPS_div mainBlockFilm" id="m${m_num - 1}" style="">
+//                 <div class="film_imgSpan">
 //                     <img src="${search[i].Poster}"
 //                         alt="">
 //                     <div>
@@ -160,7 +160,7 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //                         </span>
 //                     </div>
 //                 </div>
-//                 <div class="A2buttonBlock" style="display: none;">
+//                 <div class="A2ButtonBlock" style="display: none;">
 //                 <a href="https://yandex.ru/search/?text=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&lr=239&clid=2411726" class="GLASSlOLLIPOPS_a" target="_blank">поиск на яндекс.</a>
 //                 <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
 //                 <a href="https://www.google.com/search?q=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&sca_esv=591540615&sxsrf=AM9HkKnSsl41ffnnpJUkglW8H5wAPZEcPA%3A1702755291217&ei=2_t9Zf3rDKqEwPAPxq6YUA&ved=0ahUKEwi9xZbi2ZSDAxUqAhAIHUYXBgoQ4dUDCBA&oq=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&gs_lp=Egxnd3Mtd2l6LXNlcnAiMtGB0LzQvtGC0YDQtdGC0Ywg0YTQuNC70YzQvCA1NTUg0LHQtdGB0L_Qu9Cw0YLQvdC-SOweUIkGWOsKcAF4AZABAZgB9QOgAY4HqgEHMC4zLjUtMbgBDMgBAPgBAcICChAAGEcY1gQYsAPCAgYQABgIGB7iAwQYACBBiAYBkAYH&sclient=gws-wiz-serp" target="_blank" class="GLASSlOLLIPOPS_a">поиск на google.</a>
@@ -169,8 +169,8 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //                     <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
 //                 </div>
 //             </div>
-//             <div class="GLASSlOLLIPOPS_div movieBlockFlex" id="m${m_num}" style="">
-//                 <div class="movieBlock">
+//             <div class="GLASSlOLLIPOPS_div mainBlockFilm" id="m${m_num}" style="">
+//                 <div class="film_imgSpan">
 //                 <img src="${search[i + 1].Poster}"
 //                 alt="">
 //             <div>
@@ -188,7 +188,7 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //                 </span>
 //                 </div>
 //                 </div>
-//                 <div class="A2buttonBlock" style="display: none;">
+//                 <div class="A2ButtonBlock" style="display: none;">
 //                 <a href="https://yandex.ru/search/?text=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&lr=239&clid=2411726" class="GLASSlOLLIPOPS_a" target="_blank">поиск на яндекс.</a>
 //                 <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
 //                 <a href="https://www.google.com/search?q=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&sca_esv=591540615&sxsrf=AM9HkKnSsl41ffnnpJUkglW8H5wAPZEcPA%3A1702755291217&ei=2_t9Zf3rDKqEwPAPxq6YUA&ved=0ahUKEwi9xZbi2ZSDAxUqAhAIHUYXBgoQ4dUDCBA&oq=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&gs_lp=Egxnd3Mtd2l6LXNlcnAiMtGB0LzQvtGC0YDQtdGC0Ywg0YTQuNC70YzQvCA1NTUg0LHQtdGB0L_Qu9Cw0YLQvdC-SOweUIkGWOsKcAF4AZABAZgB9QOgAY4HqgEHMC4zLjUtMbgBDMgBAPgBAcICChAAGEcY1gQYsAPCAgYQABgIGB7iAwQYACBBiAYBkAYH&sclient=gws-wiz-serp" target="_blank" class="GLASSlOLLIPOPS_a">поиск на google.</a>
@@ -221,8 +221,8 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 
 
 //             add.innerHTML += `<div style="display: flex; justify-content: center; flex-wrap: wrap;">
-//             <div class="GLASSlOLLIPOPS_div movieBlockFlex" id="m${m_num - 1}" data-id="${m_num}" style="">
-//                 <div class="movieBlock">
+//             <div class="GLASSlOLLIPOPS_div mainBlockFilm" id="m${m_num - 1}" data-id="${m_num}" style="">
+//                 <div class="film_imgSpan">
 //                 <img src="${search[i].Poster}"
 //                 alt="">
 //                 <div>
@@ -240,7 +240,7 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //                 </span>
 //                 </div>
 //                 </div>
-//                 <div class="A2buttonBlock" style="display: none;">
+//                 <div class="A2ButtonBlock" style="display: none;">
 //                 <a href="https://yandex.ru/search/?text=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&lr=239&clid=2411726" class="GLASSlOLLIPOPS_a" target="_blank">поиск на яндекс.</a>
 //                 <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
 //                 <a href="https://www.google.com/search?q=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&sca_esv=591540615&sxsrf=AM9HkKnSsl41ffnnpJUkglW8H5wAPZEcPA%3A1702755291217&ei=2_t9Zf3rDKqEwPAPxq6YUA&ved=0ahUKEwi9xZbi2ZSDAxUqAhAIHUYXBgoQ4dUDCBA&oq=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&gs_lp=Egxnd3Mtd2l6LXNlcnAiMtGB0LzQvtGC0YDQtdGC0Ywg0YTQuNC70YzQvCA1NTUg0LHQtdGB0L_Qu9Cw0YLQvdC-SOweUIkGWOsKcAF4AZABAZgB9QOgAY4HqgEHMC4zLjUtMbgBDMgBAPgBAcICChAAGEcY1gQYsAPCAgYQABgIGB7iAwQYACBBiAYBkAYH&sclient=gws-wiz-serp" target="_blank" class="GLASSlOLLIPOPS_a">поиск на google.</a>
@@ -249,8 +249,8 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //                     <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
 //                     </div>
 //                     </div>
-//                     <div class="GLASSlOLLIPOPS_div movieBlockFlex" id="m${m_num}" style="">
-//                 <div class="movieBlock">
+//                     <div class="GLASSlOLLIPOPS_div mainBlockFilm" id="m${m_num}" style="">
+//                 <div class="film_imgSpan">
 //                 <img src="${search[i + 1].Poster}"
 //                 alt="">
 //                 <div>
@@ -268,7 +268,7 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //                 </span>
 //                 </div>
 //                 </div>
-//                 <div class="A2buttonBlock" style="display: none;">
+//                 <div class="A2ButtonBlock" style="display: none;">
 //                 <a href="https://yandex.ru/search/?text=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&lr=239&clid=2411726" class="GLASSlOLLIPOPS_a" target="_blank">поиск на яндекс.</a>
 //                 <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
 //                 <a href="https://www.google.com/search?q=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&sca_esv=591540615&sxsrf=AM9HkKnSsl41ffnnpJUkglW8H5wAPZEcPA%3A1702755291217&ei=2_t9Zf3rDKqEwPAPxq6YUA&ved=0ahUKEwi9xZbi2ZSDAxUqAhAIHUYXBgoQ4dUDCBA&oq=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&gs_lp=Egxnd3Mtd2l6LXNlcnAiMtGB0LzQvtGC0YDQtdGC0Ywg0YTQuNC70YzQvCA1NTUg0LHQtdGB0L_Qu9Cw0YLQvdC-SOweUIkGWOsKcAF4AZABAZgB9QOgAY4HqgEHMC4zLjUtMbgBDMgBAPgBAcICChAAGEcY1gQYsAPCAgYQABgIGB7iAwQYACBBiAYBkAYH&sclient=gws-wiz-serp" target="_blank" class="GLASSlOLLIPOPS_a">поиск на google.</a>
@@ -311,8 +311,8 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 
 
 //         //                 add.innerHTML += `<div style="display: flex; justify-content: center; flex-wrap: wrap;">
-//         // <div class="GLASSlOLLIPOPS_div movieBlockFlex" id="m${m_num - 1}" style="">
-//         //     <div class="movieBlock">
+//         // <div class="GLASSlOLLIPOPS_div mainBlockFilm" id="m${m_num - 1}" style="">
+//         //     <div class="film_imgSpan">
 //         //     <img src="${search[i].Poster}"
 //         //     alt="">
 //         //     <div>
@@ -330,7 +330,7 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //         //     </span>
 //         //     </div>
 //         //     </div>
-//         //     <div class="A2buttonBlock" style="display: none;">
+//         //     <div class="A2ButtonBlock" style="display: none;">
 //         //     <a href="https://yandex.ru/search/?text=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&lr=239&clid=2411726" class="GLASSlOLLIPOPS_a" target="_blank">поиск на яндекс.</a>
 //         //     <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
 //         //     <a href="https://www.google.com/search?q=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&sca_esv=591540615&sxsrf=AM9HkKnSsl41ffnnpJUkglW8H5wAPZEcPA%3A1702755291217&ei=2_t9Zf3rDKqEwPAPxq6YUA&ved=0ahUKEwi9xZbi2ZSDAxUqAhAIHUYXBgoQ4dUDCBA&oq=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&gs_lp=Egxnd3Mtd2l6LXNlcnAiMtGB0LzQvtGC0YDQtdGC0Ywg0YTQuNC70YzQvCA1NTUg0LHQtdGB0L_Qu9Cw0YLQvdC-SOweUIkGWOsKcAF4AZABAZgB9QOgAY4HqgEHMC4zLjUtMbgBDMgBAPgBAcICChAAGEcY1gQYsAPCAgYQABgIGB7iAwQYACBBiAYBkAYH&sclient=gws-wiz-serp" target="_blank" class="GLASSlOLLIPOPS_a">поиск на google.</a>
@@ -339,8 +339,8 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //         //         <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
 //         //         </div>
 //         //         </div>
-//         //         <div class="GLASSlOLLIPOPS_div movieBlockFlex" id="m${m_num}" style="">
-//         //     <div class="movieBlock">
+//         //         <div class="GLASSlOLLIPOPS_div mainBlockFilm" id="m${m_num}" style="">
+//         //     <div class="film_imgSpan">
 //         //     <img src="${search[i + 1].Poster}"
 //         //     alt="">
 //         //     <div>
@@ -358,7 +358,7 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //         //     </span>
 //         //     </div>
 //         //     </div>
-//         //     <div class="A2buttonBlock" style="display: none;">
+//         //     <div class="A2ButtonBlock" style="display: none;">
 //         //     <a href="https://yandex.ru/search/?text=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&lr=239&clid=2411726" class="GLASSlOLLIPOPS_a" target="_blank">поиск на яндекс.</a>
 //         //     <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
 //         //     <a href="https://www.google.com/search?q=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&sca_esv=591540615&sxsrf=AM9HkKnSsl41ffnnpJUkglW8H5wAPZEcPA%3A1702755291217&ei=2_t9Zf3rDKqEwPAPxq6YUA&ved=0ahUKEwi9xZbi2ZSDAxUqAhAIHUYXBgoQ4dUDCBA&oq=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&gs_lp=Egxnd3Mtd2l6LXNlcnAiMtGB0LzQvtGC0YDQtdGC0Ywg0YTQuNC70YzQvCA1NTUg0LHQtdGB0L_Qu9Cw0YLQvdC-SOweUIkGWOsKcAF4AZABAZgB9QOgAY4HqgEHMC4zLjUtMbgBDMgBAPgBAcICChAAGEcY1gQYsAPCAgYQABgIGB7iAwQYACBBiAYBkAYH&sclient=gws-wiz-serp" target="_blank" class="GLASSlOLLIPOPS_a">поиск на google.</a>
@@ -424,7 +424,7 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 
 
 
-// // const movieALL = document.querySelectorAll(".movieBlockFlex") as any
+// // const movieALL = document.querySelectorAll(".mainBlockFilm") as any
 // function buttonMovie() {
 //     for (let i of movieALL) {
 
@@ -436,12 +436,12 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //             if (target.className != 'GLASSlOLLIPOPS_button expand' && target.className != 'GLASSlOLLIPOPS_button collapse') return
             
 //             // i.children[0]
-//             const A2buttonBlock = i.querySelector(`.A2buttonBlock`) as HTMLSpanElement
+//             const A2ButtonBlock = i.querySelector(`.A2ButtonBlock`) as HTMLSpanElement
 //             const buttonBlock = document.querySelector(`#${i.id} .buttonBlock`) as HTMLSpanElement
 //             const longText = document.querySelector(`#${i.id} .longText`) as HTMLSpanElement
 //             const shortText = document.querySelector(`#${i.id} .shortText`) as HTMLSpanElement
 //             const img = document.querySelector(`#${i.id} img`) as HTMLElement
-//             const movieBlock = document.querySelector(`#${i.id} .movieBlock`) as HTMLDivElement
+//             const film_imgSpan = document.querySelector(`#${i.id} .film_imgSpan`) as HTMLDivElement
 
 
 //             if (target.className == 'GLASSlOLLIPOPS_button expand') {
@@ -450,14 +450,14 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //                     const eighbour = document.querySelector(`#m${parseInt(i.slice(1)) + 1}`) as HTMLDivElement
 
 //                     if (window.innerWidth <= 907) {
-//                         if (window.innerWidth <= 770) movieBlock.style.flexDirection = "column"
+//                         if (window.innerWidth <= 770) film_imgSpan.style.flexDirection = "column"
 //                         i.style.transition = "0s"
 //                         setTimeout(() => {
 //                             i.style.transition = "0.3s"
 //                             i.style.width = "100%"
 //                             i.style.marginRight = "20px"
 //                             setTimeout(() => {
-//                                 A2buttonBlock.style.display = "flex"
+//                                 A2ButtonBlock.style.display = "flex"
 //                                 buttonBlock.style.display = "none"
 //                                 setTimeout(() => {
 //                                     img.style.height = "280px"
@@ -478,7 +478,7 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //                                 i.style.width = "818px"
 //                                 i.style.marginRight = "20px"
 //                                 setTimeout(() => {
-//                                     A2buttonBlock.style.display = "flex"
+//                                     A2ButtonBlock.style.display = "flex"
 //                                     buttonBlock.style.display = "none"
 //                                     setTimeout(() => {
 //                                         img.style.height = "280px"
@@ -493,14 +493,14 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //                 else {
 //                     const eighbour = document.querySelector(`#m${parseInt(i.slice(1)) - 1}`) as HTMLDivElement
 //                     if (window.innerWidth <= 907) {
-//                         if (window.innerWidth <= 770) movieBlock.style.flexDirection = "column"
+//                         if (window.innerWidth <= 770) film_imgSpan.style.flexDirection = "column"
 //                         i.style.transition = "0s"
 //                         setTimeout(() => {
 //                             i.style.transition = "0.3s"
 //                             i.style.width = "100%"
 //                             i.style.marginRight = "20px"
 //                             setTimeout(() => {
-//                                 A2buttonBlock.style.display = "flex"
+//                                 A2ButtonBlock.style.display = "flex"
 //                                 buttonBlock.style.display = "none"
 //                                 setTimeout(() => {
 //                                     img.style.height = "280px"
@@ -521,7 +521,7 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //                                 i.style.width = "818px"
 //                                 i.style.marginLeft = "20px"
 //                                 setTimeout(() => {
-//                                     A2buttonBlock.style.display = "flex"
+//                                     A2ButtonBlock.style.display = "flex"
 //                                     buttonBlock.style.display = "none"
 //                                     setTimeout(() => {
 //                                         img.style.height = "280px"
@@ -544,9 +544,9 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //                         if (window.innerWidth <= 460) i.style.width = "100%"
 //                         else i.style.width = "364px"
 //                         setTimeout(() => {
-//                             A2buttonBlock.style.display = "none"
+//                             A2ButtonBlock.style.display = "none"
 //                             buttonBlock.style.display = "flex"
-//                             if (window.innerWidth >= 460 && window.innerWidth <= 770) movieBlock.style.flexDirection = "row"
+//                             if (window.innerWidth >= 460 && window.innerWidth <= 770) film_imgSpan.style.flexDirection = "row"
 //                         }, 100)
 //                     }
 //                     else {
@@ -556,7 +556,7 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //                         i.style.width = "364px"
 //                         i.style.marginRight = "478px"
 //                         setTimeout(() => {
-//                             A2buttonBlock.style.display = "none"
+//                             A2ButtonBlock.style.display = "none"
 //                             buttonBlock.style.display = "flex"
 //                         }, 100)
 //                         setTimeout(() => {
@@ -578,9 +578,9 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //                         if (window.innerWidth <= 460) i.style.width = "100%"
 //                         else i.style.width = "364px"
 //                         setTimeout(() => {
-//                             A2buttonBlock.style.display = "none"
+//                             A2ButtonBlock.style.display = "none"
 //                             buttonBlock.style.display = "flex"
-//                             if (window.innerWidth >= 460 && window.innerWidth <= 770) movieBlock.style.flexDirection = "row"
+//                             if (window.innerWidth >= 460 && window.innerWidth <= 770) film_imgSpan.style.flexDirection = "row"
 //                         }, 100)
 //                     }
 //                     else {
@@ -590,7 +590,7 @@ const el = document.querySelector(`[data-id="${dataId}"]`)
 //                         i.style.width = "364px"
 //                         i.style.marginLeft = "478px"
 //                         setTimeout(() => {
-//                             A2buttonBlock.style.display = "none"
+//                             A2ButtonBlock.style.display = "none"
 //                             buttonBlock.style.display = "flex"
 //                         }, 100)
 //                         setTimeout(() => {

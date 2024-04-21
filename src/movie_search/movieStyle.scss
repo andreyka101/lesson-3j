@@ -40,12 +40,12 @@
     transition: 0.15s;
 }
 
-.movieBlockFlex {
+.mainBlockFilm {
     transition: 0.3s;
     width: 364px;
     margin: 20px;
 
-    .movieBlock {
+    .film_imgSpan {
         display: flex;
         align-items: center;
 
@@ -74,7 +74,7 @@
 
     }
 
-    .A2buttonBlock {
+    .A2ButtonBlock {
         margin-top: 20px;
         display: flex;
         justify-content: space-evenly;
@@ -84,10 +84,10 @@
 
 
 @media screen and (max-width: 460px) {
-    .movieBlockFlex {
+    .mainBlockFilm {
         width: 100%;
 
-        .movieBlock {
+        .film_imgSpan {
             flex-direction: column;
         }
     }
