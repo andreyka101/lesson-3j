@@ -67,6 +67,9 @@
         }
     }
 
+    .longText{
+        display: none;
+    }
     .buttonBlock {
         margin-top: 20px;
         display: flex;
@@ -76,10 +79,28 @@
 
     .A2ButtonBlock {
         margin-top: 20px;
-        display: flex;
+        display: none;
         justify-content: space-evenly;
 
     }
+}
+.maximumLength{
+    width: 818px;
+    .longText{
+        display: inline;
+    }
+    .shortText{
+        display: none;
+    }
+    .A2ButtonBlock{
+        display: flex;
+    }
+    .buttonBlock{
+        display: none;
+    }
+}
+.off{
+    display: none;
 }
 
 

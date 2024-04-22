@@ -21,23 +21,45 @@ liveBackground.backgroundPC.Classic.start()
 liveBackground.backgroundPhone.Classic.start()
 
 
-const butt = document.querySelector("div button") as HTMLButtonElement
-const input = document.querySelector("#search input") as HTMLInputElement
-const select = document.querySelector("select") as HTMLSelectElement
-const add = document.querySelector("#add") as HTMLDivElement
-let m_num = 2
-let m_numControl = 10
-let page = 3
-let movieALL = "" as any
+// const butt = document.querySelector("div button") as HTMLButtonElement
+// const input = document.querySelector("#search input") as HTMLInputElement
+// const select = document.querySelector("select") as HTMLSelectElement
+// const add = document.querySelector("#add") as HTMLDivElement
+// let m_num = 2
+// let m_numControl = 10
+// let page = 3
+// let movieALL = "" as any
 
-let dataId = 1
+// let dataId = 1
 
-const el = document.querySelector(`[data-id="${dataId}"]`)
+const el = document.querySelector(`[data-id="${1}"]`)
 
 
 // let response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${commitsTranslation.responseData.translatedText}&page=1&type=${select.value}`)
 // let commits = await response.json()
 // console.log(commits.Search)
+
+
+
+document.querySelector("#add")?.addEventListener("click", (e)=>{
+
+    const target = e.target as HTMLElement
+    const mainBlockFilm = target.closest('.mainBlockFilm') as HTMLElement
+
+    if(target.tagName != "BUTTON") return
+    console.log(target);
+    console.log(mainBlockFilm.dataset.id);
+
+    let num_id = NaN
+    if(+(mainBlockFilm.dataset.id as string) % 2 == 0) num_id = 1 
+    if(+(mainBlockFilm.dataset.id as string) % 2 == 1) num_id = -1 
+    
+    const neighboringBlockFilm = document.querySelector(`[data-id="${+(mainBlockFilm.dataset.id as string) + num_id}"]`) as HTMLElement
+    console.log(neighboringBlockFilm.dataset.id);
+    neighboringBlockFilm.classList.add("off")
+    mainBlockFilm.classList.add("maximumLength")
+    
+})
 
 
 
