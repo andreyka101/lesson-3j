@@ -46,8 +46,7 @@ document.querySelector("#add")?.addEventListener("click", (e)=>{
     const target = e.target as HTMLElement
     const mainBlockFilm = target.closest('.mainBlockFilm') as HTMLElement
 
-    // if(target.tagName != "BUTTON") return
-    if(target.className != "GLASSlOLLIPOPS_button expand") return
+    if(target.tagName != "BUTTON") return
     console.log(target);
     console.log(mainBlockFilm.dataset.id);
 
