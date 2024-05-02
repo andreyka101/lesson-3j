@@ -3,31 +3,7 @@
     width: auto;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#checkbox+label {
+#checkbox + label {
     background: url("/svg/russia_am7b40toekzm.svg") center/cover;
     height: 34px;
     width: 34px;
@@ -35,7 +11,7 @@
     transition: 0.15s;
 }
 
-#checkbox:checked+label {
+#checkbox:checked + label {
     background: url("/svg/united_states_8ryw89cqyxg0.svg") center/cover;
     transition: 0.15s;
 }
@@ -67,42 +43,151 @@
         }
     }
 
-    .longText{
+    .longText {
         display: none;
     }
     .buttonBlock {
         margin-top: 20px;
         display: flex;
         justify-content: space-evenly;
-
     }
 
     .A2ButtonBlock {
         margin-top: 20px;
         display: none;
         justify-content: space-evenly;
-
     }
 }
-.maximumLength{
-    width: 818px;
-    .longText{
+.maximumLength_buttonText {
+    .longText {
         display: inline;
     }
-    .shortText{
+    .shortText {
         display: none;
     }
-    .A2ButtonBlock{
+    .A2ButtonBlock {
         display: flex;
     }
-    .buttonBlock{
+    .buttonBlock {
         display: none;
     }
 }
-.off{
-    display: none;
+.minimumLength_buttonText {
+    .longText {
+        display: none;
+    }
+    .shortText {
+        display: inline;
+    }
+    .A2ButtonBlock {
+        display: none;
+    }
+    .buttonBlock {
+        display: flex;
+    }
+}
+.maximumLength {
+    width: 818px;
+    animation: maximumLength_anime 1s 1;
 }
 
+@keyframes maximumLength_anime {
+    from {
+        width: 364px;
+    }
+    to {
+        width: 818px;
+    }
+}
+.minimumLength {
+    width: 364px;
+    animation: minimumLength_anime 1s 1;
+}
+
+@keyframes minimumLength_anime {
+    from {
+        width: 818px;
+    }
+    to {
+        width: 364px;
+    }
+}
+.off {
+    // display: none;
+    animation: off_anime 1s 1;
+    // display: none;
+    width: 0px;
+    display: none;
+    div {
+        display: none;
+    }
+    span {
+        display: none;
+    }
+    img {
+        display: none;
+    }
+    button {
+        display: none;
+    }
+}
+
+@keyframes off_anime {
+    from {
+        width: 364px;
+        display: block;
+    }
+    to {
+        width: 0px;
+        padding: 0;
+    }
+}
+.on_buttonText {
+    div {
+        display: none;
+    }
+    span {
+        display: none;
+    }
+    img {
+        display: none;
+    }
+    button {
+        display: none;
+    }
+}
+.on {
+    // display: none;
+    animation: on_anime 1s 1;
+    // display: none;
+    width: 0px;
+    display: block;
+    width: 364px;
+    // div {
+    //     display: none;
+    // }
+    // span {
+    //     display: none;
+    // }
+    // img {
+    //     display: none;
+    // }
+    // button {
+    //     display: none;
+    // }
+}
+
+@keyframes on_anime {
+    from {
+        display: block;
+        width: 0px;
+        padding: 0px;
+    }
+    to {
+        width: 364px;
+        padding: 25px;
+    }
+}
 
 @media screen and (max-width: 460px) {
     .mainBlockFilm {
@@ -112,5 +197,4 @@
             flex-direction: column;
         }
     }
-
 }

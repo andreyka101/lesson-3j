@@ -54,10 +54,35 @@ document.querySelector("#add")?.addEventListener("click", (e)=>{
     if(+(mainBlockFilm.dataset.id as string) % 2 == 0) num_id = 1 
     if(+(mainBlockFilm.dataset.id as string) % 2 == 1) num_id = -1 
     
-    const neighboringBlockFilm = document.querySelector(`[data-id="${+(mainBlockFilm.dataset.id as string) + num_id}"]`) as HTMLElement
-    console.log(neighboringBlockFilm.dataset.id);
-    neighboringBlockFilm.classList.add("off")
-    mainBlockFilm.classList.add("maximumLength")
+    if(target.className == "GLASSlOLLIPOPS_button expand"){
+
+        const neighboringBlockFilm = document.querySelector(`[data-id="${+(mainBlockFilm.dataset.id as string) + num_id}"]`) as HTMLElement
+        console.log(neighboringBlockFilm.dataset.id);
+        neighboringBlockFilm.classList.add("off")
+        mainBlockFilm.classList.add("maximumLength")
+        setTimeout(()=>{
+            mainBlockFilm.classList.add("maximumLength_buttonText")
+        },1100)
+    }
+    if(target.className == "GLASSlOLLIPOPS_button collapse"){
+        
+        const neighboringBlockFilm = document.querySelector(`[data-id="${+(mainBlockFilm.dataset.id as string) + num_id}"]`) as HTMLElement
+        console.log(neighboringBlockFilm.dataset.id);
+        mainBlockFilm.classList.remove("maximumLength_buttonText")
+        mainBlockFilm.classList.add("minimumLength_buttonText")
+        mainBlockFilm.classList.remove("maximumLength")
+        mainBlockFilm.classList.add("minimumLength")
+        neighboringBlockFilm.classList.remove("off")
+        neighboringBlockFilm.classList.add("on")
+        neighboringBlockFilm.classList.add("on_buttonText")
+        setTimeout(()=>{
+            neighboringBlockFilm.classList.remove("on")
+            mainBlockFilm.classList.remove("minimumLength")
+            mainBlockFilm.classList.remove("minimumLength_buttonText")
+            neighboringBlockFilm.classList.remove("on_buttonText")
+        },1100)
+
+    }
     
 })
 
