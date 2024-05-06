@@ -58,28 +58,28 @@ document.querySelector("#add")?.addEventListener("click", (e)=>{
 
         const neighboringBlockFilm = document.querySelector(`[data-id="${+(mainBlockFilm.dataset.id as string) + num_id}"]`) as HTMLElement
         console.log(neighboringBlockFilm.dataset.id);
-        neighboringBlockFilm.classList.add("off")
-        mainBlockFilm.classList.add("maximumLength")
+        neighboringBlockFilm.classList.add("off_PC")
+        mainBlockFilm.classList.add("maximumLength_PC")
         setTimeout(()=>{
-            mainBlockFilm.classList.add("maximumLength_buttonText")
+            mainBlockFilm.classList.add("maximumLength_buttonText_PC")
         },1100)
     }
     if(target.className == "GLASSlOLLIPOPS_button collapse"){
         
         const neighboringBlockFilm = document.querySelector(`[data-id="${+(mainBlockFilm.dataset.id as string) + num_id}"]`) as HTMLElement
         console.log(neighboringBlockFilm.dataset.id);
-        mainBlockFilm.classList.remove("maximumLength_buttonText")
-        mainBlockFilm.classList.add("minimumLength_buttonText")
-        mainBlockFilm.classList.remove("maximumLength")
-        mainBlockFilm.classList.add("minimumLength")
-        neighboringBlockFilm.classList.remove("off")
-        neighboringBlockFilm.classList.add("on")
-        neighboringBlockFilm.classList.add("on_buttonText")
+        mainBlockFilm.classList.remove("maximumLength_buttonText_PC")
+        mainBlockFilm.classList.add("minimumLength_buttonText_PC")
+        mainBlockFilm.classList.remove("maximumLength_PC")
+        mainBlockFilm.classList.add("minimumLength_PC")
+        neighboringBlockFilm.classList.remove("off_PC")
+        neighboringBlockFilm.classList.add("on_PC")
+        neighboringBlockFilm.classList.add("on_buttonText_PC")
         setTimeout(()=>{
-            neighboringBlockFilm.classList.remove("on")
-            mainBlockFilm.classList.remove("minimumLength")
-            mainBlockFilm.classList.remove("minimumLength_buttonText")
-            neighboringBlockFilm.classList.remove("on_buttonText")
+            neighboringBlockFilm.classList.remove("on_PC")
+            mainBlockFilm.classList.remove("minimumLength_PC")
+            mainBlockFilm.classList.remove("minimumLength_buttonText_PC")
+            neighboringBlockFilm.classList.remove("on_buttonText_PC")
         },1100)
 
     }

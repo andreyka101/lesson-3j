@@ -58,7 +58,7 @@
         justify-content: space-evenly;
     }
 }
-.maximumLength_buttonText {
+.maximumLength_buttonText_PC {
     .longText {
         display: inline;
     }
@@ -72,7 +72,7 @@
         display: none;
     }
 }
-.minimumLength_buttonText {
+.minimumLength_buttonText_PC {
     .longText {
         display: none;
     }
@@ -86,12 +86,12 @@
         display: flex;
     }
 }
-.maximumLength {
+.maximumLength_PC {
     width: 818px;
-    animation: maximumLength_anime 1s 1;
+    animation: maximumLength_anime_PC 1s 1;
 }
 
-@keyframes maximumLength_anime {
+@keyframes maximumLength_anime_PC {
     from {
         width: 364px;
     }
@@ -99,22 +99,22 @@
         width: 818px;
     }
 }
-.minimumLength {
+.minimumLength_PC {
     width: 364px;
-    animation: minimumLength_anime 1s 1;
+    animation: minimumLength_anime_PC 1s 1;
 }
 
-@keyframes minimumLength_anime {
+@keyframes minimumLength_anime_PC {
     from {
-        width: 818px;
+            width: 818px;
     }
     to {
         width: 364px;
     }
 }
-.off {
+.off_PC {
     // display: none;
-    animation: off_anime 1s 1;
+    animation: off_anime_PC 1s 1;
     // display: none;
     width: 0px;
     display: none;
@@ -132,7 +132,7 @@
     }
 }
 
-@keyframes off_anime {
+@keyframes off_anime_PC {
     from {
         width: 364px;
         display: block;
@@ -142,7 +142,7 @@
         padding: 0;
     }
 }
-.on_buttonText {
+.on_buttonText_PC {
     div {
         display: none;
     }
@@ -156,9 +156,9 @@
         display: none;
     }
 }
-.on {
+.on_PC {
     // display: none;
-    animation: on_anime 1s 1;
+    animation: on_anime_PC 1s 1;
     // display: none;
     width: 0px;
     display: block;
@@ -177,7 +177,7 @@
     // }
 }
 
-@keyframes on_anime {
+@keyframes on_anime_PC {
     from {
         display: block;
         width: 0px;
