@@ -93,6 +93,9 @@
     width: calc(var(--MAX_width_BlockFilm) - 106px);
     animation: maximumLength_anime_PC 1s 1;
 }
+.maximumLength_Phone{
+    width: calc(var(--MAX_width_BlockFilm) - 106px);
+}
 
 @keyframes maximumLength_anime_PC {
     from {
@@ -105,6 +108,10 @@
 .minimumLength_PC {
     width: 364px;
     animation: minimumLength_anime_PC 1s 1;
+}
+.minimumLength_Phone {
+    width: 364px;
+    // animation: minimumLength_anime_PC 1s 1;
 }
 
 @keyframes minimumLength_anime_PC {
@@ -203,9 +210,18 @@
     }
 }
 @media screen and (max-width: 650px) {
-    .maximumLength_PC {
+    .maximumLength_Phone {
         .film_imgSpan{
             flex-direction: column;
+        }
+    }
+}
+@media screen and (max-width: 530px) {
+    .A2ButtonBlock{
+        flex-direction: column;
+        align-items: center;
+        button{
+            margin: 12px 0;
         }
     }
 }
@@ -230,11 +246,5 @@
         .film_imgSpan {
             flex-direction: column;
         }
-    }
-}
-@media screen and (max-width: 425px) {
-    .A2ButtonBlock{
-        flex-direction: column;
-        align-items: center;
     }
 }

@@ -60,11 +60,17 @@ document.querySelector("#add")?.addEventListener("click", (e)=>{
         console.log(neighboringBlockFilm.dataset.id);
         if(window.innerWidth>907){
             neighboringBlockFilm.classList.add("off_PC")
+            mainBlockFilm.classList.add("maximumLength_PC")
+            setTimeout(()=>{
+                mainBlockFilm.classList.add("maximumLength_buttonText_PC")
+            },1100)
         }
-        mainBlockFilm.classList.add("maximumLength_PC")
-        setTimeout(()=>{
-            mainBlockFilm.classList.add("maximumLength_buttonText_PC")
-        },1100)
+        else{
+            mainBlockFilm.classList.add("maximumLength_Phone")
+            // setTimeout(()=>{
+                mainBlockFilm.classList.add("maximumLength_buttonText_PC")
+            // },1100)
+        }
     }
     if(target.className == "GLASSlOLLIPOPS_button collapse"){
         
@@ -72,33 +78,49 @@ document.querySelector("#add")?.addEventListener("click", (e)=>{
         console.log(neighboringBlockFilm.dataset.id);
         mainBlockFilm.classList.remove("maximumLength_buttonText_PC")
         mainBlockFilm.classList.add("minimumLength_buttonText_PC")
+        if(window.innerWidth>907){
         mainBlockFilm.classList.remove("maximumLength_PC")
         mainBlockFilm.classList.add("minimumLength_PC")
-        if(window.innerWidth>907){
-
-            neighboringBlockFilm.classList.remove("off_PC")
-            neighboringBlockFilm.classList.add("on_PC")
+        
+        
+        neighboringBlockFilm.classList.remove("off_PC")
+        neighboringBlockFilm.classList.add("on_PC")
             neighboringBlockFilm.classList.add("on_buttonText_PC")
-        }
-        setTimeout(()=>{
-            if(window.innerWidth>907){
-                neighboringBlockFilm.classList.remove("on_PC")
-                neighboringBlockFilm.classList.remove("on_buttonText_PC")
+            setTimeout(()=>{
+                // if(window.innerWidth>907){
+                    neighboringBlockFilm.classList.remove("on_PC")
+                    neighboringBlockFilm.classList.remove("on_buttonText_PC")
+                    // }
+                    mainBlockFilm.classList.remove("minimumLength_PC")
+                    mainBlockFilm.classList.remove("minimumLength_buttonText_PC")
+                },1100)
             }
-            mainBlockFilm.classList.remove("minimumLength_PC")
-            mainBlockFilm.classList.remove("minimumLength_buttonText_PC")
-        },1100)
-
+            else{
+                console.log("ellle");
+                
+                mainBlockFilm.classList.remove("maximumLength_Phone")
+                mainBlockFilm.classList.add("minimumLength_Phone")
+            // setTimeout(()=>{
+                mainBlockFilm.classList.remove("minimumLength_Phone")
+                mainBlockFilm.classList.remove("minimumLength_buttonText_PC")
+            // },1100)
+        }
+            
 
     }
     
 })
 
 console.log(window.innerWidth);
-document.querySelector('html')?.style.setProperty('--MAX_width_BlockFilm', window.innerWidth +'px')
+if(window.innerWidth <908){
+    document.querySelector('html')?.style.setProperty('--MAX_width_BlockFilm', window.innerWidth +'px')
+}
+else{
+    document.querySelector('html')?.style.setProperty('--MAX_width_BlockFilm', 924 +'px')
+
+}
 if(window.innerWidth < 481){
     document.querySelector('html')?.style.setProperty('--MAX_width_BlockFilm', window.innerWidth + 40 +'px')
-
 }
 // <908
 
