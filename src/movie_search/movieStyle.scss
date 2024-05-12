@@ -194,9 +194,16 @@
     }
 }
 
+@media screen and (max-width: 700px) {
+    .GLASSlOLLIPOPS_button{
+        padding: 10px 16px ;
+    }
+    .GLASSlOLLIPOPS_a{
+        padding: 10px 16px ;
+    }
+}
 @media screen and (max-width: 650px) {
     .maximumLength_PC {
-
         .film_imgSpan{
             flex-direction: column;
         }
