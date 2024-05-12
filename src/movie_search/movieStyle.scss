@@ -1,3 +1,6 @@
+:root{
+    --MAX_width_BlockFilm: 818px;
+}
 .GLASSlOLLIPOPS_div {
     display: inline-block;
     width: auto;
@@ -87,7 +90,7 @@
     }
 }
 .maximumLength_PC {
-    width: 818px;
+    width: calc(var(--MAX_width_BlockFilm) - 106px);
     animation: maximumLength_anime_PC 1s 1;
 }
 
@@ -96,7 +99,7 @@
         width: 364px;
     }
     to {
-        width: 818px;
+        width: calc(var(--MAX_width_BlockFilm) - 106px);
     }
 }
 .minimumLength_PC {
@@ -138,8 +141,9 @@
         display: block;
     }
     to {
-        width: 0px;
         padding: 0;
+        margin: 0;
+        width: 0px;
     }
 }
 .on_buttonText_PC {
@@ -182,6 +186,7 @@
         display: block;
         width: 0px;
         padding: 0px;
+        margin: 0;
     }
     to {
         width: 364px;
@@ -189,6 +194,28 @@
     }
 }
 
+@media screen and (max-width: 650px) {
+    .maximumLength_PC {
+
+        .film_imgSpan{
+            flex-direction: column;
+        }
+    }
+}
+@media screen and (max-width: 480px) {
+    // body{
+    //     margin: 0;
+    // }
+    // #add{
+    //     padding: 0;
+    //     margin: 0;
+    // }
+    .maximumLength_PC {
+        margin: 20px 0;
+        // .film_imgSpan{
+        // }
+    }
+}
 @media screen and (max-width: 460px) {
     .mainBlockFilm {
         width: 100%;
@@ -196,5 +223,11 @@
         .film_imgSpan {
             flex-direction: column;
         }
+    }
+}
+@media screen and (max-width: 425px) {
+    .A2ButtonBlock{
+        flex-direction: column;
+        align-items: center;
     }
 }

@@ -58,7 +58,9 @@ document.querySelector("#add")?.addEventListener("click", (e)=>{
 
         const neighboringBlockFilm = document.querySelector(`[data-id="${+(mainBlockFilm.dataset.id as string) + num_id}"]`) as HTMLElement
         console.log(neighboringBlockFilm.dataset.id);
-        neighboringBlockFilm.classList.add("off_PC")
+        if(window.innerWidth>907){
+            neighboringBlockFilm.classList.add("off_PC")
+        }
         mainBlockFilm.classList.add("maximumLength_PC")
         setTimeout(()=>{
             mainBlockFilm.classList.add("maximumLength_buttonText_PC")
@@ -72,19 +74,34 @@ document.querySelector("#add")?.addEventListener("click", (e)=>{
         mainBlockFilm.classList.add("minimumLength_buttonText_PC")
         mainBlockFilm.classList.remove("maximumLength_PC")
         mainBlockFilm.classList.add("minimumLength_PC")
-        neighboringBlockFilm.classList.remove("off_PC")
-        neighboringBlockFilm.classList.add("on_PC")
-        neighboringBlockFilm.classList.add("on_buttonText_PC")
+        if(window.innerWidth>907){
+
+            neighboringBlockFilm.classList.remove("off_PC")
+            neighboringBlockFilm.classList.add("on_PC")
+            neighboringBlockFilm.classList.add("on_buttonText_PC")
+        }
         setTimeout(()=>{
-            neighboringBlockFilm.classList.remove("on_PC")
+            if(window.innerWidth>907){
+                neighboringBlockFilm.classList.remove("on_PC")
+                neighboringBlockFilm.classList.remove("on_buttonText_PC")
+            }
             mainBlockFilm.classList.remove("minimumLength_PC")
             mainBlockFilm.classList.remove("minimumLength_buttonText_PC")
-            neighboringBlockFilm.classList.remove("on_buttonText_PC")
         },1100)
+
 
     }
     
 })
+
+console.log(window.innerWidth);
+document.querySelector('html')?.style.setProperty('--MAX_width_BlockFilm', window.innerWidth +'px')
+if(window.innerWidth < 481){
+    document.querySelector('html')?.style.setProperty('--MAX_width_BlockFilm', window.innerWidth + 40 +'px')
+
+}
+// <908
+
 
 
 
