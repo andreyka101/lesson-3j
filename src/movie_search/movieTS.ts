@@ -41,6 +41,13 @@ const el = document.querySelector(`[data-id="${1}"]`)
 
 
 
+
+
+const search_button = document.querySelector("#search button") as HTMLButtonElement
+const search_input = document.querySelector("#search input") as HTMLInputElement
+const search_select = document.querySelector("#search select") as HTMLSelectElement
+const add_block_film = document.querySelector("#add") as HTMLDivElement
+
 document.querySelector("#add")?.addEventListener("click", (e)=>{
 
     const target = e.target as HTMLElement
@@ -111,6 +118,66 @@ document.querySelector("#add")?.addEventListener("click", (e)=>{
     
 })
 
+
+search_button?.addEventListener("click", async ()=>{
+    let response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${search_input.value}&page=1&type=${search_select.value}`)
+    let commits = await response.json()
+    let response2 = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${search_input.value}&page=2&type=${search_select.value}`)
+    let commits2 = await response2.json()
+    let arrFilms = commits.Search.concat(commits2.Search) as any
+    console.log(arrFilms)
+    let text_output = ""
+    for(let index = 0 ; index!= arrFilms.length;index+=2){
+        console.log(arrFilms[index]);
+        text_output += `<div class="twoFilms" style="display: flex; justify-content: center; flex-wrap: wrap;">`
+        for(let two_i=0;two_i != 2;two_i++){
+            text_output += `<div class="GLASSlOLLIPOPS_div mainBlockFilm" data-id="${index+two_i}">
+            <div class="film_imgSpan">
+                <img src="https://m.media-amazon.com/images/M/MV5BNzNlZTZjMDctZjYwNi00NzljLWIwN2QtZWZmYmJiYzQ0MTk2XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
+                    alt="">
+                <div>
+                    <span>
+                        название фильма
+                    </span>
+                    <span>
+                        1999
+                    </span>
+                    <span class="longText">
+                        Note: animation-range-start is included in the animation shorthand as a reset-only value.
+                        This means that including animation resets a previously-declared animation-range-start Note:
+                        animation-range-start is included in the animation shorthand as a reset-only value. This
+                        means that including animation resets a previously-declared animation-range-start value to
+                        normal, but a specific value cannot be set via animation. When creating CSS scroll-driven
+                        animations, you need to declare animation-range-start after declaring any animation
+                        shorthand for it to take effect.Note: animation-range-start is included in the animation
+                        shorthand as a reset-only value. This means that including animation resets a
+                        previously-declared animation-range-start value to normal, but a specific value cannot be
+                        set via animation. When creating CSS scroll-driven animations, you need to declare
+                        animation-range-start after declaring any animation shorthand for it to take effect.
+                    </span>
+                    <span class="shortText">
+                        Note: animation-range-start is included in the animation shorthand as a reset-only value.
+                        This means that including animation resets a previously-declared animation-range-start ...
+                    </span>
+                </div>
+            </div>
+            <div class="A2ButtonBlock">
+                <a href="" class="GLASSlOLLIPOPS_a">поиск на РУС.</a>
+                <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
+                <a href="" class="GLASSlOLLIPOPS_a">поиск на ENG.</a>
+            </div>
+            <div class="buttonBlock">
+                <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
+            </div>
+        </div>`
+        }
+        text_output += `</div>`
+    }
+    console.log(text_output);
+    add_block_film.innerHTML += text_output
+})
+
+
 console.log(window.innerWidth);
 if(window.innerWidth <908){
     document.querySelector('html')?.style.setProperty('--MAX_width_BlockFilm', window.innerWidth +'px')
@@ -122,7 +189,6 @@ else{
 if(window.innerWidth < 481){
     document.querySelector('html')?.style.setProperty('--MAX_width_BlockFilm', window.innerWidth + 40 +'px')
 }
-// <908
 
 
 
