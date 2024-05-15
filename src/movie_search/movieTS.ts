@@ -47,6 +47,9 @@ const search_button = document.querySelector("#search button") as HTMLButtonElem
 const search_input = document.querySelector("#search input") as HTMLInputElement
 const search_select = document.querySelector("#search select") as HTMLSelectElement
 const add_block_film = document.querySelector("#add") as HTMLDivElement
+let target: any
+let page_Global = 3
+let id_Global = 15
 
 document.querySelector("#add")?.addEventListener("click", (e)=>{
 
@@ -120,62 +123,206 @@ document.querySelector("#add")?.addEventListener("click", (e)=>{
 
 
 search_button?.addEventListener("click", async ()=>{
+    add_block_film.innerHTML = ""
     let response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${search_input.value}&page=1&type=${search_select.value}`)
     let commits = await response.json()
     let response2 = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${search_input.value}&page=2&type=${search_select.value}`)
     let commits2 = await response2.json()
-    let arrFilms = commits.Search.concat(commits2.Search) as any
-    console.log(arrFilms)
-    let text_output = ""
-    for(let index = 0 ; index!= arrFilms.length;index+=2){
-        console.log(arrFilms[index]);
-        text_output += `<div class="twoFilms" style="display: flex; justify-content: center; flex-wrap: wrap;">`
-        for(let two_i=0;two_i != 2;two_i++){
-            text_output += `<div class="GLASSlOLLIPOPS_div mainBlockFilm" data-id="${index+two_i}">
-            <div class="film_imgSpan">
-                <img src="https://m.media-amazon.com/images/M/MV5BNzNlZTZjMDctZjYwNi00NzljLWIwN2QtZWZmYmJiYzQ0MTk2XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
-                    alt="">
-                <div>
-                    <span>
-                        название фильма
-                    </span>
-                    <span>
-                        1999
-                    </span>
-                    <span class="longText">
-                        Note: animation-range-start is included in the animation shorthand as a reset-only value.
-                        This means that including animation resets a previously-declared animation-range-start Note:
-                        animation-range-start is included in the animation shorthand as a reset-only value. This
-                        means that including animation resets a previously-declared animation-range-start value to
-                        normal, but a specific value cannot be set via animation. When creating CSS scroll-driven
-                        animations, you need to declare animation-range-start after declaring any animation
-                        shorthand for it to take effect.Note: animation-range-start is included in the animation
-                        shorthand as a reset-only value. This means that including animation resets a
-                        previously-declared animation-range-start value to normal, but a specific value cannot be
-                        set via animation. When creating CSS scroll-driven animations, you need to declare
-                        animation-range-start after declaring any animation shorthand for it to take effect.
-                    </span>
-                    <span class="shortText">
-                        Note: animation-range-start is included in the animation shorthand as a reset-only value.
-                        This means that including animation resets a previously-declared animation-range-start ...
-                    </span>
+    console.log(commits);
+    console.log(commits2);
+    if(commits.Response){
+        let arrFilms = commits.Search.concat(commits2.Search) as any
+        console.log(arrFilms)
+        let text_output = ""
+        for(let index = 0 ; index!= arrFilms.length;index+=2){
+            console.log(arrFilms[index]);
+            text_output = `<div class="twoFilms" style="display: flex; justify-content: center; flex-wrap: wrap;">`
+            for(let two_i=0;two_i != 2;two_i++){
+                response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${arrFilms[index+two_i].imdbID}&plot=full`)
+                commits = await response.json()
+                let PlotFull = commits.Plot
+
+                text_output += `<div class="GLASSlOLLIPOPS_div mainBlockFilm" data-id="${index+two_i}">
+                <div class="film_imgSpan">
+                    <img src="${arrFilms[index+two_i].Poster}"
+                        alt="">
+                    <div>
+                        <span>
+                        ${arrFilms[index+two_i].Title}
+                        </span>
+                        <span>
+                        ${arrFilms[index+two_i].Year}
+                        </span>
+                        <span class="longText">
+                            ${PlotFull}
+                        </span>
+                        <span class="shortText">
+                             ${PlotFull.substring(0, 150) + "..."}
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <div class="A2ButtonBlock">
-                <a href="" class="GLASSlOLLIPOPS_a">поиск на РУС.</a>
-                <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
-                <a href="" class="GLASSlOLLIPOPS_a">поиск на ENG.</a>
-            </div>
-            <div class="buttonBlock">
-                <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
-            </div>
-        </div>`
+                <div class="A2ButtonBlock">
+                    <a href="" class="GLASSlOLLIPOPS_a">поиск на РУС.</a>
+                    <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
+                    <a href="" class="GLASSlOLLIPOPS_a">поиск на ENG.</a>
+                </div>
+                <div class="buttonBlock">
+                    <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
+                </div>
+            </div>`
+            }
+            text_output += `</div>`
+            add_block_film.innerHTML += text_output
         }
-        text_output += `</div>`
-    }
-    console.log(text_output);
-    add_block_film.innerHTML += text_output
+        // add_block_film.innerHTML += '<div id="gig">gig</div>'
+        // console.log(text_output);
+        target = document.querySelector(`[data-id="${id_Global}"]`) as any
+        
+        
+        const body = document.querySelector('body')
+        const callback = (entries: any, observer: any) => {
+            entries.forEach(async (entry: any) => {
+                if (entry.isIntersecting) {
+                    console.log("iiggggg");
+                    let response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${search_input.value}&page=${page_Global}&type=${search_select.value}`)
+                    let commits = await response.json()
+                    let arrFilms = commits.Search
+                    if(commits.Response){
+                        console.log(arrFilms)
+                        let text_output = ""
+                        for(let index = 0 ; index!= arrFilms.length;index+=2){
+                            console.log(arrFilms[index]);
+                            text_output = `<div class="twoFilms" style="display: flex; justify-content: center; flex-wrap: wrap;">`
+                            for(let two_i=0;two_i != 2;two_i++){
+                                response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${arrFilms[index+two_i].imdbID}&plot=full`)
+                                commits = await response.json()
+                                let PlotFull = commits.Plot
+                
+                                text_output += `<div class="GLASSlOLLIPOPS_div mainBlockFilm" data-id="${index+two_i}">
+                                <div class="film_imgSpan">
+                                <img src="${arrFilms[index+two_i].Poster}"
+                                        alt="">
+                                    <div>
+                                        <span>
+                                        ${arrFilms[index+two_i].Title}
+                                        </span>
+                                        <span>
+                                        ${arrFilms[index+two_i].Year}
+                                        </span>
+                                        <span class="longText">
+                                            ${PlotFull}
+                                        </span>
+                                        <span class="shortText">
+                                             ${PlotFull.substring(0, 150) + "..."}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="A2ButtonBlock">
+                                    <a href="" class="GLASSlOLLIPOPS_a">поиск на РУС.</a>
+                                    <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
+                                    <a href="" class="GLASSlOLLIPOPS_a">поиск на ENG.</a>
+                                </div>
+                                <div class="buttonBlock">
+                                    <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
+                                </div>
+                            </div>`
+                            }
+                            text_output += `</div>`
+                            add_block_film.innerHTML += text_output
+                        }
+                        id_Global += 10
+                        page_Global +=1
+                        target = document.querySelector(`[data-id="${id_Global}"]`) as any
+                    }
+                }
+            })
+        }
+        const options = {
+            // root: по умолчанию window, но можно задать любой элемент-контейнер
+            rootMargin: '0px',
+            threshold: 0,
+        }
+        let observer = new IntersectionObserver(callback, options)
+
+        if (target) observer.observe(target)
+        console.log(target)
+}
 })
+
+
+
+
+// const body = document.querySelector('body')
+// const callback = (entries :any, observer:any) => {
+//       entries.forEach((entry:any) => {
+//         if (entry.isIntersecting) {
+//           console.log('Элемент пересёк границу области и всё ещё соприкасается с ней!')
+//         //   document.querySelector("#pip").className = "colorJS"
+//         }
+//       })
+//     }
+//     const options = {
+//       // root: по умолчанию window, но можно задать любой элемент-контейнер
+//       rootMargin: '0px',
+//       threshold: 0,
+//     }
+//     let observer = new IntersectionObserver(callback, options)
+    
+//     const target = document.querySelector(`#gig`) as HTMLElement
+//     if(target) observer.observe(target)
+    
+//     // ggggggggggggggggggggggggggggggggggggggg
+    
+//     const callback2 = (entries:any, observer:any) => {
+//       entries.forEach((entry:any) => {
+//         if (entry.isIntersecting) {
+//           console.log('ggggggg')
+//         //   document.querySelector("#pip").className = "colorCSS"
+//         }
+//       })
+//     }
+//     const options2 = {
+//       // root: по умолчанию window, но можно задать любой элемент-контейнер
+//       rootMargin: '0px 0px 100px 0px',
+//       threshold: 0,
+//     }
+//     observer = new IntersectionObserver(callback2, options2)
+
+
+
+
+
+
+
+
+
+
+// target = document.querySelector(`#gig`) as any
+
+        // const body = document.querySelector('body')
+        // const callback = (entries: any, observer: any) => {
+        //     entries.forEach(async (entry: any) => {
+        //         if (entry.isIntersecting) {
+        //             console.log("iiggggg");
+                    
+
+        //         }
+        //     })
+        // }
+        // const options = {
+        //     // root: по умолчанию window, но можно задать любой элемент-контейнер
+        //     rootMargin: '0px',
+        //     threshold: 0,
+        // }
+        // let observer = new IntersectionObserver(callback, options)
+
+        // if (target) observer.observe(target)
+        // console.log(target)
+
+
+
+
+
 
 
 console.log(window.innerWidth);
@@ -436,132 +583,132 @@ if(window.innerWidth < 481){
 
 
 
-//         // let target = document.querySelector('#m' + m_numControl) as any
+        // let target = document.querySelector('#m' + m_numControl) as any
 
-//         // const body = document.querySelector('body')
-//         // const callback = (entries: any, observer: any) => {
-//         //     entries.forEach(async (entry: any) => {
-//         //         if (entry.isIntersecting) {
-
-
-//         //             response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${input.value}&page=${page}&type=${select.value}`)
-//         //             commits = await response.json()
-//         //             console.log(commits.Search)
-//         //             search = commits.Search
+        // const body = document.querySelector('body')
+        // const callback = (entries: any, observer: any) => {
+        //     entries.forEach(async (entry: any) => {
+        //         if (entry.isIntersecting) {
 
 
-
-//         //             for (let i = 0; i != 10; i += 2) {
-//         //                 let idFilm = search[i].imdbID
-//         //                 response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${idFilm}&plot=full`)
-//         //                 commits = await response.json()
-//         //                 let PlotFull = commits.Plot
-//         //                 idFilm = search[i + 1].imdbID
-//         //                 response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${idFilm}&plot=full`)
-//         //                 commits = await response.json()
-//         //                 let PlotFull2 = commits.Plot
+        //             response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${input.value}&page=${page}&type=${select.value}`)
+        //             commits = await response.json()
+        //             console.log(commits.Search)
+        //             search = commits.Search
 
 
-//         //                 add.innerHTML += `<div style="display: flex; justify-content: center; flex-wrap: wrap;">
-//         // <div class="GLASSlOLLIPOPS_div mainBlockFilm" id="m${m_num - 1}" style="">
-//         //     <div class="film_imgSpan">
-//         //     <img src="${search[i].Poster}"
-//         //     alt="">
-//         //     <div>
-//         //     <span>
-//         //     ${search[i].Title}
-//         //     </span>
-//         //     <span>
-//         //     ${search[i].Year}
-//         //     </span>
-//         //     <span class="longText" style="display: none;">
-//         //     ${PlotFull}
-//         //     </span>
-//         //     <span class="shortText">
-//         //     ${PlotFull.substring(0, 150) + "..."}
-//         //     </span>
-//         //     </div>
-//         //     </div>
-//         //     <div class="A2ButtonBlock" style="display: none;">
-//         //     <a href="https://yandex.ru/search/?text=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&lr=239&clid=2411726" class="GLASSlOLLIPOPS_a" target="_blank">поиск на яндекс.</a>
-//         //     <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
-//         //     <a href="https://www.google.com/search?q=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&sca_esv=591540615&sxsrf=AM9HkKnSsl41ffnnpJUkglW8H5wAPZEcPA%3A1702755291217&ei=2_t9Zf3rDKqEwPAPxq6YUA&ved=0ahUKEwi9xZbi2ZSDAxUqAhAIHUYXBgoQ4dUDCBA&oq=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&gs_lp=Egxnd3Mtd2l6LXNlcnAiMtGB0LzQvtGC0YDQtdGC0Ywg0YTQuNC70YzQvCA1NTUg0LHQtdGB0L_Qu9Cw0YLQvdC-SOweUIkGWOsKcAF4AZABAZgB9QOgAY4HqgEHMC4zLjUtMbgBDMgBAPgBAcICChAAGEcY1gQYsAPCAgYQABgIGB7iAwQYACBBiAYBkAYH&sclient=gws-wiz-serp" target="_blank" class="GLASSlOLLIPOPS_a">поиск на google.</a>
-//         //     </div>
-//         //     <div class="buttonBlock" style="">
-//         //         <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
-//         //         </div>
-//         //         </div>
-//         //         <div class="GLASSlOLLIPOPS_div mainBlockFilm" id="m${m_num}" style="">
-//         //     <div class="film_imgSpan">
-//         //     <img src="${search[i + 1].Poster}"
-//         //     alt="">
-//         //     <div>
-//         //     <span>
-//         //         ${search[i + 1].Title}
-//         //         </span>
-//         //     <span>
-//         //     ${search[i + 1].Year}
-//         //     </span>
-//         //     <span class="longText" style="display: none;">
-//         //     ${PlotFull2}
-//         //     </span>
-//         //     <span class="shortText">
-//         //     ${PlotFull2.substring(0, 150) + "..."}
-//         //     </span>
-//         //     </div>
-//         //     </div>
-//         //     <div class="A2ButtonBlock" style="display: none;">
-//         //     <a href="https://yandex.ru/search/?text=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&lr=239&clid=2411726" class="GLASSlOLLIPOPS_a" target="_blank">поиск на яндекс.</a>
-//         //     <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
-//         //     <a href="https://www.google.com/search?q=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&sca_esv=591540615&sxsrf=AM9HkKnSsl41ffnnpJUkglW8H5wAPZEcPA%3A1702755291217&ei=2_t9Zf3rDKqEwPAPxq6YUA&ved=0ahUKEwi9xZbi2ZSDAxUqAhAIHUYXBgoQ4dUDCBA&oq=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&gs_lp=Egxnd3Mtd2l6LXNlcnAiMtGB0LzQvtGC0YDQtdGC0Ywg0YTQuNC70YzQvCA1NTUg0LHQtdGB0L_Qu9Cw0YLQvdC-SOweUIkGWOsKcAF4AZABAZgB9QOgAY4HqgEHMC4zLjUtMbgBDMgBAPgBAcICChAAGEcY1gQYsAPCAgYQABgIGB7iAwQYACBBiAYBkAYH&sclient=gws-wiz-serp" target="_blank" class="GLASSlOLLIPOPS_a">поиск на google.</a>
-//         //     </div>
-//         //     <div class="buttonBlock" style="">
-//         //         <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
-//         //         </div>
-//         //         </div>
-//         //         </div>`
-//         //                 m_num += 2
-//         //                 console.log(i);
-//         //             }
+
+        //             for (let i = 0; i != 10; i += 2) {
+        //                 let idFilm = search[i].imdbID
+        //                 response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${idFilm}&plot=full`)
+        //                 commits = await response.json()
+        //                 let PlotFull = commits.Plot
+        //                 idFilm = search[i + 1].imdbID
+        //                 response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${idFilm}&plot=full`)
+        //                 commits = await response.json()
+        //                 let PlotFull2 = commits.Plot
 
 
-//         //             page++
-//         //             m_numControl += 10
-//         //             target = document.querySelector('#m' + m_numControl) as any
-//         //             if (target) observer.observe(target)
-//         //             console.log('Элемент пересёк границу области и всё ещё соприкасается с ней!')
-//         //             console.log(target)
+        //                 add.innerHTML += `<div style="display: flex; justify-content: center; flex-wrap: wrap;">
+        // <div class="GLASSlOLLIPOPS_div mainBlockFilm" id="m${m_num - 1}" style="">
+        //     <div class="film_imgSpan">
+        //     <img src="${search[i].Poster}"
+        //     alt="">
+        //     <div>
+        //     <span>
+        //     ${search[i].Title}
+        //     </span>
+        //     <span>
+        //     ${search[i].Year}
+        //     </span>
+        //     <span class="longText" style="display: none;">
+        //     ${PlotFull}
+        //     </span>
+        //     <span class="shortText">
+        //     ${PlotFull.substring(0, 150) + "..."}
+        //     </span>
+        //     </div>
+        //     </div>
+        //     <div class="A2ButtonBlock" style="display: none;">
+        //     <a href="https://yandex.ru/search/?text=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&lr=239&clid=2411726" class="GLASSlOLLIPOPS_a" target="_blank">поиск на яндекс.</a>
+        //     <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
+        //     <a href="https://www.google.com/search?q=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&sca_esv=591540615&sxsrf=AM9HkKnSsl41ffnnpJUkglW8H5wAPZEcPA%3A1702755291217&ei=2_t9Zf3rDKqEwPAPxq6YUA&ved=0ahUKEwi9xZbi2ZSDAxUqAhAIHUYXBgoQ4dUDCBA&oq=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i].Title}+${search[i].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&gs_lp=Egxnd3Mtd2l6LXNlcnAiMtGB0LzQvtGC0YDQtdGC0Ywg0YTQuNC70YzQvCA1NTUg0LHQtdGB0L_Qu9Cw0YLQvdC-SOweUIkGWOsKcAF4AZABAZgB9QOgAY4HqgEHMC4zLjUtMbgBDMgBAPgBAcICChAAGEcY1gQYsAPCAgYQABgIGB7iAwQYACBBiAYBkAYH&sclient=gws-wiz-serp" target="_blank" class="GLASSlOLLIPOPS_a">поиск на google.</a>
+        //     </div>
+        //     <div class="buttonBlock" style="">
+        //         <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
+        //         </div>
+        //         </div>
+        //         <div class="GLASSlOLLIPOPS_div mainBlockFilm" id="m${m_num}" style="">
+        //     <div class="film_imgSpan">
+        //     <img src="${search[i + 1].Poster}"
+        //     alt="">
+        //     <div>
+        //     <span>
+        //         ${search[i + 1].Title}
+        //         </span>
+        //     <span>
+        //     ${search[i + 1].Year}
+        //     </span>
+        //     <span class="longText" style="display: none;">
+        //     ${PlotFull2}
+        //     </span>
+        //     <span class="shortText">
+        //     ${PlotFull2.substring(0, 150) + "..."}
+        //     </span>
+        //     </div>
+        //     </div>
+        //     <div class="A2ButtonBlock" style="display: none;">
+        //     <a href="https://yandex.ru/search/?text=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&lr=239&clid=2411726" class="GLASSlOLLIPOPS_a" target="_blank">поиск на яндекс.</a>
+        //     <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
+        //     <a href="https://www.google.com/search?q=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&sca_esv=591540615&sxsrf=AM9HkKnSsl41ffnnpJUkglW8H5wAPZEcPA%3A1702755291217&ei=2_t9Zf3rDKqEwPAPxq6YUA&ved=0ahUKEwi9xZbi2ZSDAxUqAhAIHUYXBgoQ4dUDCBA&oq=%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C+%D1%84%D0%B8%D0%BB%D1%8C%D0%BC+${search[i + 1].Title}+${search[i + 1].Year}+%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%BE&gs_lp=Egxnd3Mtd2l6LXNlcnAiMtGB0LzQvtGC0YDQtdGC0Ywg0YTQuNC70YzQvCA1NTUg0LHQtdGB0L_Qu9Cw0YLQvdC-SOweUIkGWOsKcAF4AZABAZgB9QOgAY4HqgEHMC4zLjUtMbgBDMgBAPgBAcICChAAGEcY1gQYsAPCAgYQABgIGB7iAwQYACBBiAYBkAYH&sclient=gws-wiz-serp" target="_blank" class="GLASSlOLLIPOPS_a">поиск на google.</a>
+        //     </div>
+        //     <div class="buttonBlock" style="">
+        //         <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
+        //         </div>
+        //         </div>
+        //         </div>`
+        //                 m_num += 2
+        //                 console.log(i);
+        //             }
 
-//         //         }
-//         //     })
-//         // }
-//         // const options = {
-//         //     // root: по умолчанию window, но можно задать любой элемент-контейнер
-//         //     rootMargin: '0px',
-//         //     threshold: 0,
-//         // }
-//         // let observer = new IntersectionObserver(callback, options)
 
-//         // if (target) observer.observe(target)
-//         // console.log(target)
+        //             page++
+        //             m_numControl += 10
+        //             target = document.querySelector('#m' + m_numControl) as any
+        //             if (target) observer.observe(target)
+        //             console.log('Элемент пересёк границу области и всё ещё соприкасается с ней!')
+        //             console.log(target)
+
+        //         }
+        //     })
+        // }
+        // const options = {
+        //     // root: по умолчанию window, но можно задать любой элемент-контейнер
+        //     rootMargin: '0px',
+        //     threshold: 0,
+        // }
+        // let observer = new IntersectionObserver(callback, options)
+
+        // if (target) observer.observe(target)
+        // console.log(target)
 
 
  
-//         // let response = await fetch("https://www.omdbapi.com/?&apikey=928973f2&s=max")
-//         // let commits = await response.json()
+        // let response = await fetch("https://www.omdbapi.com/?&apikey=928973f2&s=max")
+        // let commits = await response.json()
 
-//         // let ttt =commits.Search[0].imdbID
-//         // response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${ttt}`)
-//         // commits = await response.json()
-//         // console.log(commits.Plot)
-//         // let ltl = commits.Plot
-//         // response = await fetch(`https://api.mymemory.translated.net/get?q=${ltl}&langpair=en|ru`)
-//         // commits = await response.json()
-//         // console.log(commits.responseData.translatedText)
+        // let ttt =commits.Search[0].imdbID
+        // response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${ttt}`)
+        // commits = await response.json()
+        // console.log(commits.Plot)
+        // let ltl = commits.Plot
+        // response = await fetch(`https://api.mymemory.translated.net/get?q=${ltl}&langpair=en|ru`)
+        // commits = await response.json()
+        // console.log(commits.responseData.translatedText)
 
-//         // response = await fetch("https://www.omdbapi.com/?&apikey=928973f2&s=max&page=2")
-//         // commits = await response.json()
-//         // console.log(commits)
+        // response = await fetch("https://www.omdbapi.com/?&apikey=928973f2&s=max&page=2")
+        // commits = await response.json()
+        // console.log(commits)
 //     }
 //     catch {
 //         alert("ошибка")
