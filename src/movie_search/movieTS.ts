@@ -21,6 +21,7 @@ liveBackground.backgroundPC.Classic.start()
 liveBackground.backgroundPhone.Classic.start()
 
 
+
 // const butt = document.querySelector("div button") as HTMLButtonElement
 // const input = document.querySelector("#search input") as HTMLInputElement
 // const select = document.querySelector("select") as HTMLSelectElement
@@ -50,6 +51,8 @@ const add_block_film = document.querySelector("#add") as HTMLDivElement
 let target: any
 let page_Global = 3
 let id_Global = 15
+let index_Global = 20
+
 
 document.querySelector("#add")?.addEventListener("click", (e)=>{
 
@@ -132,7 +135,9 @@ search_button?.addEventListener("click", async ()=>{
     console.log(commits2);
     if(commits.Response){
         let arrFilms = commits.Search.concat(commits2.Search) as any
-        console.log(arrFilms)
+        console.log("arrFilms.length")
+        console.log(arrFilms.length)
+        console.log("arrFilms.length")
         let text_output = ""
         for(let index = 0 ; index!= arrFilms.length;index+=2){
             console.log(arrFilms[index]);
@@ -180,74 +185,83 @@ search_button?.addEventListener("click", async ()=>{
         
         
         const body = document.querySelector('body')
-        const callback = (entries: any, observer: any) => {
-            entries.forEach(async (entry: any) => {
-                if (entry.isIntersecting) {
-                    console.log("iiggggg");
-                    let response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${search_input.value}&page=${page_Global}&type=${search_select.value}`)
-                    let commits = await response.json()
-                    let arrFilms = commits.Search
-                    if(commits.Response){
-                        console.log(arrFilms)
-                        let text_output = ""
-                        for(let index = 0 ; index!= arrFilms.length;index+=2){
-                            console.log(arrFilms[index]);
-                            text_output = `<div class="twoFilms" style="display: flex; justify-content: center; flex-wrap: wrap;">`
-                            for(let two_i=0;two_i != 2;two_i++){
-                                response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${arrFilms[index+two_i].imdbID}&plot=full`)
-                                commits = await response.json()
-                                let PlotFull = commits.Plot
-                
-                                text_output += `<div class="GLASSlOLLIPOPS_div mainBlockFilm" data-id="${index+two_i}">
-                                <div class="film_imgSpan">
-                                <img src="${arrFilms[index+two_i].Poster}"
-                                        alt="">
-                                    <div>
-                                        <span>
-                                        ${arrFilms[index+two_i].Title}
-                                        </span>
-                                        <span>
-                                        ${arrFilms[index+two_i].Year}
-                                        </span>
-                                        <span class="longText">
-                                            ${PlotFull}
-                                        </span>
-                                        <span class="shortText">
-                                             ${PlotFull.substring(0, 150) + "..."}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="A2ButtonBlock">
-                                    <a href="" class="GLASSlOLLIPOPS_a">поиск на РУС.</a>
-                                    <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
-                                    <a href="" class="GLASSlOLLIPOPS_a">поиск на ENG.</a>
-                                </div>
-                                <div class="buttonBlock">
-                                    <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
-                                </div>
-                            </div>`
-                            }
-                            text_output += `</div>`
-                            add_block_film.innerHTML += text_output
-                        }
-                        id_Global += 10
-                        page_Global +=1
-                        target = document.querySelector(`[data-id="${id_Global}"]`) as any
-                    }
-                }
-            })
-        }
-        const options = {
-            // root: по умолчанию window, но можно задать любой элемент-контейнер
-            rootMargin: '0px',
-            threshold: 0,
-        }
-        let observer = new IntersectionObserver(callback, options)
-
-        if (target) observer.observe(target)
-        console.log(target)
-}
+        get_code(target)
+    }
 })
+function get_code(target:any){
+        const callback = (entries: any, observer: any) => {
+        entries.forEach(async (entry: any) => {
+            if (entry.isIntersecting) {
+                console.log("iiggggg");
+                let response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${search_input.value}&page=${page_Global}&type=${search_select.value}`)
+                let commits = await response.json()
+                let arrFilms = commits.Search
+                if(commits.Response){
+                    console.log(arrFilms)
+                    let text_output = ""
+                    for(let index = 0 ; index!= arrFilms.length;index+=2){
+                        console.log(arrFilms[index]);
+                        text_output = `<div class="twoFilms" style="display: flex; justify-content: center; flex-wrap: wrap;">`
+                        for(let two_i=0;two_i != 2;two_i++){
+                            response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${arrFilms[index+two_i].imdbID}&plot=full`)
+                            commits = await response.json()
+                            let PlotFull = commits.Plot
+            
+                            text_output += `<div class="GLASSlOLLIPOPS_div mainBlockFilm" data-id="${index+two_i + index_Global}">
+                            <div class="film_imgSpan">
+                            <img src="${arrFilms[index+two_i].Poster}"
+                                    alt="">
+                                <div>
+                                    <span>
+                                    ${arrFilms[index+two_i].Title}
+                                    </span>
+                                    <span>
+                                    ${arrFilms[index+two_i].Year}
+                                    </span>
+                                    <span class="longText">
+                                        ${PlotFull}
+                                    </span>
+                                    <span class="shortText">
+                                         ${PlotFull.substring(0, 150) + "..."}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="A2ButtonBlock">
+                                <a href="" class="GLASSlOLLIPOPS_a">поиск на РУС.</a>
+                                <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
+                                <a href="" class="GLASSlOLLIPOPS_a">поиск на ENG.</a>
+                            </div>
+                            <div class="buttonBlock">
+                                <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
+                            </div>
+                        </div>`
+                        }
+                        text_output += `</div>`
+                        add_block_film.innerHTML += text_output
+                    }
+                    id_Global += 10
+                    page_Global +=1
+                    index_Global += 20
+                    // target = document.querySelector(`[data-id="${id_Global}"]`) as any
+                    // 0000000000000000000000000000000000000000
+                    let observer = new IntersectionObserver(callback, options)
+                    if (target) observer.observe(target)
+                    get_code(document.querySelector(`[data-id="${id_Global}"]`))
+                }
+            }
+        })
+    }
+    const options = {
+        // root: по умолчанию window, но можно задать любой элемент-контейнер
+        rootMargin: '0px',
+        threshold: 0,
+    }
+    // 000000000000000000000000000000000000
+    // let observer = new IntersectionObserver(callback, options)
+    // if (target) observer.observe(target)
+        console.log(target)
+    console.log(id_Global)
+}
 
 
 
