@@ -3,7 +3,7 @@ import './movieStyle.scss'
 import LiveBackgroundMod from '../GLASSlOLLIPOPS/live_background.ts'
 
 // console.log("m3".slice(1));
-console.log(parseInt("m33".slice(1)) % 2);
+// console.log(parseInt("m33".slice(1)) % 2);
 
 
 let liveBackground = new LiveBackgroundMod()
@@ -60,8 +60,8 @@ document.querySelector("#add")?.addEventListener("click", (e)=>{
     const mainBlockFilm = target.closest('.mainBlockFilm') as HTMLElement
 
     if(target.tagName != "BUTTON") return
-    console.log(target);
-    console.log(mainBlockFilm.dataset.id);
+    // console.log(target);
+    // console.log(mainBlockFilm.dataset.id);
 
     let num_id = NaN
     if(+(mainBlockFilm.dataset.id as string) % 2 == 0) num_id = 1 
@@ -70,7 +70,7 @@ document.querySelector("#add")?.addEventListener("click", (e)=>{
     if(target.className == "GLASSlOLLIPOPS_button expand"){
 
         const neighboringBlockFilm = document.querySelector(`[data-id="${+(mainBlockFilm.dataset.id as string) + num_id}"]`) as HTMLElement
-        console.log(neighboringBlockFilm.dataset.id);
+        // console.log(neighboringBlockFilm.dataset.id);
         if(window.innerWidth>907){
             neighboringBlockFilm.classList.add("off_PC")
             mainBlockFilm.classList.add("maximumLength_PC")
@@ -88,7 +88,7 @@ document.querySelector("#add")?.addEventListener("click", (e)=>{
     if(target.className == "GLASSlOLLIPOPS_button collapse"){
         
         const neighboringBlockFilm = document.querySelector(`[data-id="${+(mainBlockFilm.dataset.id as string) + num_id}"]`) as HTMLElement
-        console.log(neighboringBlockFilm.dataset.id);
+        // console.log(neighboringBlockFilm.dataset.id);
         mainBlockFilm.classList.remove("maximumLength_buttonText_PC")
         mainBlockFilm.classList.add("minimumLength_buttonText_PC")
         if(window.innerWidth>907){
@@ -109,7 +109,7 @@ document.querySelector("#add")?.addEventListener("click", (e)=>{
                 },1100)
             }
             else{
-                console.log("ellle");
+                // console.log("ellle");
                 
                 mainBlockFilm.classList.remove("maximumLength_Phone")
                 mainBlockFilm.classList.add("minimumLength_Phone")
@@ -131,16 +131,16 @@ search_button?.addEventListener("click", async ()=>{
     let commits = await response.json()
     let response2 = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${search_input.value}&page=2&type=${search_select.value}`)
     let commits2 = await response2.json()
-    console.log(commits);
-    console.log(commits2);
+    // console.log(commits);
+    // console.log(commits2);
     if(commits.Response){
         let arrFilms = commits.Search.concat(commits2.Search) as any
-        console.log("arrFilms.length")
-        console.log(arrFilms.length)
-        console.log("arrFilms.length")
+        // console.log("arrFilms.length")
+        // console.log(arrFilms.length)
+        // console.log("arrFilms.length")
         let text_output = ""
         for(let index = 0 ; index!= arrFilms.length;index+=2){
-            console.log(arrFilms[index]);
+            // console.log(arrFilms[index]);
             text_output = `<div class="twoFilms" style="display: flex; justify-content: center; flex-wrap: wrap;">`
             for(let two_i=0;two_i != 2;two_i++){
                 response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${arrFilms[index+two_i].imdbID}&plot=full`)
@@ -185,82 +185,83 @@ search_button?.addEventListener("click", async ()=>{
         
         
         const body = document.querySelector('body')
-        get_code(target)
+        const callback = (entries: any, observer: any) => {
+            entries.forEach(async (entry: any) => {
+                if (entry.isIntersecting) {
+                    // console.log("iiggggg");
+                    let response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${search_input.value}&page=${page_Global}&type=${search_select.value}`)
+                    let commits = await response.json()
+                    let arrFilms = commits.Search
+                    if(commits.Response){
+                        // console.log(arrFilms)
+                        let text_output = ""
+                        for(let index = 0 ; index!= arrFilms.length;index+=2){
+                            // console.log(arrFilms[index]);
+                            text_output = `<div class="twoFilms" style="display: flex; justify-content: center; flex-wrap: wrap;">`
+                            for(let two_i=0;two_i != 2;two_i++){
+                                response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${arrFilms[index+two_i].imdbID}&plot=full`)
+                                commits = await response.json()
+                                let PlotFull = commits.Plot
+                
+                                text_output += `<div class="GLASSlOLLIPOPS_div mainBlockFilm" data-id="${index+two_i + index_Global}">
+                                <div class="film_imgSpan">
+                                <img src="${arrFilms[index+two_i].Poster}"
+                                        alt="">
+                                    <div>
+                                        <span>
+                                        ${arrFilms[index+two_i].Title}
+                                        </span>
+                                        <span>
+                                        ${arrFilms[index+two_i].Year}
+                                        </span>
+                                        <span class="longText">
+                                            ${PlotFull}
+                                        </span>
+                                        <span class="shortText">
+                                             ${PlotFull.substring(0, 150) + "..."}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="A2ButtonBlock">
+                                    <a href="" class="GLASSlOLLIPOPS_a">поиск на РУС.</a>
+                                    <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
+                                    <a href="" class="GLASSlOLLIPOPS_a">поиск на ENG.</a>
+                                </div>
+                                <div class="buttonBlock">
+                                    <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
+                                </div>
+                            </div>`
+                            }
+                            text_output += `</div>`
+                            add_block_film.innerHTML += text_output
+                        }
+                        id_Global += 10
+                        page_Global +=1
+                        index_Global += 20
+                        target = document.querySelector(`[data-id="${id_Global}"]`) as any
+                        get_if_target(callback, options,target)
+                        // console.log("12345678912345678123456781234567")
+                    }
+                }
+            })
+        }
+        const options = {
+            // root: по умолчанию window, но можно задать любой элемент-контейнер
+            rootMargin: '0px',
+            threshold: 0,
+        }
+        let observer = new IntersectionObserver(callback, options)
+        // get_if_target(callback, options,target)
+        if (target) observer.observe(target)
+        // console.log(id_Global)
     }
 })
-function get_code(target:any){
-        const callback = (entries: any, observer: any) => {
-        entries.forEach(async (entry: any) => {
-            if (entry.isIntersecting) {
-                console.log("iiggggg");
-                let response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&s=${search_input.value}&page=${page_Global}&type=${search_select.value}`)
-                let commits = await response.json()
-                let arrFilms = commits.Search
-                if(commits.Response){
-                    console.log(arrFilms)
-                    let text_output = ""
-                    for(let index = 0 ; index!= arrFilms.length;index+=2){
-                        console.log(arrFilms[index]);
-                        text_output = `<div class="twoFilms" style="display: flex; justify-content: center; flex-wrap: wrap;">`
-                        for(let two_i=0;two_i != 2;two_i++){
-                            response = await fetch(`https://www.omdbapi.com/?&apikey=928973f2&i=${arrFilms[index+two_i].imdbID}&plot=full`)
-                            commits = await response.json()
-                            let PlotFull = commits.Plot
-            
-                            text_output += `<div class="GLASSlOLLIPOPS_div mainBlockFilm" data-id="${index+two_i + index_Global}">
-                            <div class="film_imgSpan">
-                            <img src="${arrFilms[index+two_i].Poster}"
-                                    alt="">
-                                <div>
-                                    <span>
-                                    ${arrFilms[index+two_i].Title}
-                                    </span>
-                                    <span>
-                                    ${arrFilms[index+two_i].Year}
-                                    </span>
-                                    <span class="longText">
-                                        ${PlotFull}
-                                    </span>
-                                    <span class="shortText">
-                                         ${PlotFull.substring(0, 150) + "..."}
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="A2ButtonBlock">
-                                <a href="" class="GLASSlOLLIPOPS_a">поиск на РУС.</a>
-                                <button class="GLASSlOLLIPOPS_button collapse">свернуть</button>
-                                <a href="" class="GLASSlOLLIPOPS_a">поиск на ENG.</a>
-                            </div>
-                            <div class="buttonBlock">
-                                <button class="GLASSlOLLIPOPS_button expand">развернуть</button>
-                            </div>
-                        </div>`
-                        }
-                        text_output += `</div>`
-                        add_block_film.innerHTML += text_output
-                    }
-                    id_Global += 10
-                    page_Global +=1
-                    index_Global += 20
-                    // target = document.querySelector(`[data-id="${id_Global}"]`) as any
-                    // 0000000000000000000000000000000000000000
-                    let observer = new IntersectionObserver(callback, options)
-                    if (target) observer.observe(target)
-                    get_code(document.querySelector(`[data-id="${id_Global}"]`))
-                }
-            }
-        })
-    }
-    const options = {
-        // root: по умолчанию window, но можно задать любой элемент-контейнер
-        rootMargin: '0px',
-        threshold: 0,
-    }
-    // 000000000000000000000000000000000000
-    // let observer = new IntersectionObserver(callback, options)
-    // if (target) observer.observe(target)
-        console.log(target)
-    console.log(id_Global)
+function get_if_target(callback:any,options:any,targ:any){
+    
+    // console.log(target)
+    console.log("12345678912345678123456781234567")
+    let observer = new IntersectionObserver(callback, options)
+    if (targ) observer.observe(targ)
 }
 
 
